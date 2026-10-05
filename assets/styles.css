@@ -1959,8 +1959,6 @@ button.ui__cta:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .device__view[hidden]{display:none}
 .live{position:absolute;display:block;overflow:hidden;pointer-events:none}
 .live__img{position:absolute;max-width:none;height:auto;will-change:transform;animation:shotPush 16s ease-in-out infinite alternate}
-.live--orb{border-radius:50%}
-.live--orb .live__img{animation:orbBreath 2.4s ease-in-out infinite}
 .shot:nth-child(even) .live:not(.live--orb) .live__img{animation-name:shotPushLeft}
 /* Anchored near the title at the foot of each photograph, so the words stay
    put while the picture behind them pushes in, as in the app. */
@@ -1968,9 +1966,12 @@ button.ui__cta:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 @keyframes shotPushLeft{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.12) translate(-1.2%,0)}}
 @keyframes orbBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .mic-pulse{position:absolute;display:block;aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none}
-.mic-pulse i{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,112,67,.6);background:radial-gradient(circle,rgba(255,150,90,.18),rgba(255,150,90,0) 70%);animation:micRing 2.4s ease-out infinite}
-.mic-pulse i+i{animation-delay:1.2s}
-@keyframes micRing{0%{transform:scale(1);opacity:.95}100%{transform:scale(2.3);opacity:0}}
+/* Soft light leaving the orb, never a drawn ring: the screen already has its
+   own halo, and a second outline over it read as a doubled edge
+   (5 October: "неровность, она дважды там повторяется"). */
+.mic-pulse i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,138,76,0) 48%,rgba(255,138,76,.32) 62%,rgba(255,138,76,0) 72%);opacity:0;animation:micRing 3s cubic-bezier(.2,.6,.3,1) infinite}
+.mic-pulse i+i{animation-delay:1.5s}
+@keyframes micRing{0%{transform:scale(1.05);opacity:0}15%{opacity:1}100%{transform:scale(2.2);opacity:0}}
 .hero__stage .device--shot{animation:phoneFloat 7s ease-in-out infinite}
 @keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .shot .device{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
