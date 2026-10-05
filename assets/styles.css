@@ -1947,3 +1947,51 @@ button.ui__cta:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .shot figcaption{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:var(--w,250px);font-family:var(--font-display);line-height:1.2}
 .shot figcaption b{font-size:1.05rem;font-weight:700;color:var(--ink)}
 .shot figcaption span{font-size:1.05rem;font-weight:700;color:var(--red)}
+
+/* --- Living screens (5 October: "добавь динамику, как у нас в приложении").
+   Each screen's own photograph is laid over itself and pushes in slowly, the
+   way the app's headers move; the assistant's orb breathes and rings out like
+   the microphone it is. The screen clips with clip-path as well as overflow:
+   Safari lets a transformed child slip past a rounded overflow box, and the
+   phone's metal showed in its corners. */
+.device--shot .device__screen{position:relative;clip-path:inset(0 round calc(var(--w) * .112));-webkit-mask-image:-webkit-radial-gradient(white,black)}
+.device__view{display:block;position:relative}
+.device__view[hidden]{display:none}
+.live{position:absolute;display:block;overflow:hidden;pointer-events:none}
+.live__img{position:absolute;max-width:none;height:auto;will-change:transform;animation:shotPush 16s ease-in-out infinite alternate}
+.live--orb{border-radius:50%}
+.live--orb .live__img{animation:orbBreath 2.4s ease-in-out infinite}
+.shot:nth-child(even) .live:not(.live--orb) .live__img{animation-name:shotPushLeft}
+/* Anchored near the title at the foot of each photograph, so the words stay
+   put while the picture behind them pushes in, as in the app. */
+@keyframes shotPush{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes shotPushLeft{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.12) translate(-1.2%,0)}}
+@keyframes orbBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.mic-pulse{position:absolute;display:block;aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none}
+.mic-pulse i{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,112,67,.6);background:radial-gradient(circle,rgba(255,150,90,.18),rgba(255,150,90,0) 70%);animation:micRing 2.4s ease-out infinite}
+.mic-pulse i+i{animation-delay:1.2s}
+@keyframes micRing{0%{transform:scale(1);opacity:.95}100%{transform:scale(2.3);opacity:0}}
+.hero__stage .device--shot{animation:phoneFloat 7s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.shot .device{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.shot.is-current .device{transform:translateY(-8px) scale(1.03)}
+@media (prefers-reduced-motion:reduce){
+  .live__img,.mic-pulse i,.hero__stage .device--shot{animation:none}
+  .shot.is-current .device{transform:none}
+}
+
+/* --- The language switch: one glass pill, six languages under it. */
+.langs{position:relative}
+.langs .langs__toggle{display:inline-flex;align-items:center;gap:7px;padding:7px 12px 7px 11px;min-height:36px;border-radius:var(--r-pill);font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--ink);background:rgba(255,255,255,.75)}
+.langs .langs__toggle:hover{background:#fff}
+.langs__chev{transition:transform .25s var(--ease)}
+.langs__toggle[aria-expanded="true"] .langs__chev{transform:rotate(180deg)}
+.langs__menu{position:absolute;right:0;top:calc(100% + 8px);z-index:220;min-width:196px;padding:6px;border-radius:18px;background:rgba(255,255,255,.97);border:1px solid rgba(20,26,44,.08);box-shadow:0 18px 48px rgba(16,24,40,.16);display:grid;gap:2px;transform-origin:top right;animation:langsIn .18s var(--ease)}
+.langs__menu[hidden]{display:none}
+.langs .langs__menu button{display:flex;align-items:center;gap:12px;width:100%;min-height:42px;padding:8px 12px;border-radius:12px;font-size:15px;font-weight:600;color:var(--ink);text-align:left;letter-spacing:0}
+.langs .langs__menu button b{width:26px;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
+.langs .langs__menu button:hover{background:rgba(31,90,224,.07)}
+.langs .langs__menu button[aria-pressed="true"]{background:rgba(31,90,224,.1);color:var(--blue)}
+.langs .langs__menu button[aria-pressed="true"] b{color:var(--blue)}
+@keyframes langsIn{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.langs__menu{animation:none}}

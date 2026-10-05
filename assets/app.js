@@ -16,8 +16,9 @@
   };
 
   /* ---------------------------------------------------------------- i18n */
-  var LANGS = ['ru', 'uk', 'en'];
-  var HTML_LANG = { ru: 'ru', uk: 'uk', en: 'en' };
+  var LANGS = ['ru', 'uk', 'en', 'el', 'hr', 'es'];
+  var HTML_LANG = { ru: 'ru', uk: 'uk', en: 'en', el: 'el', hr: 'hr', es: 'es' };
+  var LANG_CODE = { ru: 'RU', uk: 'UA', en: 'EN', el: 'EL', hr: 'HR', es: 'ES' };
   var lang = 'ru';
 
   function detectLang() {
@@ -28,6 +29,9 @@
     var nav = (navigator.languages || [navigator.language || 'ru']).join(',').toLowerCase();
     if (/\buk\b|\buk-/.test(nav)) return 'uk';
     if (/\bru\b|\bru-/.test(nav)) return 'ru';
+    if (/\bel\b|\bel-/.test(nav)) return 'el';
+    if (/\bhr\b|\bhr-|\bbs\b|\bsr-latn/.test(nav)) return 'hr';
+    if (/\bes\b|\bes-/.test(nav)) return 'es';
     if (/\ben\b|\ben-/.test(nav)) return 'en';
     return 'ru';
   }
@@ -73,9 +77,10 @@
       if (el.getAttribute('src') !== src) el.setAttribute('src', src);
     });
 
-    $$('.langs button').forEach(function (b) {
+    $$('.langs [data-lang]').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
+    $$('.langs__cur').forEach(function (el) { el.textContent = LANG_CODE[lang]; });
 
     // section-specific strings owned by JS
     var amsNote = $('#amsNote');
@@ -202,8 +207,29 @@
       if (window.innerWidth > 1024 && burger.getAttribute('aria-expanded') === 'true') setDrawer(false);
     });
 
-    $$('.langs button').forEach(function (b) {
-      b.addEventListener('click', function () { applyLang(b.dataset.lang, true); });
+    /*
+      Six languages do not fit as a row of pills beside the navigation, so the
+      switch is one button with the current language that unfolds the six in
+      their own names (5 October: "переведи на все наши 6 языков").
+    */
+    var langBox = $('#langs'), langBtn = $('.langs__toggle'), langMenu = $('#langsMenu');
+    function setLangMenu(open) {
+      if (!langBtn || !langMenu) return;
+      langBtn.setAttribute('aria-expanded', String(open));
+      langMenu.hidden = !open;
+    }
+    if (langBtn) langBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setLangMenu(langBtn.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('click', function (e) {
+      if (langBox && !langBox.contains(e.target)) setLangMenu(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setLangMenu(false);
+    });
+    $$('.langs [data-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { applyLang(b.dataset.lang, true); setLangMenu(false); });
     });
   }
 
@@ -296,7 +322,7 @@
 
   /* --------------------------------------------------------- stat counts */
   var counters = [];
-  function localeTag() { return lang === 'en' ? 'en-US' : (lang === 'uk' ? 'uk-UA' : 'ru-RU'); }
+  function localeTag() { return { en: 'en-US', uk: 'uk-UA', el: 'el-GR', hr: 'hr-HR', es: 'es-ES' }[lang] || 'ru-RU'; }
   function initCounters() {
     $$('[data-count]').forEach(function (el) {
       var target = parseFloat(el.dataset.count);
@@ -388,6 +414,53 @@
   // The two scenarios are the whole proposition, so the hero shows both rather
   // than describing them. These buttons switch the phone; they promise nothing
   // the product cannot already do on this page.
+
+  /* ------------------------------------------- the app's screens, turning */
+  // The row of real screens steps along by itself, like the app's own
+  // carousels: one screen every few seconds while it is on screen, a hand on
+  // it holds it, and it carries on a while after the hand lets go. The screen
+  // in the middle is lifted a little ("is-current").
+  function initShots() {
+    var row = $('.shots');
+    if (!row) return;
+    var items = $$('.shot', row);
+    if (!items.length) return;
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var heldUntil = 0, visible = false;
+    function current() {
+      var mid = row.scrollLeft + row.clientWidth / 2, best = 0, dist = Infinity;
+      items.forEach(function (it, i) {
+        var c = it.offsetLeft + it.offsetWidth / 2, d = Math.abs(c - mid);
+        if (d < dist) { dist = d; best = i; }
+      });
+      return best;
+    }
+    function mark() {
+      var c = current();
+      items.forEach(function (it, i) { it.classList.toggle('is-current', i === c); });
+    }
+    var raf = 0;
+    row.addEventListener('scroll', function () {
+      if (raf) return;
+      raf = requestAnimationFrame(function () { raf = 0; mark(); });
+    }, { passive: true });
+    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) {
+      row.addEventListener(ev, function () { heldUntil = Date.now() + 8000; }, { passive: true });
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: 0.35 }).observe(row);
+    }
+    mark();
+    if (still) return;
+    setInterval(function () {
+      if (!visible || Date.now() < heldUntil || document.hidden) return;
+      var next = current() + 1;
+      var atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+      var target = (atEnd || next >= items.length) ? items[0] : items[next];
+      row.scrollTo({ left: target.offsetLeft + target.offsetWidth / 2 - row.clientWidth / 2, behavior: 'smooth' });
+    }, 3200);
+  }
+
   function initModes() {
     var group = $('#modes');
     if (!group) return;
@@ -906,6 +979,7 @@
     initRoute();
     initAmsterdam();
     initModes();
+    initShots();
     initWorld();
     initHeroParallax();
     initModals();
