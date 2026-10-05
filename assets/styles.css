@@ -311,6 +311,13 @@ h3,h4{letter-spacing:-.02em;line-height:1.22}
   position:absolute;top:calc(var(--w) * .026);left:50%;transform:translateX(-50%);
   width:31%;height:calc(var(--w) * .075);border-radius:var(--r-pill);background:#0A0D14;z-index:6;
 }
+/* A real screen of the app instead of a painted one: the store screenshot,
+   cut out of its frame, under a strip of the app's own ground where the
+   status bar would be. Its height follows the picture, not a fixed ratio. */
+.device--shot{aspect-ratio:auto;height:auto}
+.device--shot .device__screen{display:block;height:auto;background:#FAF8F5;padding-top:calc(var(--w) * .085)}
+.device__img{display:block;width:100%;height:auto}
+.device__img[hidden]{display:none}
 .device--sm{--w:238px}
 .device--md{--w:274px}
 .device--lg{--w:312px}
@@ -1924,3 +1931,19 @@ button.ui__cta:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
   background-position:top,bottom;
   background-size:100% var(--edge),100% var(--edge);
 }
+
+/* --- The app's own screens, in a row to swipe (5 October: the site showed
+   painted phones; these are the store screenshots, cut out of their frames). */
+.shots{
+  display:flex;gap:clamp(22px,3vw,40px);overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:none;
+  padding:18px max(var(--gutter),calc((100vw - var(--maxw)) / 2 + var(--gutter))) 34px;
+  margin-top:clamp(18px,3vw,36px);
+}
+.shots::-webkit-scrollbar{display:none}
+.shots:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.shot{flex:none;margin:0;display:flex;flex-direction:column;align-items:center;gap:18px;scroll-snap-align:center}
+.shot .device{--w:clamp(214px,19vw,252px)}
+.shot figcaption{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:var(--w,250px);font-family:var(--font-display);line-height:1.2}
+.shot figcaption b{font-size:1.05rem;font-weight:700;color:var(--ink)}
+.shot figcaption span{font-size:1.05rem;font-weight:700;color:var(--red)}

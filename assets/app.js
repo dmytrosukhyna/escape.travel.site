@@ -66,6 +66,13 @@
       if (v) el.setAttribute('aria-label', v);
     });
 
+    // The app's own screens, in the language being read (store screenshots, cut
+    // out of their frames — /img/app/<lang>/<screen>.webp).
+    $$('[data-shot]').forEach(function (el) {
+      var src = '/img/app/' + lang + '/' + el.dataset.shot + '.webp';
+      if (el.getAttribute('src') !== src) el.setAttribute('src', src);
+    });
+
     $$('.langs button').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
