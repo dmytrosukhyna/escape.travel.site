@@ -644,10 +644,20 @@
   }
 
   function initModals() {
+    // The app is on the App Store (November): every "try it" button opens it.
+    // Android is still in Google's closed test, so an Android phone - and the
+    // Android buttons themselves - get the form that tells them when it is out.
+    var APP_STORE = 'https://apps.apple.com/app/id6803238502';
+    var onAndroid = /android/i.test(navigator.userAgent || '');
+    function androidForm() {
+      if (waitlistReopen) waitlistReopen();
+      openModal('waitlist');
+    }
+    $$('[data-waitlist-android]').forEach(function (b) { b.addEventListener('click', androidForm); });
     $$('[data-waitlist]').forEach(function (b) {
       b.addEventListener('click', function () {
-        if (waitlistReopen) waitlistReopen();
-        openModal('waitlist');
+        if (onAndroid) { androidForm(); return; }
+        window.open(APP_STORE, '_blank', 'noopener');
       });
     });
     $$('[data-toast]').forEach(function (b) {

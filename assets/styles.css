@@ -1996,3 +1996,13 @@ button.ui__cta:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .langs .langs__menu button[aria-pressed="true"] b{color:var(--blue)}
 @keyframes langsIn{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.langs__menu{animation:none}}
+
+/* The App Store chip is a real door now (November): it reads as pressable,
+   and the Android one stays a quiet "soon" that opens the notify form. */
+button.chip{font-family:inherit;cursor:pointer}
+a.chip{text-decoration:none}
+.chip--live{color:var(--ink);border-color:rgba(229,56,59,.35);transition:transform .2s,box-shadow .2s}
+.chip--live:hover{transform:translateY(-1px);box-shadow:var(--sh-2,0 8px 24px rgba(0,0,0,.12))}
+.chip--live .soon{background:#E5383B;color:#fff}
+.hero__stores .chip--live{grid-column:1/-1;background:#E5383B;color:#fff;border-color:transparent}
+.hero__stores .chip--live svg{color:#fff}
