@@ -19,6 +19,7 @@ os.makedirs(out, exist_ok=True)
 JOBS = [  # source, output name, width, quality
   ('christmas/decorations/corner-branch.png',    'branch',       520, 84),
   ('christmas/decorations/holly-bow.png',        'holly',        240, 84),
+  ('christmas/decorations/snow-drift.png',       'snow-drift',  1000, 80),
   ('christmas/mascot/santa.png',                 'santa',        520, 86),
   ('christmas/mascot/santa-wave-body.png',       'santa-body',   620, 86),
   ('christmas/mascot/santa-wave-hand.png',       'santa-hand',   620, 86),

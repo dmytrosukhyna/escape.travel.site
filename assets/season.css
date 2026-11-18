@@ -198,14 +198,6 @@ body{background:transparent;position:relative}
 }
 @keyframes glow{from{opacity:.1}to{opacity:.85}}
 .header .wrap{position:relative;z-index:3;padding-top:10px}
-.header.is-night::after{background:rgba(12,16,44,.62);border-bottom-color:rgba(255,255,255,.08)}
-.header.is-night .nav a{color:#C5CDE6}
-.header.is-night .nav a:hover,.header.is-night .nav a.is-active{color:#fff}
-.header.is-night .header-brand small{color:#9AA6CB}
-.header.is-night .langs{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
-.header.is-night .langs .langs__toggle{background:rgba(255,255,255,.1);color:#fff}
-.header.is-night .burger span,.header.is-night .burger span::before,.header.is-night .burger span::after{background:#fff}
-.header.is-night .burger[aria-expanded="true"] span{background:transparent}
 .header{transition:none}
 
 /* --- 4. Garlands between scenes ------------------------------------------ */
@@ -222,10 +214,6 @@ body{background:transparent;position:relative}
 
 /* --- 5. The first screen: New Year trips --------------------------------- */
 .xmas{position:relative;isolation:isolate;overflow:clip;padding-top:calc(var(--header-h) + clamp(30px,5vw,64px));padding-bottom:clamp(30px,4vw,60px)}
-.xmas__branch{
-  position:absolute;right:0;top:calc(var(--header-h) - 14px);z-index:0;width:clamp(150px,17vw,270px);height:auto;pointer-events:none;
-  filter:drop-shadow(0 14px 22px rgba(60,30,40,.22));
-}
 .xmas__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:clamp(24px,4vw,64px);align-items:center}
 .eyebrow--festive{color:var(--xmas-red-deep);gap:9px}
 .eyebrow--festive::before{display:none}
@@ -251,9 +239,13 @@ body{background:transparent;position:relative}
 
 .xmas__stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px;padding-block:20px}
 .xmas__stage .device{--w:clamp(236px,22vw,316px)}
-.xmas__front{z-index:2;margin-left:24%;animation:phoneFloat 7s ease-in-out infinite;transform-origin:50% 60%}
-.xmas__back{position:absolute;z-index:1;--w:clamp(200px,18vw,262px)!important;left:calc(50% - var(--w) * .82);top:13%;transform:rotate(-8deg);filter:saturate(1.05)}
-.float--season{position:absolute;z-index:3;right:-2%;bottom:12%}
+.xmas__front{z-index:2;animation:phoneFloat 7s ease-in-out infinite;transform-origin:50% 60%}
+/* Home in front; behind it, the New Year section on the left and the
+   owner's own launch picture on the right, each turned a little away. */
+.xmas__back,.xmas__side{position:absolute;z-index:1;--w:clamp(180px,15.5vw,236px)!important;top:15%}
+.xmas__back{left:-7%;transform:rotate(-8deg)}
+.xmas__side{right:-9%;transform:rotate(8deg)}
+.float--season{position:absolute;z-index:3;right:-2%;bottom:6%}
 .float__ic{width:34px;height:34px;border-radius:11px;flex:none;display:grid;place-items:center;background:linear-gradient(140deg,#F3262E,#B90918);color:#fff}
 
 .xmas__moods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:clamp(30px,4vw,56px)}
@@ -430,11 +422,11 @@ body{background:transparent;position:relative}
 }
 @media (max-width:760px){
   .xmas{padding-top:calc(var(--header-h) + 20px)}
-  .xmas__branch{width:120px;opacity:.95}
-  .xmas__title{font-size:clamp(2.15rem,9.6vw,2.9rem)}
+    .xmas__title{font-size:clamp(2.15rem,9.6vw,2.9rem)}
   .xmas__facts{grid-template-columns:1fr;max-width:none}
   .xmas__stage .device{--w:min(250px,64vw)}
   .xmas__back{--w:min(190px,48vw)!important;left:2%;top:10%}
+  .xmas__side{display:none}
   .xmas__front{margin-left:28%}
   .float--season{right:0;bottom:4%}
   .xmas__moods{gap:10px}
@@ -461,3 +453,130 @@ body{background:transparent;position:relative}
 .section--dark .chal__hd{background:rgba(255,255,255,.08);border-bottom-color:rgba(255,255,255,.12)}
 .section--dark .chal__ttl{color:#fff}
 .section--dark .chal__live{color:#E8ECF8}
+
+/* --- 11. The header is the sky, not a strip -------------------------------- */
+/* 18 November: "по цветам разрыв идет, прямая линия". The header had its own
+   glass and a hairline under it, so it read as a band of another colour over
+   the sky. Now it has no fill at the top, and once the page moves it carries
+   only the sky's own colour at that height (season.js sets --hdr), fading to
+   nothing below the words — no border, no edge. */
+.header::after{
+  height:calc(100% + 34px);bottom:auto;border:0!important;
+  background:linear-gradient(180deg,var(--hdr,#F7DCE2) 0%,var(--hdr,#F7DCE2) 56%,transparent 100%);
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+}
+.header.is-stuck::after{opacity:.96}
+.header.is-night .nav a{color:#C9D0EA}
+.header.is-night .nav a:hover,.header.is-night .nav a.is-active{color:#fff}
+.header.is-night .header-brand small{color:#A4AED0}
+.header.is-night .langs .langs__toggle{background:rgba(255,255,255,.12);color:#fff}
+.header.is-night .burger span,.header.is-night .burger span::before,.header.is-night .burger span::after{background:#fff}
+.header.is-night .burger[aria-expanded="true"] span{background:transparent}
+
+/* The fir lives in the very corner of the window, as in the app: flush with
+   the top and the right, over the header, and the page passes under it. The
+   header's own buttons step left of it, so it never sits on them. */
+:root{--fir:clamp(104px,12vw,184px)}
+.corner-fir{
+  position:fixed;top:0;right:0;z-index:125;width:var(--fir);height:auto;pointer-events:none;
+  filter:drop-shadow(0 10px 18px rgba(40,20,30,.25));
+}
+.header .wrap{padding-right:max(var(--gutter),calc(var(--fir) * .86 - (100vw - var(--maxw)) / 2))}
+@media (max-width:1024px){ .header .wrap{padding-right:calc(var(--fir) * .82)} }
+@media (max-width:760px){ :root{--fir:96px} .header .wrap{padding-right:76px} }
+.drawer{padding-top:calc(var(--header-h) + 40px)}
+
+/* --- 12. Snow on things ---------------------------------------------------- */
+/* A little snow lying on the tops of the evening panes, the globe and the
+   contact card: the app's own snowbank, pressed flat, sitting over the edge. */
+.section--panel::before,.world::before,.cta__card::before{
+  content:"";position:absolute;z-index:3;pointer-events:none;height:30px;
+  background:url(/img/xmas/snow-drift.webp) center top/100% 100% no-repeat;
+  filter:drop-shadow(0 3px 4px rgba(30,40,80,.18));
+}
+.section--panel::before{
+  top:calc(var(--sp-section) * .35 - 15px);
+  left:calc(max(10px,(100% - var(--maxw)) / 2 + 6px) + 30px);
+  right:calc(max(10px,(100% - var(--maxw)) / 2 + 6px) + 30px);
+}
+.world{overflow:visible}
+.world__bg{border-radius:inherit;overflow:hidden}
+.world::before{top:-15px;left:34px;right:34px}
+.cta__card{position:relative;overflow:visible}
+.cta__card::before{top:-14px;left:22px;right:22px;height:24px}
+@media (max-width:760px){
+  .section--panel::before{left:30px;right:30px;height:22px;top:calc(var(--sp-section) * .35 - 11px)}
+  .world::before{left:22px;right:22px;height:22px;top:-11px}
+}
+
+/* --- 13. What's new in the New Year edition ------------------------------ */
+.eyebrow .brandmark--inline{text-transform:none;letter-spacing:0;font-size:1.9em;margin-left:.3em;transform:translateY(.08em)}
+.whatsnew{padding-top:clamp(40px,5vw,80px)}
+.whatsnew__grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr);gap:clamp(28px,4vw,64px);align-items:center}
+.whatsnew .head h2{font-size:var(--t-h2)}
+.wn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(22px,3vw,34px)}
+.wn a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 16px 18px;border-radius:22px;
+  background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 12px 30px -18px rgba(80,40,60,.35);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.wn a:hover{transform:translateY(-3px);box-shadow:0 18px 36px -18px rgba(80,40,60,.45)}
+.wn i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#FDE7E6;color:var(--xmas-red-deep);margin-bottom:4px}
+.wn i svg{width:19px;height:19px}
+.wn b{font-family:var(--font-display);font-weight:700;font-size:var(--t-h4);letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
+.wn span{font-size:var(--t-small);color:var(--ink-2);line-height:1.5}
+.whatsnew__stage{display:flex;flex-direction:column;align-items:center;gap:16px}
+.whatsnew__stage .device{--w:clamp(210px,19vw,262px)}
+.whatsnew__cap{font-family:var(--font-display);font-weight:700;color:var(--ink);text-align:center;font-size:var(--t-small)}
+@media (max-width:1024px){
+  .whatsnew__grid{grid-template-columns:1fr}
+  .wn{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){ .wn{grid-template-columns:1fr} }
+
+/* --- 14. Day and night, side by side --------------------------------------- */
+/* 18 November: "ночную тему тоже в картинках выезжает в сторону". Each pair is
+   the day screen with its night twin tucked behind it; when the pair comes
+   into view the night one slides out to the side and the day one steps the
+   other way. Without script, or asked for stillness, both simply stand open. */
+.pair{position:relative;display:flex;justify-content:center;align-items:flex-start;padding:10px 0 24px}
+.pair .device{--w:clamp(150px,11.5vw,176px)}
+.pair__day{position:relative;z-index:2;transform:translateX(-22%) rotate(-3deg)}
+.pair__night{position:absolute!important;z-index:1;left:50%;top:10px;margin-left:calc(var(--w) * -.5);transform:translateX(44%) rotate(5deg) translateY(16px)}
+.js-season .pair__day,.js-season .pair__night{transition:transform 1.3s cubic-bezier(.2,.75,.2,1),opacity 1s ease}
+.js-season [data-pair]:not(.is-night-in) .pair__day{transform:none}
+.js-season [data-pair]:not(.is-night-in) .pair__night{transform:none;opacity:0}
+.js-season .xmas__stage:not(.is-night-in) .xmas__side{transform:translateX(-62%) rotate(0);opacity:0}
+.js-season .xmas__side{transition:transform 1.4s cubic-bezier(.2,.75,.2,1) .3s,opacity 1s ease .3s}
+.pair--santa{margin-block:6px 18px}
+.pair--santa .device{--w:clamp(160px,13vw,196px)}
+.nightshow__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,30px);margin-top:clamp(28px,4vw,56px)}
+.nightshow figure{margin:0;display:flex;flex-direction:column;align-items:center}
+.nightshow figcaption{display:flex;flex-direction:column;align-items:center;text-align:center;font-family:var(--font-display);font-weight:700;line-height:1.2;margin-top:6px}
+.nightshow figcaption b{color:#fff;font-size:1.05rem}
+.nightshow figcaption span{color:#FFB59A;font-size:1.05rem}
+.nightshow h2 em{font-style:normal;background:linear-gradient(100deg,#FF6A5E,#FFC07A);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:1024px){
+  .nightshow__row{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .pair .device{--w:min(196px,22vw)}
+}
+@media (prefers-reduced-motion:reduce){
+  .js-season .pair__day,.js-season .pair__night,.js-season .xmas__side{transition:none}
+}
+@media (max-width:560px){
+  .wn{gap:8px}
+  .wn a{display:grid;grid-template-columns:38px minmax(0,1fr);column-gap:12px;row-gap:2px;padding:13px 14px}
+  .wn i{grid-row:1 / span 2;margin:0}
+  .wn b{font-size:1rem}
+}
+/* each half of a festive title balances on its own lines ("Новый / год" was an orphan) */
+.xmas__title em,.santa h2 em,.nightshow h2 em{display:block}
+.xmas__title,.santa h2,.nightshow h2{text-wrap:balance}
+/* the eyebrow reads as one sentence that ends on the drawn mark */
+.eyebrow--festive{display:block;line-height:1.5}
+.eyebrow--festive > svg{display:inline-block;vertical-align:-3px;margin-right:8px}
+.eyebrow--festive .brandmark--inline{display:inline-flex;font-size:1.75em;margin-left:.25em;transform:translateY(.1em)}
+@media (max-width:760px){ .sky__moon{right:5%;width:56px} }
+@media (max-width:640px){
+  .nightshow__row{grid-template-columns:1fr}
+  .pair .device{--w:min(196px,46vw)}
+}
