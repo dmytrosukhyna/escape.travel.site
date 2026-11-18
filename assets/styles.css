@@ -286,31 +286,90 @@ h3,h4{letter-spacing:-.02em;line-height:1.22}
 
 /* --- 8. Phone device ----------------------------------------------------- */
 .device{
+  /* An iPhone is 393 x 852 points with a 55pt corner, and the frame around the
+     glass is about eight and a half of those points. The old frame was drawn
+     by eye: too tall for its width, too thick at the edge, and with a pill at
+     the top that was a notch rather than an island. These are the real
+     numbers, expressed against the width so any size of phone keeps them. */
   --w:312px;
+  --bezel:calc(var(--w) * .0216);
   width:var(--w);flex:none;position:relative;
-  aspect-ratio:312/638;
-  border-radius:calc(var(--w) * .143);
-  padding:calc(var(--w) * .0345);
-  background:linear-gradient(150deg,#F0F1F5 0%,#B9BEC9 14%,#6D7484 34%,#3A404E 52%,#8A909D 74%,#D9DCE3 90%,#8E94A1 100%);
+  aspect-ratio:393/852;
+  border-radius:calc(var(--w) * .14);
+  padding:var(--bezel);
+  background:
+    linear-gradient(148deg,#F4F5F8 0%,#C9CDD6 9%,#7E8595 26%,#454B5B 46%,#6A7183 62%,#AFB5C1 80%,#767D8D 92%,#3F4452 100%);
   box-shadow:var(--sh-phone);
   transform:translateZ(0);
 }
+/* the bright line where the glass meets the metal */
 .device::after{
-  content:"";position:absolute;inset:calc(var(--w) * .012);
-  border-radius:calc(var(--w) * .133);
-  border:1px solid rgba(255,255,255,.34);pointer-events:none;
+  content:"";position:absolute;inset:calc(var(--bezel) * .42);
+  border-radius:calc(var(--w) * .129);
+  border:1px solid rgba(255,255,255,.42);pointer-events:none;z-index:7;
+}
+/* and the hairline at the outside edge of the frame */
+.device::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:7;
+  box-shadow:inset 0 0 0 1px rgba(10,14,26,.34);
 }
 .device__screen{
   position:relative;width:100%;height:100%;overflow:hidden;
-  border-radius:calc(var(--w) * .112);
+  border-radius:calc(var(--w) * .1184);
   background:#F6F8FB;color:var(--ink);
   display:flex;flex-direction:column;
+  /* room for the status bar above and the home indicator below */
+  padding-top:calc(var(--w) * .128);
+  padding-bottom:calc(var(--w) * .046);
   font-size:calc(var(--w) / 25.5);
 }
-.device__notch{
-  position:absolute;top:calc(var(--w) * .026);left:50%;transform:translateX(-50%);
-  width:31%;height:calc(var(--w) * .075);border-radius:var(--r-pill);background:#0A0D14;z-index:6;
+/* a touch of sheen across the glass, so it reads as glass */
+.device__screen::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:linear-gradient(118deg,rgba(255,255,255,.3) 0%,rgba(255,255,255,.07) 17%,rgba(255,255,255,0) 34%);
 }
+.device__island{
+  position:absolute;top:calc(var(--bezel) + var(--w) * .028);left:50%;transform:translateX(-50%);
+  width:calc(var(--w) * .318);height:calc(var(--w) * .0934);
+  border-radius:var(--r-pill);background:#07090F;z-index:6;
+  box-shadow:0 0 0 .5px rgba(255,255,255,.07);
+}
+/* the camera, just visible in the right-hand end of it */
+.device__island::after{
+  content:"";position:absolute;top:50%;right:14%;transform:translateY(-50%);
+  width:calc(var(--w) * .026);height:calc(var(--w) * .026);border-radius:50%;
+  background:radial-gradient(circle at 36% 32%,#2B3550 0%,#0D1220 62%,#05070C 100%);
+}
+.device__status{
+  position:absolute;z-index:6;left:calc(var(--bezel) + var(--w) * .072);
+  right:calc(var(--bezel) + var(--w) * .062);top:calc(var(--bezel) + var(--w) * .038);
+  height:calc(var(--w) * .052);
+  display:flex;align-items:center;justify-content:space-between;
+  color:var(--ink);pointer-events:none;
+}
+.device__time{font-size:calc(var(--w) * .0425);font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.device__ind{display:flex;align-items:center;gap:calc(var(--w) * .017)}
+.device__sig,.device__wifi{height:calc(var(--w) * .034);width:auto;fill:currentColor}
+.device__bat{
+  position:relative;width:calc(var(--w) * .079);height:calc(var(--w) * .038);
+  border-radius:calc(var(--w) * .012);border:1.2px solid currentColor;opacity:.92;
+}
+.device__bat::after{
+  content:"";position:absolute;top:50%;right:calc(var(--w) * -.014);transform:translateY(-50%);
+  width:calc(var(--w) * .009);height:calc(var(--w) * .014);border-radius:0 2px 2px 0;background:currentColor;opacity:.55;
+}
+.device__bat i{
+  position:absolute;inset:1.4px;width:auto;border-radius:calc(var(--w) * .007);
+  background:currentColor;right:34%;
+}
+.device__home{
+  position:absolute;z-index:6;bottom:calc(var(--bezel) + var(--w) * .0204);left:50%;transform:translateX(-50%);
+  width:calc(var(--w) * .354);height:calc(var(--w) * .0135);
+  border-radius:var(--r-pill);background:var(--ink);opacity:.34;pointer-events:none;
+}
+/* a dark app screen gets a light status bar and indicator, as iOS does */
+.device--dark .device__status,.device--dark .device__home{color:#fff;background-color:transparent}
+.device--dark .device__home{background:#fff;opacity:.5}
 .device--sm{--w:238px}
 .device--md{--w:274px}
 .device--lg{--w:312px}
