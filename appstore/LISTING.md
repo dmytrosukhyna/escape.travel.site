@@ -1,8 +1,13 @@
 # App Store Connect — listing copy
 
-Every field App Store Connect asks for, in Russian, Ukrainian and English.
-Character limits are Apple's and the counts are what the text below actually
-uses.
+Every field App Store Connect asks for, in the languages the app ships in:
+Russian, Ukrainian, English, Greek, Croatian and Spanish. Character limits are
+Apple's and the counts are what the text below actually uses.
+
+Check App Store Connect's own list of storefront languages before adding all
+six — not every language Apple's devices support is offered as a listing
+locale, and one that is not goes under English with the copy below kept for the
+app itself.
 
 Nothing here claims a user count, a rating, an award, a press mention or a
 partnership, because none of those exist yet. If any of that changes, it can be
@@ -214,3 +219,160 @@ travel,ai agent,trip planner,itinerary,flights,hotels,layover,new year,holiday,a
 >
 > In time for the season: the New Year trip — the flight, a hotel by the square,
 > a table on 31 December and the spot the fireworks are visible from.
+
+---
+
+## Greek (el)
+
+**App name** (30) — `Escape! AI Travel Agent` *(23)*
+
+**Subtitle** (30) — `Ο πράκτορας που τα κανονίζει` *(28)*
+
+**Promotional text** (170):
+
+> Πρωτοχρονιάτικο ταξίδι: πείτε το μία φορά και το Escape! κανονίζει πτήση,
+> ξενοδοχείο στην πλατεία, τραπέζι στις 31 και το σημείο για τα πυροτεχνήματα.
+
+**Keywords** (100):
+
+```
+ταξίδι,πράκτορας ai,δρομολόγιο,εκδρομή,πτήσεις,ξενοδοχεία,πρωτοχρονιά,διακοπές,σχεδιασμός
+```
+
+**Description**:
+
+> **Ένα αίτημα αντί για δεκαπέντε καρτέλες.**
+>
+> Ένα ταξίδι σημαίνει εισιτήρια, ξενοδοχείο, διαδρομή, καιρό, ενοικίαση,
+> εστιατόρια και ανταποκρίσεις — το καθένα στη δική του καρτέλα. Τα συνδέετε
+> εσείς στο χέρι, και καμία τους δεν ξέρει πώς είναι ολόκληρη η μέρα σας.
+>
+> Το Escape! είναι πράκτορας AI, όχι πεδίο αναζήτησης. Λέτε πού και για πόσο.
+> Αυτό επιλέγει, συνδέει τις αποφάσεις μεταξύ τους και σας δίνει έτοιμο ταξίδι.
+>
+> **ΠΡΩΤΟΧΡΟΝΙΑΤΙΚΟ ΤΑΞΙΔΙ**
+> Πείτε «στο χιόνι», «στη ζέστη» ή «στην πόλη» και ο πράκτορας διαλέγει
+> προορισμό, πτήση στις 30, κατάλυμα με θέα, τραπέζι για την παραμονή και
+> πρόγραμμα για κάθε μέρα των διακοπών.
+>
+> **ΤΙ ΚΑΝΕΙ Ο ΠΡΑΚΤΟΡΑΣ**
+> • Συναρμολογεί ολόκληρο το ταξίδι: πτήση, διαμονή, διαδρομή, φαγητό, χρόνο
+> • Εξηγεί κάθε επιλογή — γιατί πρωινή πτήση, γιατί αυτό το ξενοδοχείο
+> • Μένει στον προϋπολογισμό που δηλώσατε και δείχνει από τι αποτελείται
+> • Ξαναφτιάχνει το πρόγραμμα όταν αλλάζει η μέρα: καθυστέρηση, βροχή, νέα πύλη
+> • Κάνει οκτώ ώρες ανταπόκρισης μια μέρα στην πόλη και σας γυρίζει εγκαίρως
+> • Σας γράφει πρώτο όταν μια τιμή φτάσει στον προϋπολογισμό σας
+>
+> **ΜΑΖΙ**
+> Αν δεν έχετε παρέα, το Escape! βρίσκει συνταξιδιώτες με βάση ημερομηνίες,
+> διαδρομή, προϋπολογισμό, ρυθμό και ενδιαφέροντα.
+>
+> **ΤΑ ΟΡΙΑ, ΚΑΘΑΡΑ**
+> Το Escape! δεν είναι αερομεταφορέας, ξενοδοχείο ή ταξιδιωτικός πράκτορας. Οι
+> κρατήσεις γίνονται στον πάροχο και ισχύουν οι δικοί του όροι. Ο πράκτορας
+> μπορεί να κάνει λάθος: βίζες, έγγραφα, χρόνους ανταπόκρισης και όρους
+> ακύρωσης ελέγξτε τα πάντα μόνοι σας.
+
+---
+
+## Croatian (hr)
+
+**App name** (30) — `Escape! AI Travel Agent` *(23)*
+
+**Subtitle** (30) — `Agent koji sve posloži` *(22)*
+
+**Promotional text** (170):
+
+> Novogodišnje putovanje: recite jednom i Escape! složi let, hotel uz trg, stol
+> za 31. prosinca i mjesto s kojeg se vidi vatromet.
+
+**Keywords** (100):
+
+```
+putovanje,ai agent,plan puta,itinerar,letovi,hoteli,nova godina,odmor,planer,ruta
+```
+
+**Description**:
+
+> **Jedan upit umjesto petnaest kartica.**
+>
+> Jedno putovanje znači karte, hotel, rutu, vrijeme, najam, restorane i
+> presjedanja — svako u svojoj kartici. Vi ih spajate ručno, a nijedna ne zna
+> kako izgleda cijeli vaš dan.
+>
+> Escape! je AI agent, a ne tražilica. Kažete kamo i na koliko. On bira, povezuje
+> odluke međusobno i vraća gotovo putovanje.
+>
+> **NOVOGODIŠNJE PUTOVANJE**
+> Recite „u snijeg", „na toplo" ili „u grad" — agent bira odredište, let 30.,
+> smještaj s pogledom, stol za doček i plan za svaki dan praznika.
+>
+> **ŠTO AGENT RADI**
+> • Slaže cijelo putovanje: let, smještaj, rutu, hranu i vrijeme na putu
+> • Objašnjava svaki izbor — zašto jutarnji let, zašto baš taj hotel
+> • Drži se proračuna koji ste rekli i pokazuje od čega se sastoji
+> • Preslaguje plan kad se dan promijeni: kašnjenje, kiša, novi izlaz
+> • Osam sati presjedanja pretvara u dan u gradu i vraća vas na vrijeme
+> • Piše prvi kad cijena odredišta koje ste spremili padne u vaš proračun
+>
+> **ZAJEDNO**
+> Ako nemate s kim, Escape! pronalazi suputnike po datumima, ruti, proračunu,
+> tempu i interesima.
+>
+> **GRANICE, OTVORENO**
+> Escape! nije prijevoznik, hotel ni turoperator. Rezervacija se obavlja kod
+> pružatelja usluge i vrijede njegovi uvjeti. Agent može pogriješiti: vize,
+> dokumente, vrijeme presjedanja i uvjete otkazivanja uvijek provjerite sami.
+
+---
+
+## Spanish (es)
+
+**App name** (30) — `Escape! AI Travel Agent` *(23)*
+
+**Subtitle** (30) — `El agente que lo organiza todo` *(30)*
+
+**Promotional text** (170):
+
+> El viaje de Fin de Año: dilo una vez y Escape! organiza el vuelo, un hotel
+> junto a la plaza, mesa el 31 y el sitio desde donde se ven los fuegos.
+
+**Keywords** (100):
+
+```
+viajes,agente ia,itinerario,planificador,vuelos,hoteles,escala,fin de ano,vacaciones,ruta
+```
+
+**Description**:
+
+> **Una petición en lugar de quince pestañas.**
+>
+> Un viaje son billetes, hotel, ruta, tiempo, alquiler, restaurantes y
+> conexiones — cada cosa en su pestaña. Las unes tú a mano, y ninguna sabe cómo
+> es tu día entero.
+>
+> Escape! es un agente de IA, no un buscador. Dices adónde y cuántos días. Él
+> elige, conecta las decisiones entre sí y te devuelve el viaje terminado.
+>
+> **EL VIAJE DE FIN DE AÑO**
+> Di «a la nieve», «al calor» o «a la ciudad» y el agente elige el destino, el
+> vuelo del día 30, un alojamiento con vistas, mesa para Nochevieja y un plan
+> para cada día de las fiestas.
+>
+> **LO QUE HACE EL AGENTE**
+> • Monta el viaje entero: vuelo, alojamiento, ruta, comida y tiempos
+> • Explica cada elección — por qué el vuelo de la mañana, por qué ese hotel
+> • Se ciñe al presupuesto que has dicho y enseña de qué se compone
+> • Rehace el plan cuando cambia el día: un retraso, lluvia, otra puerta
+> • Convierte ocho horas de escala en un día en la ciudad y te devuelve a tiempo
+> • Te escribe él primero cuando un destino que guardaste baja a tu presupuesto
+>
+> **ACOMPAÑADO**
+> Si no tienes con quién ir, Escape! busca compañeros de viaje por fechas, ruta,
+> presupuesto, ritmo e intereses.
+>
+> **LOS LÍMITES, CLAROS**
+> Escape! no es una aerolínea, un hotel ni un turoperador. La reserva se hace
+> con el proveedor y rigen sus condiciones. El agente puede equivocarse: visados,
+> documentos, tiempos de conexión y condiciones de cancelación compruébalos
+> siempre tú.

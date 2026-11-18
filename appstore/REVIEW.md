@@ -3,11 +3,13 @@
 Everything App Store Connect asks for beyond the listing copy, plus the things
 that will decide whether the first submission passes.
 
-I cannot see the app itself from here — this session has the marketing site
-only. So the sections marked **CONFIRM** are claims about the build that
-somebody has to check against the real thing before the submission goes in. A
-wrong answer in App Store Connect is not a typo; a few of them are grounds for
-removal later.
+The screenshots themselves are captures of the real app, so Guideline 2.3.3 —
+screenshots must show the app as it is — is already satisfied in substance.
+Everything else below is about the build, and I cannot see the build from here:
+this session has the marketing site and the captures, nothing more. So the
+sections marked **CONFIRM** are claims somebody has to check against the real
+thing before the submission goes in. A wrong answer in App Store Connect is not
+a typo; a few of them are grounds for removal later.
 
 ---
 
@@ -24,7 +26,7 @@ answer moves the rating.
 
 - Is the community feature in the first build at all? If it is not, say so and
   the rating drops accordingly — but then the listing must not show it either,
-  and screenshot 5 and the "TOGETHER" paragraph come out.
+  and the "TOGETHER" paragraph and the companion screen come out.
 - Is there a way to report content and to block another user?
 - Is there moderation, and who does it?
 
@@ -163,7 +165,9 @@ clause now so it is ready rather than retrofitted.
 
 ## 10. Before you press submit
 
-- [ ] Screenshots re-shot from the real build, or checked against it (see `README.md`)
+- [ ] App screens re-exported at device resolution — the captures in
+      `img/app/` are 640px wide and go soft at store size (see `README.md`)
+- [ ] `christmas.webp` captured in each language, not just Russian
 - [ ] App icon at 1024 × 1024, no alpha, no rounded corners applied by you
 - [ ] Demo account filled in and working
 - [ ] The backend up and staying up through review

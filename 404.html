@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#FBFAF7">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/legal.css?v=3f3526ec70">
+<link rel="stylesheet" href="/assets/legal.css?v=8b02da2f60">
 <style>
 .nf{min-height:70vh;display:grid;place-items:center;text-align:center;padding:60px 24px}
 .nf h1{font-size:clamp(2rem,1.2rem+3vw,3.2rem);margin-bottom:14px}
@@ -31,7 +31,10 @@
 (function(){
  var T={ru:['Такого маршрута нет','Страница не найдена. Возможно, ссылка устарела — вернитесь на главную и начните заново.','На главную'],
         uk:['Такого маршруту немає','Сторінку не знайдено. Можливо, посилання застаріло — поверніться на головну та почніть спочатку.','На головну'],
-        en:['This route does not exist','The page was not found. The link may be out of date — head back to the start.','Back to the site']};
+        en:['This route does not exist','The page was not found. The link may be out of date — head back to the start.','Back to the site'],
+        el:['Αυτή η διαδρομή δεν υπάρχει','Η σελίδα δεν βρέθηκε. Ίσως ο σύνδεσμος είναι παλιός — επιστρέψτε στην αρχή.','Στην αρχική'],
+        hr:['Ova ruta ne postoji','Stranica nije pronađena. Poveznica je možda zastarjela — vratite se na početnu.','Na početnu'],
+        es:['Esta ruta no existe','No hemos encontrado la página. Puede que el enlace esté anticuado — vuelve al inicio.','Volver al inicio']};
  var l='ru';try{var s=localStorage.getItem('escape.lang');if(s&&T[s])l=s;}catch(e){}
  var q=new URLSearchParams(location.search).get('lang');if(q&&T[q])l=q;
  document.documentElement.lang=l;

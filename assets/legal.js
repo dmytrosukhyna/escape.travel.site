@@ -1,7 +1,7 @@
 /* ESCAPE! — legal document renderer (RU / UK / EN) */
 (function () {
   'use strict';
-  var LANGS = ['ru', 'uk', 'en'];
+  var LANGS = ['ru', 'uk', 'en', 'el', 'hr', 'es'];
   var LS = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -43,6 +43,47 @@
         community: 'Community Guidelines'
       },
       rights: 'All rights reserved.'
+    },
+    // The documents themselves are in Russian, Ukrainian and English; in
+    // these three the page says so and shows the English text.
+    el: {
+      back: '← Στην αρχική', updated: 'Σε ισχύ από', version: 'Έκδοση',
+      toc: 'Περιεχόμενα', operator: 'Υπεύθυνος', country: 'Χώρα', site: 'Ιστότοπος',
+      email: 'Email', privacyContact: 'Ερωτήματα για δεδομένα', support: 'Υποστήριξη',
+      hours: '10:00–19:00 UTC+3', greece: 'Ελλάδα',
+      docs: {
+        privacy: 'Πολιτική απορρήτου', terms: 'Όροι χρήσης',
+        cookies: 'Πολιτική cookies', disclaimer: 'Δήλωση για AI και ταξίδια',
+        community: 'Κανόνες κοινότητας'
+      },
+      rights: 'Με την επιφύλαξη παντός δικαιώματος.',
+      enOnly: 'Το κείμενο αυτού του εγγράφου είναι διαθέσιμο στα αγγλικά, στα ρωσικά και στα ουκρανικά. Παρακάτω η αγγλική έκδοση.'
+    },
+    hr: {
+      back: '← Na početnu', updated: 'Na snazi od', version: 'Verzija',
+      toc: 'Sadržaj', operator: 'Voditelj obrade', country: 'Država', site: 'Web-stranica',
+      email: 'E-mail', privacyContact: 'Upiti o podacima', support: 'Podrška',
+      hours: '10:00–19:00 UTC+3', greece: 'Grčka',
+      docs: {
+        privacy: 'Pravila privatnosti', terms: 'Uvjeti korištenja',
+        cookies: 'Pravila o kolačićima', disclaimer: 'Napomena o AI-ju i putovanjima',
+        community: 'Pravila zajednice'
+      },
+      rights: 'Sva prava pridržana.',
+      enOnly: 'Tekst ovog dokumenta dostupan je na engleskom, ruskom i ukrajinskom. U nastavku je engleska verzija.'
+    },
+    es: {
+      back: '← Volver al inicio', updated: 'Vigente desde', version: 'Versión',
+      toc: 'Índice', operator: 'Responsable', country: 'País', site: 'Sitio web',
+      email: 'Email', privacyContact: 'Consultas sobre datos', support: 'Soporte',
+      hours: '10:00–19:00 UTC+3', greece: 'Grecia',
+      docs: {
+        privacy: 'Política de privacidad', terms: 'Términos y condiciones',
+        cookies: 'Política de cookies', disclaimer: 'Aviso sobre IA y viajes',
+        community: 'Normas de la comunidad'
+      },
+      rights: 'Todos los derechos reservados.',
+      enOnly: 'El texto de este documento está disponible en inglés, ruso y ucraniano. A continuación, la versión en inglés.'
     }
   };
 
@@ -60,6 +101,9 @@
     if (stored && LANGS.indexOf(stored) > -1) return stored;
     var nav = (navigator.languages || [navigator.language || 'ru']).join(',').toLowerCase();
     if (/\buk\b|\buk-/.test(nav)) return 'uk';
+    if (/\bel\b|\bel-/.test(nav)) return 'el';
+    if (/\bhr\b|\bhr-|\bbs\b/.test(nav)) return 'hr';
+    if (/\bes\b|\bes-/.test(nav)) return 'es';
     if (/\ben\b|\ben-/.test(nav)) return 'en';
     return 'ru';
   }
@@ -98,6 +142,8 @@
       '<div><small>' + c.support + '</small><b>' + c.hours + '</b></div>' +
       '</div>';
 
+    var ownText = window.LEGAL && window.LEGAL[lang] && window.LEGAL[lang][docKey];
+    if (!ownText && c.enOnly) html += '<div class="callout" style="margin-top:26px">' + esc(c.enOnly) + '</div>';
     if (data.intro) html += '<div class="callout" style="margin-top:26px">' + data.intro + '</div>';
 
     html += '<nav class="toc" aria-label="' + c.toc + '"><b>' + c.toc + '</b><ol>';

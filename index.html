@@ -11,6 +11,9 @@
 <link rel="alternate" hreflang="ru" href="https://www.escapetravel.site/?lang=ru">
 <link rel="alternate" hreflang="uk" href="https://www.escapetravel.site/?lang=uk">
 <link rel="alternate" hreflang="en" href="https://www.escapetravel.site/?lang=en">
+<link rel="alternate" hreflang="el" href="https://www.escapetravel.site/?lang=el">
+<link rel="alternate" hreflang="hr" href="https://www.escapetravel.site/?lang=hr">
+<link rel="alternate" hreflang="es" href="https://www.escapetravel.site/?lang=es">
 <link rel="alternate" hreflang="x-default" href="https://www.escapetravel.site/">
 
 <meta property="og:type" content="website">
@@ -24,6 +27,9 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="uk_UA">
 <meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="el_GR">
+<meta property="og:locale:alternate" content="hr_HR">
+<meta property="og:locale:alternate" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Escape! — ваш личный AI Travel Agent">
 <meta name="twitter:description" content="Вы ставите задачу. Escape! сам собирает всю поездку.">
@@ -33,11 +39,12 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preload" as="image" href="/img/hero-santorini-lg.webp" imagesrcset="/img/hero-santorini-sm.webp 1200w, /img/hero-santorini-lg.webp 2200w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="/img/xmas/branch.webp">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/greatvibes-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/onest-latin-700.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css?v=f9acb6e106">
-<link rel="stylesheet" href="/assets/styles.css?v=a4adfd24d9">
+<link rel="stylesheet" href="/assets/styles.css?v=2e2ccc63d4">
+<link rel="stylesheet" href="/assets/season.css?v=f974ddb79d">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Escape! AI Travel Agent","applicationCategory":"TravelApplication","operatingSystem":"iOS, Android","url":"https://www.escapetravel.site/","description":"Personal AI travel agent that plans, organises and accompanies a whole journey — routes, tickets, hotels, cars, EV charging, transfers, weather and recommendations in one agent.","inLanguage":["ru","uk","en"],"author":{"@type":"Person","name":"Dmytro Sukhyna"},"publisher":{"@type":"Organization","name":"Escape!","url":"https://www.escapetravel.site/","email":"escape.travel.ai@gmail.com"}}
@@ -45,6 +52,14 @@
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="a11ySkip">Перейти к содержанию</a>
+
+<!-- ===== the sky: dawn at the top, night at the foot (drawn by assets/season.js) ===== -->
+<div class="sky" id="sky" aria-hidden="true">
+  <i class="sky__sun"></i>
+  <i class="sky__moon"></i>
+  <img class="sky__sleigh" src="/img/xmas/sleigh.webp" width="700" height="281" alt="" loading="lazy" decoding="async">
+</div>
+<div class="stars" id="stars" aria-hidden="true"><i></i><i></i></div>
 
 <!-- ===== icon sprite ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -98,36 +113,46 @@
   <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C10 4 4 8.6 4 15.4c0 1.9.6 3.4 1.5 4.6C7 17 10.6 13.6 16 12c-4.3 2.4-7.4 5.6-8.6 9 1 .4 2 .6 3.1.6 6 0 9.5-5.8 9.5-17.6Z"/></symbol>
   <symbol id="i-parking" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M9.6 17V7.4h3.1a2.9 2.9 0 0 1 0 5.8H9.6"/></symbol>
   <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.6" width="6" height="11" rx="3"/><path d="M5.5 11.2a6.5 6.5 0 0 0 13 0"/><path d="M12 17.7V21"/></symbol>
-  <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M20.2 7.2 3.8 16.8"/><path d="M12 6.2 9.6 4m2.4 2.2L14.4 4M12 17.8 9.6 20m2.4-2.2 2.4 2.2M6.4 9.1 3.3 9.5m3.1-.4L5.6 6.2m12 11.7 3.1-.4m-3.1.4.8 2.9M17.6 9.1l3.1-.4m-3.1.4.8-2.9M6.4 14.9l-3.1.4m3.1-.4-.8 2.9"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.6v2.3M12 19.1v2.3M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.6 12h2.3M19.1 12h2.3M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/></symbol>
-  <symbol id="i-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 3.2h11.2l-1 4.2a4.8 4.8 0 0 1-9.2 0Z"/><path d="M12 12.1v6.3M8.6 20.8h6.8"/></symbol>
   <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.3 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8ZM14.1 5.7c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 0 2.1-.5 2.8-1.3Z"/></symbol>
   <symbol id="i-android" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5H6.4v8.1c0 .6.5 1.1 1.1 1.1h.9v2.6a1.4 1.4 0 0 0 2.8 0v-2.6h1.6v2.6a1.4 1.4 0 0 0 2.8 0v-2.6h.9c.6 0 1.1-.5 1.1-1.1ZM4.4 9.3a1.4 1.4 0 0 0-1.4 1.4v4.9a1.4 1.4 0 0 0 2.8 0v-4.9a1.4 1.4 0 0 0-1.4-1.4Zm15.2 0a1.4 1.4 0 0 0-1.4 1.4v4.9a1.4 1.4 0 0 0 2.8 0v-4.9a1.4 1.4 0 0 0-1.4-1.4ZM15 3.6l1-1.7a.3.3 0 0 0-.5-.3l-1 1.8a6.6 6.6 0 0 0-5 0l-1-1.8a.3.3 0 0 0-.5.3l1 1.7a5.4 5.4 0 0 0-2.6 4.6h11.2A5.4 5.4 0 0 0 15 3.6ZM9.3 6.2a.6.6 0 1 1 0-1.1.6.6 0 0 1 0 1.1Zm5.4 0a.6.6 0 1 1 0-1.1.6.6 0 0 1 0 1.1Z"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6"/><path d="m9.4 3.9 2.6 2.4 2.6-2.4M9.4 20.1l2.6-2.4 2.6 2.4M3.1 10.5l3.5.9-1 3.4M20.9 13.5l-3.5-.9 1-3.4M5.6 9.2l1 3.4-3.5.9M18.4 14.8l-1-3.4 3.5-.9"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3.2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h2M14 14h2M8 17h2"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1.2"/><path d="M5 12.5v6.3c0 .9.7 1.7 1.7 1.7h10.6c.9 0 1.7-.8 1.7-1.7v-6.3M12 8.5v12"/><path d="M12 8.5C10.8 5 7.4 4.3 7 6.4c-.3 1.6 2.2 2.1 5 2.1Zm0 0c1.2-3.5 4.6-4.2 5-2.1.3 1.6-2.2 2.1-5 2.1Z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6c0 4.3-3.8 7.6-8.5 7.6-1.2 0-2.3-.2-3.3-.6L4 20l1.2-3.7c-1.1-1.3-1.7-2.9-1.7-4.7C3.5 7.3 7.3 4 12 4s8.5 3.3 8.5 7.6Z"/><path d="M8.5 11.7h.01M12 11.7h.01M15.5 11.7h.01" stroke-width="2.4"/></symbol>
+  <symbol id="i-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5M8 6.5v11M12 3.5v17M16 6.5v11M20 9.5v5"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 12.4V5.6a1.5 1.5 0 0 1 3 0v5.2M11.2 10.4V4.3a1.5 1.5 0 0 1 3 0v6.2M14.2 10.6V5.6a1.5 1.5 0 0 1 3 0v7.6c0 4.3-2.6 7.3-6.4 7.3-2.6 0-4.1-1.3-5.6-3.6l-2-3.2a1.5 1.5 0 0 1 2.5-1.6l2.5 2.3"/><path d="M19.5 3.5c.9.8 1.4 1.8 1.5 3M3.6 7.5c.1-1.2.6-2.2 1.5-3"/></symbol>
 </defs></svg>
 
 <!-- ===== header ===== -->
 <header class="header" id="header">
+  <span class="header__garland" aria-hidden="true"></span>
   <div class="wrap">
-    <a class="header-brand" href="#top" aria-label="Escape! — AI Travel Agent">
+    <a class="header-brand" href="#xmas" aria-label="Escape! — AI Travel Agent">
       <span class="brandmark"><span class="word">Escape</span><svg class="pin" aria-hidden="true"><use href="#brand-pin"/></svg></span>
       <small>AI Travel Agent</small>
     </a>
 
     <nav class="nav" id="nav" aria-label="Основная навигация" data-i18n-aria-label="a11yNav">
-      <a href="#problem" data-i18n="navWhy">Почему ESCAPE</a>
+      <a href="#xmas" data-i18n="navXmas">Новый год</a>
       <a href="#agent" data-i18n="navAgent">AI Agent</a>
       <a href="#how" data-i18n="navHow">Как это работает</a>
       <a href="#community" data-i18n="navCommunity">Сообщество</a>
+      <a href="#santa" data-i18n="navSanta">Санта</a>
       <a href="#world" data-i18n="navWorld">Весь мир</a>
-      <a href="#together" data-i18n="navTogether">Вместе</a>
       <a href="#identity" data-i18n="navIdentity">Travel-профиль</a>
       <a href="#contact" data-i18n="navContact">Контакты</a>
     </nav>
 
-    <div class="langs" role="group" aria-label="Язык сайта" data-i18n-aria-label="a11yLang">
-      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
-      <button type="button" data-lang="uk" aria-pressed="false">UA</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    <div class="langs" id="langs">
+      <button type="button" class="langs__toggle" aria-haspopup="true" aria-expanded="false" aria-controls="langsMenu" aria-label="Язык сайта" data-i18n-aria-label="a11yLang"><svg width="15" height="15" aria-hidden="true"><use href="#i-globe"/></svg><span class="langs__cur">RU</span><svg class="langs__chev" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="langs__menu" id="langsMenu" role="group" hidden>
+        <button type="button" data-lang="ru" lang="ru" aria-pressed="true"><b>RU</b>Русский</button>
+        <button type="button" data-lang="uk" lang="uk" aria-pressed="false"><b>UA</b>Українська</button>
+        <button type="button" data-lang="en" lang="en" aria-pressed="false"><b>EN</b>English</button>
+        <button type="button" data-lang="el" lang="el" aria-pressed="false"><b>EL</b>Ελληνικά</button>
+        <button type="button" data-lang="hr" lang="hr" aria-pressed="false"><b>HR</b>Hrvatski</button>
+        <button type="button" data-lang="es" lang="es" aria-pressed="false"><b>ES</b>Español</button>
+      </div>
     </div>
 
     <button class="burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Открыть меню" data-i18n-aria-label="a11yMenu"><span></span></button>
@@ -135,10 +160,12 @@
 </header>
 
 <nav class="drawer" id="drawer" aria-label="Мобильная навигация" data-i18n-aria-label="a11yMobileNav" hidden>
+  <a href="#xmas" data-i18n="navXmas">Новый год</a>
   <a href="#problem" data-i18n="navWhy">Почему ESCAPE</a>
   <a href="#agent" data-i18n="navAgent">AI Agent</a>
   <a href="#how" data-i18n="navHow">Как это работает</a>
   <a href="#community" data-i18n="navCommunity">Сообщество</a>
+  <a href="#santa" data-i18n="navSanta">Санта</a>
   <a href="#world" data-i18n="navWorld">Весь мир</a>
   <a href="#together" data-i18n="navTogether">Вместе</a>
   <a href="#identity" data-i18n="navIdentity">Travel-профиль</a>
@@ -147,12 +174,58 @@
 </nav>
 
 <main id="main">
+<!-- ===== 00 NEW YEAR TRIPS — the season's own first screen ===== -->
+<section class="xmas" id="xmas" data-sky="dawn@0 dawn2@.7">
+  <div class="snow" aria-hidden="true"><i></i><i></i><i></i></div>
+  <img class="xmas__branch" src="/img/xmas/branch.webp" width="520" height="662" alt="" aria-hidden="true" decoding="async">
+  <div class="wrap xmas__grid">
+    <div class="xmas__copy">
+      <span class="eyebrow eyebrow--festive"><svg width="14" height="14" aria-hidden="true"><use href="#i-snow"/></svg><span data-i18n="xmEyebrow">Новогодние путешествия</span></span>
+      <h1 class="xmas__title" data-i18n-html="xmTitle">Встретьте Новый год<br><em>там, где идёт снег.</em></h1>
+      <p class="lead xmas__lead" data-i18n="xmLead">В приложении открылся новогодний раздел: горнолыжные курорты по странам, уютные городки, рождественские ярмарки и спа. Escape сразу подставит праздничные ночи — с 30 декабря по 2 января — и покажет, где ещё есть места.</p>
+      <ul class="xmas__facts">
+        <li><i><svg aria-hidden="true"><use href="#i-cal"/></svg></i><span><b data-i18n="xmF1">30 декабря – 2 января</b><small data-i18n="xmF1s">праздничные ночи уже выбраны</small></span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-pin"/></svg></i><span><b data-i18n="xmF2">100 · 300 · 500 км</b><small data-i18n="xmF2s">или весь мир — ближе сначала</small></span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-ticket"/></svg></i><span><b data-i18n="xmF3">Места и бронирование</b><small data-i18n="xmF3s">ссылка в каждом отеле</small></span></li>
+      </ul>
+      <div class="hero__stores">
+        <a class="chip chip--live" href="https://apps.apple.com/app/id6803238502" target="_blank" rel="noopener" data-store="ios"><svg width="15" height="15" aria-hidden="true"><use href="#i-apple"/></svg><span data-i18n="ctaJoin">Скачать бесплатно в App Store</span><svg class="arw" width="15" height="15" aria-hidden="true" style="margin-left:auto"><use href="#i-arrow"/></svg></a>
+        <button class="chip" type="button" data-waitlist-android><svg width="15" height="15" aria-hidden="true"><use href="#i-android"/></svg>Android<b class="soon" data-i18n="soon">скоро</b></button>
+      </div>
+    </div>
+    <div class="xmas__stage">
+      <div class="device device--lg device--shot xmas__back">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" src="/img/xmas/launch.webp" width="720" height="1560" decoding="async" loading="lazy" alt="Так Escape встречает вас в праздники: Санторини в снегу и сани Санты" data-i18n-alt="shotLaunch"></span></div>
+      </div>
+      <div class="device device--lg device--shot xmas__front">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="christmas" src="/img/app/ru/christmas.webp" width="720" height="1561" decoding="async" fetchpriority="high" alt="Новогодний раздел на главном экране Escape" data-i18n-alt="shotXmas"></span></div>
+      </div>
+      <div class="float float--season">
+        <span class="float__ic"><svg width="16" height="16" aria-hidden="true"><use href="#i-snow"/></svg></span>
+        <span><b data-i18n="xmSeason">С 20 ноября по 14 января</b><small data-i18n="xmSeasonS">приложение в праздничном наряде</small></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="xmas__moods">
+      <li class="mood rv"><img src="/img/xmas/ski.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmSki">Горнолыжные курорты</b><small data-i18n="xmSkiS">по странам: Альпы, Карпаты, Пиренеи</small></span></li>
+      <li class="mood rv"><img src="/img/xmas/cosy.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmCosy">Уютные городки</b><small data-i18n="xmCosyS">снег, камин и тишина</small></span></li>
+      <li class="mood rv"><img src="/img/xmas/market.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmMarket">Рождественские ярмарки</b><small data-i18n="xmMarketS">огни, глинтвейн и пряники</small></span></li>
+      <li class="mood rv"><img src="/img/xmas/spa.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmSpa">Спа и шале</b><small data-i18n="xmSpaS">тепло после мороза</small></span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
 <!-- ===== 01 HERO ===== -->
-<section class="hero" id="top">
+<section class="hero" id="top" data-sky="morning">
   <div class="hero__media">
     <img src="/img/escape-hero2-lg.webp"
          srcset="/img/escape-hero2-sm.webp 1400w, /img/escape-hero2-lg.webp 1672w"
-         sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async"
+         sizes="100vw" width="1672" height="941" loading="lazy" decoding="async"
          alt="Оя на Санторини: синие купола, белые дома и Эгейское море"
          data-i18n-alt="altHero">
   </div>
@@ -160,11 +233,11 @@
 
   <div class="wrap">
     <div class="hero__copy">
-      <h1>
+      <h2 class="hero__title">
         <span data-i18n="heroL1">Вы выбираете, куда отправиться.</span>
         <span class="hero__brandline"><span class="brandmark"><span class="word">Escape</span><svg class="pin" aria-hidden="true"><use href="#brand-pin"/></svg></span></span>
         <span class="l2" data-i18n="heroL2">берёт на себя всё остальное.</span>
-      </h1>
+      </h2>
       <p class="hero__sub" data-i18n-html="heroSub">А если не знаете куда —<em>Escape! найдёт поездку. И даже тех, с кем поехать.</em></p>
       <p class="hero__text" data-i18n="heroText">Билеты, отель, маршрут, кафе, время в дороге. Одна просьба — и вся поездка собрана. Дальше агент едет с вами и меняет план, когда меняется день.</p>
 
@@ -180,104 +253,15 @@
       </div>
 
       <div class="hero__stores">
-        <span class="chip"><svg width="15" height="15" aria-hidden="true"><use href="#i-apple"/></svg>iOS<b class="soon" data-i18n="soon">скоро</b></span>
-        <span class="chip"><svg width="15" height="15" aria-hidden="true"><use href="#i-android"/></svg>Android<b class="soon" data-i18n="soon">скоро</b></span>
+        <a class="chip chip--live" href="https://apps.apple.com/app/id6803238502" target="_blank" rel="noopener" data-store="ios"><svg width="15" height="15" aria-hidden="true"><use href="#i-apple"/></svg><span data-i18n="ctaJoin">Скачать бесплатно в App Store</span><svg class="arw" width="15" height="15" aria-hidden="true" style="margin-left:auto"><use href="#i-arrow"/></svg></a>
+        <button class="chip" type="button" data-waitlist-android><svg width="15" height="15" aria-hidden="true"><use href="#i-android"/></svg>Android<b class="soon" data-i18n="soon">скоро</b></button>
       </div>
     </div>
 
     <div class="hero__stage">
-      <div class="device device--lg" role="img" aria-label="Экран приложения Escape: запрос пользователя и собранная поездка в Париж" data-i18n-aria-label="a11yPhoneHero">
-        <div class="device__island"></div>
-        <div class="device__status" aria-hidden="true">
-          <span class="device__time">9:41</span>
-          <span class="device__ind">
-            <svg class="device__sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-            <svg class="device__wifi" viewBox="0 0 16 12"><path d="M8 10.7 9.9 8.3a2.9 2.9 0 0 0-3.8 0ZM8 6.4c1.3 0 2.5.5 3.4 1.3l1.3-1.6A7.3 7.3 0 0 0 8 4.3c-1.8 0-3.4.7-4.7 1.8l1.3 1.6A5 5 0 0 1 8 6.4ZM8 2.3c2.3 0 4.4.8 6.1 2.3L15.5 3A10.5 10.5 0 0 0 8 .2 10.5 10.5 0 0 0 .5 3l1.4 1.6A8.6 8.6 0 0 1 8 2.3Z"/></svg>
-            <span class="device__bat"><i></i></span>
-          </span>
-        </div>
-        <span class="device__home" aria-hidden="true"></span>
-        <div class="device__screen"><div class="ui">
-          <div class="ui__bar">
-            <span class="ui__burger"><i></i></span>
-            <span class="ui__brand">AI Travel Agent</span>
-            <span class="ui__avatar"></span>
-          </div>
-          <div class="ui__body" data-pane="know">
-            <div class="ui__ask">
-              <span class="ui__asklab" data-i18n="phAskLab">Вы написали</span>
-              <p data-i18n="phAsk">«Париж на выходные, отель в центре, до €1 500»</p>
-            </div>
-            <div class="ui__done">
-              <span class="pill pill--green"><span data-i18n="phReady">Поездка собрана</span></span>
-              <em data-i18n="phIn40">за 40 секунд</em>
-            </div>
-            <figure class="ui__shot">
-              <img src="/img/paris-sm.webp" alt="" loading="lazy" width="400" height="225">
-              <span class="fav"><svg aria-hidden="true"><use href="#i-heart-o"/></svg></span>
-              <figcaption><b data-i18n="phShotT">Париж · 3 дня</b><span data-i18n="phShotS">Вылет в пятницу, возвращение в воскресенье</span></figcaption>
-            </figure>
-            <ul class="ui__steps">
-              <li><span class="ui__ic ui__ic--blue"><svg aria-hidden="true"><use href="#i-plane"/></svg></span>
-                <span class="t"><b data-i18n="phH1">Перелёт туда и обратно</b><span data-i18n="phH1s">Пятница 08:40, без ночной пересадки</span></span>
-                <span class="m"><em>€180</em></span></li>
-              <li><span class="ui__ic ui__ic--purple"><svg aria-hidden="true"><use href="#i-hotel"/></svg></span>
-                <span class="t"><b data-i18n="phH2">Отель в центре</b><span data-i18n="phH2s">Марэ, 8 минут пешком до метро</span></span>
-                <span class="m"><em>€420</em></span></li>
-              <li><span class="ui__ic ui__ic--orange"><svg aria-hidden="true"><use href="#i-coffee"/></svg></span>
-                <span class="t"><b data-i18n="phH3">Ужин в субботу</b><span data-i18n="phH3s">Стол на 20:30 в двух кварталах</span></span>
-                <span class="m"><span class="pill" data-i18n="phBooked">бронь</span></span></li>
-              <li><span class="ui__ic ui__ic--green"><svg aria-hidden="true"><use href="#i-map"/></svg></span>
-                <span class="t"><b data-i18n="phH4">Маршрут по городу</b><span data-i18n="phH4s">6 мест, дождь в субботу уже учтён</span></span>
-                <span class="m"><em data-i18n="phH4v">4,2 км</em></span></li>
-            </ul>
-            <div class="ui__banner">
-              <span class="ui__ic ui__ic--green"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
-              <span class="t"><b data-i18n="phTotal">€1 420 из €1 500</b><span data-i18n="phTotals">Всё уложилось в бюджет</span></span>
-            </div>
-            <div class="ui__cta" data-i18n="phCta">Подтвердить поездку</div>
-          </div>
-          <div class="ui__body" data-pane="surprise" hidden>
-            <div class="ui__ask">
-              <span class="ui__asklab" data-i18n="phAskLab">Вы написали</span>
-              <p data-i18n="modeSurprise">Удиви меня</p>
-            </div>
-            <div class="ui__done">
-              <span class="pill pill--green"><span data-i18n="surCardLab">Ваш следующий Escape</span></span>
-              <em data-i18n="surWhen">В эти выходные</em>
-            </div>
-            <figure class="ui__shot">
-              <img src="/img/positano-sm.webp" alt="" loading="lazy" width="400" height="225">
-              <span class="fav"><svg aria-hidden="true"><use href="#i-heart-o"/></svg></span>
-              <figcaption><b data-i18n="surRoute">Афины → Неаполь</b><span data-i18n="surWhen">В эти выходные</span></figcaption>
-            </figure>
-            <ul class="ui__steps">
-              <li><span class="ui__ic ui__ic--blue"><svg aria-hidden="true"><use href="#i-plane"/></svg></span>
-                <span class="t"><b data-i18n="surFlight">Перелёт туда-обратно</b><span data-i18n="surFlightS">Цены упали на этой неделе</span></span>
-                <span class="m"><em>€74</em></span></li>
-              <li><span class="ui__ic ui__ic--purple"><svg aria-hidden="true"><use href="#i-hotel"/></svg></span>
-                <span class="t"><b data-i18n="surHotel">Хороший отель</b><span data-i18n="surHotelS">8,9 по отзывам, в центре</span></span>
-                <span class="m"><em>€196</em></span></li>
-              <li><span class="ui__ic ui__ic--orange"><svg aria-hidden="true"><use href="#i-star"/></svg></span>
-                <span class="t"><b data-i18n="surEvent">Фестиваль еды в субботу</b><span data-i18n="surEventS">Вы сохраняли Неаполь три месяца назад</span></span>
-                <span class="m"><span class="pill">26 °C</span></span></li>
-            </ul>
-            <div class="ui__banner">
-              <span class="ui__ic ui__ic--green"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
-              <span class="t"><b data-i18n="surTotal">Ориентировочно на поездку</b><span data-i18n="surWhen">В эти выходные</span></span>
-              <span class="m"><em>€412</em></span>
-            </div>
-            <div class="ui__cta" data-i18n="surBuild">Собрать мой Escape</div>
-          </div>
-
-          <div class="ui__tabs">
-            <span class="on"><svg aria-hidden="true"><use href="#i-home"/></svg><i data-i18n="tbHome">Главная</i></span>
-            <span><svg aria-hidden="true"><use href="#i-trips"/></svg><i data-i18n="tbTrips">Поездки</i></span>
-            <span><svg aria-hidden="true"><use href="#i-search"/></svg><i data-i18n="tbFind">Поиск</i></span>
-            <span><svg aria-hidden="true"><use href="#i-guides"/></svg><i data-i18n="tbGuides">Гиды</i></span>
-            <span><svg aria-hidden="true"><use href="#i-user"/></svg><i data-i18n="tbYou">Профиль</i></span>
-          </div>
-        </div></div>
+      <div class="device device--lg device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view" data-pane="know"><img class="device__img" data-shot="10-meteora" src="/img/app/ru/10-meteora.webp" width="640" height="1418" decoding="async" loading="lazy" alt="Страница места в Escape: Метеоры" data-i18n-alt="shotMeteora"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:53.597%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="10-meteora" src="/img/app/ru/10-meteora.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 47.17%;width:100.000%;left:0.000%;top:0.000%"></span></span><span class="device__view" data-pane="surprise" hidden><img class="device__img" data-shot="01-home" src="/img/app/ru/01-home.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Главный экран Escape: идеи на выходные рядом" data-i18n-alt="shotHome"><span class="live" aria-hidden="true" style="left:3.281%;top:5.853%;width:92.969%;height:63.540%;border-radius:7.395%/4.883%"><img class="live__img" data-shot="01-home" src="/img/app/ru/01-home.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.44% 61.77%;width:107.563%;left:-3.529%;top:-9.212%"></span></span></div>
       </div>
 
       <div class="float float--live">
@@ -292,44 +276,8 @@
   </div>
 </section>
 
-<!-- ===== 01b NEW YEAR ===== -->
-<section class="section ny" id="newyear">
-  <span class="garland" aria-hidden="true"></span>
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow" data-i18n="nyEyebrow">Новогоднее путешествие</span>
-      <h2 data-i18n-html="nyTitle">Где вы встретите<br>этот Новый год?</h2>
-      <p class="lead" data-i18n="nyLead">Скажите одну фразу — и Escape! соберёт всё: перелёт на 30-е, жильё с видом, стол на новогоднюю ночь и план на каждый день каникул.</p>
-    </div>
-
-    <div class="ny__grid">
-      <article class="card rv">
-        <span class="ny__ic ny__ic--snow"><svg aria-hidden="true"><use href="#i-snow"/></svg></span>
-        <b data-i18n="ny1t">В снег</b>
-        <p data-i18n="ny1p">Альпы, Карпаты, Татры. Подъёмник в десяти минутах, шале с камином и глинтвейн после склона.</p>
-      </article>
-      <article class="card rv rv-d1">
-        <span class="ny__ic ny__ic--sun"><svg aria-hidden="true"><use href="#i-sun"/></svg></span>
-        <b data-i18n="ny2t">В тепло</b>
-        <p data-i18n="ny2p">Канары, Мадейра, Эмираты. Новый год при плюс двадцати и море, в которое правда можно войти.</p>
-      </article>
-      <article class="card rv rv-d2">
-        <span class="ny__ic ny__ic--city"><svg aria-hidden="true"><use href="#i-glass"/></svg></span>
-        <b data-i18n="ny3t">В город</b>
-        <p data-i18n="ny3p">Вена, Прага, Будапешт. Ярмарки, огни на площади и ужин, забронированный заранее.</p>
-      </article>
-    </div>
-
-    <div class="ny__bar rv rv-d1">
-      <span class="ny__when"><svg aria-hidden="true"><use href="#i-clock"/></svg><b data-i18n="nyWhen">30 декабря — 7 января</b></span>
-      <p data-i18n="nyNote">Новогоднюю ночь разбирают раньше всего. Escape! начинает искать заранее и пишет сам, когда появляется что-то стоящее.</p>
-      <button class="btn btn--red" type="button" data-waitlist><span data-i18n="nyCta">Собрать новогоднюю поездку</span><svg class="arw" width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-    </div>
-  </div>
-</section>
-
 <!-- ===== 02 PROBLEM ===== -->
-<section class="section" id="problem">
+<section class="section" id="problem" data-sky="pearl">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow" data-i18n="probEyebrow">Проблема</span>
@@ -368,8 +316,84 @@
   </div>
 </section>
 
+<!-- ===== 03b THE APP ITSELF ===== -->
+<section class="section section--sky" id="screens">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow" data-i18n="galEyebrow">Приложение</span>
+      <h2 data-i18n="galTitle">Вот так выглядит Escape.</h2>
+      <p class="lead" data-i18n="galLead">Настоящие экраны приложения — ровно то, что вы увидите на своём телефоне. Листайте.</p>
+    </div>
+  </div>
+  <div class="shots" role="list" tabindex="0" aria-label="Экраны приложения Escape" data-i18n-aria-label="galAria">
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="01-home" src="/img/app/ru/01-home.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Куда сбежать на выходные?" data-i18n-alt="gal1alt"><span class="live" aria-hidden="true" style="left:3.281%;top:5.853%;width:92.969%;height:63.540%;border-radius:7.395%/4.883%"><img class="live__img" data-shot="01-home" src="/img/app/ru/01-home.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.44% 61.77%;width:107.563%;left:-3.529%;top:-9.212%"></span></span></div>
+      </div>
+      <figcaption><b data-i18n="gal1a">Куда сбежать</b><span data-i18n="gal1b">на выходные?</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="02-weekend" src="/img/app/ru/02-weekend.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Идеи рядом с вами — на машине, паромом, самолётом" data-i18n-alt="gal2alt"></span></div>
+      </div>
+      <figcaption><b data-i18n="gal2a">Идеи рядом с вами —</b><span data-i18n="gal2b">на машине, паромом, самолётом</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="11-santorini" src="/img/app/ru/11-santorini.webp" width="640" height="1418" loading="lazy" decoding="async" alt="Каждое место как кино" data-i18n-alt="gal3alt"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:53.597%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="11-santorini" src="/img/app/ru/11-santorini.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 47.17%;width:100.000%;left:0.000%;top:0.000%"></span></span></div>
+      </div>
+      <figcaption><b data-i18n="gal3a">Каждое место</b><span data-i18n="gal3b">как кино</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="04-finds" src="/img/app/ru/04-finds.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Находки Escape: где едят местные" data-i18n-alt="gal4alt"></span></div>
+      </div>
+      <figcaption><b data-i18n="gal4a">Находки Escape:</b><span data-i18n="gal4b">где едят местные</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="05-assistant" src="/img/app/ru/05-assistant.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Скажите, куда — остальное сделаем мы" data-i18n-alt="gal5alt"><span class="mic-pulse" aria-hidden="true" style="left:49.375%;top:27.715%;width:17.812%"><i></i><i></i></span></span></div>
+      </div>
+      <figcaption><b data-i18n="gal5a">Скажите, куда —</b><span data-i18n="gal5b">остальное сделаем мы</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Весь маршрут от двери до двери" data-i18n-alt="gal6alt"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:26.798%;border-radius:6.050%/9.474%"><img class="live__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.37%;width:107.563%;left:-3.697%;top:-21.579%"></span></span></div>
+      </div>
+      <figcaption><b data-i18n="gal6a">Весь маршрут</b><span data-i18n="gal6b">от двери до двери</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" width="640" height="1424" loading="lazy" decoding="async" alt="В дороге подскажет, когда выходить" data-i18n-alt="gal7alt"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:27.080%;border-radius:6.050%/9.375%"><img class="live__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.61%;width:107.563%;left:-3.697%;top:-21.354%"></span></span></div>
+      </div>
+      <figcaption><b data-i18n="gal7a">В дороге подскажет,</b><span data-i18n="gal7b">когда выходить</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="08-community" src="/img/app/ru/08-community.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Находите попутчиков" data-i18n-alt="gal8alt"></span></div>
+      </div>
+      <figcaption><b data-i18n="gal8a">Находите</b><span data-i18n="gal8b">попутчиков</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="09-invite" src="/img/app/ru/09-invite.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Приглашайте друзей — красиво" data-i18n-alt="gal9alt"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:52.045%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="09-invite" src="/img/app/ru/09-invite.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 45.80%;width:100.000%;left:0.000%;top:0.000%"></span></span></div>
+      </div>
+      <figcaption><b data-i18n="gal9a">Приглашайте друзей —</b><span data-i18n="gal9b">красиво</span></figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- ===== 04 ONE REQUEST ===== -->
-<section class="section" id="agent">
+<section class="section" id="agent" data-sky="day">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow" data-i18n="knowEyebrow">Сценарий первый</span>
@@ -492,59 +516,9 @@
       <figure class="scene scene--stack">
         <img src="/img/terrace-sm.webp" srcset="/img/terrace-sm.webp 1200w, /img/terrace-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Терраса кафе с видом на море" data-i18n-alt="altTerrace">
       </figure>
-      <div class="device device--md scene__device">
-        <div class="device__island"></div>
-        <div class="device__status" aria-hidden="true">
-          <span class="device__time">9:41</span>
-          <span class="device__ind">
-            <svg class="device__sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-            <svg class="device__wifi" viewBox="0 0 16 12"><path d="M8 10.7 9.9 8.3a2.9 2.9 0 0 0-3.8 0ZM8 6.4c1.3 0 2.5.5 3.4 1.3l1.3-1.6A7.3 7.3 0 0 0 8 4.3c-1.8 0-3.4.7-4.7 1.8l1.3 1.6A5 5 0 0 1 8 6.4ZM8 2.3c2.3 0 4.4.8 6.1 2.3L15.5 3A10.5 10.5 0 0 0 8 .2 10.5 10.5 0 0 0 .5 3l1.4 1.6A8.6 8.6 0 0 1 8 2.3Z"/></svg>
-            <span class="device__bat"><i></i></span>
-          </span>
-        </div>
-        <span class="device__home" aria-hidden="true"></span>
-        <div class="device__screen"><div class="ui">
-          <div class="ui__bar">
-            <span class="ui__burger"><i></i></span>
-            <span class="ui__brand">AI Travel Agent</span>
-            <span class="ui__avatar"></span>
-          </div>
-          <div class="ui__body">
-              <div class="ui__title" data-i18n-html="phAgTitle">Ваша поездка, <span class="ac">по-вашему</span><span class="ac">по-вашему</span></div>
-            <ul class="ui__steps">
-              <li><span class="ui__ic ui__ic--blue"><svg aria-hidden="true"><use href="#i-plane"/></svg></span>
-                <span class="t"><b data-i18n="phL1">Утренний рейс вместо ночного</b><span data-i18n="phL1s">+18 минут в пути, зато целый день</span></span>
-                <span class="m"><span class="pill" data-i18n="phBest">лучше</span></span></li>
-              <li><span class="ui__ic ui__ic--purple"><svg aria-hidden="true"><use href="#i-hotel"/></svg></span>
-                <span class="t"><b data-i18n="phL2">Отель у метро</b><span data-i18n="phL2s">Тише соседнего и на €40 дешевле</span></span>
-                <span class="m"><em>4,7 ★</em></span></li>
-              <li><span class="ui__ic ui__ic--orange"><svg aria-hidden="true"><use href="#i-coffee"/></svg></span>
-                <span class="t"><b data-i18n="phL3">Ужин рядом с отелем</b><span data-i18n="phL3s">Чтобы не ехать через весь город</span></span>
-                <span class="m"><em>20:30</em></span></li>
-              <li><span class="ui__ic ui__ic--teal"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
-                <span class="t"><b data-i18n="phL4">Запас времени в аэропорт</b><span data-i18n="phL4s">40 минут сверх нормы на всякий случай</span></span>
-                <span class="m"><span class="pill pill--green" data-i18n="phSafe">спокойно</span></span></li>
-              <li><span class="ui__ic ui__ic--green"><svg aria-hidden="true"><use href="#i-weather"/></svg></span>
-                <span class="t"><b data-i18n="phL5">Дождь в субботу</b><span data-i18n="phL5s">Музей переставлен на утро</span></span>
-                <span class="m"><span class="pill" data-i18n="phFixed">учтено</span></span></li>
-            </ul>
-            <figure class="ui__shot">
-              <img src="/img/terrace-sm.webp" alt="" loading="lazy" width="400" height="225">
-              <figcaption><b data-i18n="phAgCap">Свободный вечер</b><span data-i18n="phAgCaps">Терраса в десяти минутах от отеля</span></figcaption>
-            </figure>
-            <div class="ui__banner">
-              <span class="ui__ic ui__ic--red"><svg aria-hidden="true"><use href="#i-heart"/></svg></span>
-              <span class="t"><b data-i18n="phLearn">Запомнил ваш темп</b><span data-i18n="phLearns">Без беготни, с длинными завтраками</span></span>
-            </div>
-          </div>
-          <div class="ui__tabs">
-            <span class="on"><svg aria-hidden="true"><use href="#i-home"/></svg><i data-i18n="tbHome">Главная</i></span>
-            <span><svg aria-hidden="true"><use href="#i-trips"/></svg><i data-i18n="tbTrips">Поездки</i></span>
-            <span><svg aria-hidden="true"><use href="#i-search"/></svg><i data-i18n="tbFind">Поиск</i></span>
-            <span><svg aria-hidden="true"><use href="#i-guides"/></svg><i data-i18n="tbGuides">Гиды</i></span>
-            <span><svg aria-hidden="true"><use href="#i-user"/></svg><i data-i18n="tbYou">Профиль</i></span>
-          </div>
-        </div></div>
+      <div class="device device--md device--shot scene__device">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="05-assistant" src="/img/app/ru/05-assistant.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Ассистент Escape: скажите, куда хочется" data-i18n-alt="shotAssistant"><span class="mic-pulse" aria-hidden="true" style="left:49.375%;top:27.715%;width:17.812%"><i></i><i></i></span></span></div>
       </div>
     </div>
 
@@ -568,7 +542,9 @@
 </section>
 
 <!-- ===== 07 LIVE TRAVEL AGENT ===== -->
-<section class="section section--dark section--photo" id="live">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<section class="section section--dark section--photo section--panel" id="live" data-sky="day2">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/escape-dusk-sm.webp" srcset="/img/escape-dusk-sm.webp 1400w, /img/escape-dusk-lg.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
   </div>
@@ -593,63 +569,9 @@
       <figure class="scene scene--stack">
         <img src="/img/live-airport-sm.webp" srcset="/img/live-airport-sm.webp 1200w, /img/live-airport-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Панорамное окно аэропорта с самолётами у гейтов" data-i18n-alt="altAirport">
       </figure>
-      <div class="device device--md scene__device">
-        <div class="device__island"></div>
-        <div class="device__status" aria-hidden="true">
-          <span class="device__time">9:41</span>
-          <span class="device__ind">
-            <svg class="device__sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-            <svg class="device__wifi" viewBox="0 0 16 12"><path d="M8 10.7 9.9 8.3a2.9 2.9 0 0 0-3.8 0ZM8 6.4c1.3 0 2.5.5 3.4 1.3l1.3-1.6A7.3 7.3 0 0 0 8 4.3c-1.8 0-3.4.7-4.7 1.8l1.3 1.6A5 5 0 0 1 8 6.4ZM8 2.3c2.3 0 4.4.8 6.1 2.3L15.5 3A10.5 10.5 0 0 0 8 .2 10.5 10.5 0 0 0 .5 3l1.4 1.6A8.6 8.6 0 0 1 8 2.3Z"/></svg>
-            <span class="device__bat"><i></i></span>
-          </span>
-        </div>
-        <span class="device__home" aria-hidden="true"></span>
-        <div class="device__screen"><div class="ui">
-          <div class="ui__bar">
-            <span class="ui__burger"><i></i></span>
-            <span class="ui__brand">AI Travel Agent</span>
-            <span class="ui__avatar"></span>
-          </div>
-          <div class="ui__body">
-            <div>
-              <div class="ui__title" data-i18n="phLvTitle">Ваш день на пересадке</div>
-              <div class="ui__route">JFK <i>→</i> <span data-i18n="phLvCity">центр</span> <i>→</i> JFK</div>
-              <div class="ui__sub" data-i18n="phLvSub">Всего между рейсами 7 ч 45 мин</div>
-            </div>
-            <ul class="ui__steps">
-              <li><span class="ui__ic ui__ic--blue"><svg aria-hidden="true"><use href="#i-plane"/></svg></span>
-                <span class="t"><b data-i18n="phLv1">Приземлились</b><span data-i18n="phLv1s">Давайте используем это время</span></span>
-                <span class="m"><em>09:15</em></span></li>
-              <li><span class="ui__ic ui__ic--teal"><svg aria-hidden="true"><use href="#i-train"/></svg></span>
-                <span class="t"><b data-i18n="phLv2">AirTrain и метро</b><span data-i18n="phLv2s">Посадка на станции Jamaica</span></span>
-                <span class="m"><em>09:25</em><span class="pill" data-i18n="phLv2p">16 мин</span></span></li>
-              <li><span class="ui__ic ui__ic--green"><svg aria-hidden="true"><use href="#i-museum"/></svg></span>
-                <span class="t"><b data-i18n="phLv3">Гуляем по городу</b><span data-i18n="phLv3s">Парк, музей или просто кофе</span></span>
-                <span class="m"><span class="pill" data-i18n="phLv3p">3 ч 30</span></span></li>
-              <li><span class="ui__ic ui__ic--orange"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
-                <span class="t"><b data-i18n="phLv4">Пора возвращаться</b><span data-i18n="phLv4s">Выходите сейчас — успеете спокойно</span></span>
-                <span class="m"><em>13:30</em><span class="pill pill--red" data-i18n="phLv4p">1 ч 15</span></span></li>
-              <li><span class="ui__ic ui__ic--blue"><svg aria-hidden="true"><use href="#i-plane"/></svg></span>
-                <span class="t"><b data-i18n="phLv5">Гейт B17</b><span data-i18n="phLv5s">Терминал 1. Хорошего полёта!</span></span>
-                <span class="m"><em>15:25</em></span></li>
-            </ul>
-            <figure class="ui__shot">
-              <img src="/img/live-airport-sm.webp" alt="" loading="lazy" width="400" height="225">
-              <figcaption><b data-i18n="phLvCap">Central Park</b><span data-i18n="phLvCaps">18 минут пешком от станции</span></figcaption>
-            </figure>
-            <div class="ui__banner">
-              <span class="ui__ic ui__ic--red"><svg aria-hidden="true"><use href="#i-bell"/></svg></span>
-              <span class="t"><b data-i18n="phLvAlert">Гейт изменили на B17</b><span data-i18n="phLvAlerts">Маршрут по терминалу уже пересчитан</span></span>
-            </div>
-          </div>
-          <div class="ui__tabs">
-            <span class="on"><svg aria-hidden="true"><use href="#i-home"/></svg><i data-i18n="tbHome">Главная</i></span>
-            <span><svg aria-hidden="true"><use href="#i-trips"/></svg><i data-i18n="tbTrips">Поездки</i></span>
-            <span><svg aria-hidden="true"><use href="#i-search"/></svg><i data-i18n="tbFind">Поиск</i></span>
-            <span><svg aria-hidden="true"><use href="#i-guides"/></svg><i data-i18n="tbGuides">Гиды</i></span>
-            <span><svg aria-hidden="true"><use href="#i-user"/></svg><i data-i18n="tbYou">Профиль</i></span>
-          </div>
-        </div></div>
+      <div class="device device--md device--shot scene__device">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Escape в дороге: когда выезжать и план дня" data-i18n-alt="shotCompanion"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:27.080%;border-radius:6.050%/9.375%"><img class="live__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.61%;width:107.563%;left:-3.697%;top:-21.354%"></span></span></div>
       </div>
     </div>
   </div>
@@ -719,7 +641,7 @@
 </section>
 
 <!-- ===== 08b COMMUNITY ===== -->
-<section class="section section--dark section--photo" id="community">
+<section class="section section--dark section--photo section--panel" id="community" data-sky="noon">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/escape-friends-sm.webp" srcset="/img/escape-friends-sm.webp 1400w, /img/escape-friends-lg.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
   </div>
@@ -775,14 +697,14 @@
     </div>
 
     <div class="commcta rv">
-      <button class="btn btn--red" type="button" data-waitlist><span data-i18n="comJoin">Быть среди первых</span><svg class="arw" width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <button class="btn btn--red" type="button" data-waitlist><span data-i18n="comJoin">Скачать бесплатно</span><svg class="arw" width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg></button>
       <p class="src" data-i18n="comNote">Примеры интерфейса. Сообщество откроется вместе с продуктом — количество участников до запуска мы не публикуем.</p>
     </div>
   </div>
 </section>
 
 <!-- ===== 09 LAYOVER ===== -->
-<section class="section section--surface">
+<section class="section section--surface" data-sky="afternoon">
   <div class="wrap layover">
     <div class="rv">
       <span class="eyebrow" data-i18n="layEyebrow">Пересадка</span>
@@ -878,91 +800,43 @@
 </section>
 
 <!-- ===== 11 PARIS ===== -->
-<section class="section section--sky">
+<section class="section section--sky" data-sky="warm">
   <div class="wrap split">
     <div class="split__media rv">
       <figure class="scene scene--stack">
-        <img src="/img/paris-sm.webp" srcset="/img/paris-sm.webp 1200w, /img/paris-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Крыши Парижа и Эйфелева башня на закате" data-i18n-alt="altParis">
+        <img src="/img/for-two-sm.webp" srcset="/img/for-two-sm.webp 1200w, /img/for-two-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Столик на двоих у воды на закате" data-i18n-alt="altForTwo">
       </figure>
-      <div class="device device--sm scene__device">
-        <div class="device__island"></div>
-        <div class="device__status" aria-hidden="true">
-          <span class="device__time">9:41</span>
-          <span class="device__ind">
-            <svg class="device__sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-            <svg class="device__wifi" viewBox="0 0 16 12"><path d="M8 10.7 9.9 8.3a2.9 2.9 0 0 0-3.8 0ZM8 6.4c1.3 0 2.5.5 3.4 1.3l1.3-1.6A7.3 7.3 0 0 0 8 4.3c-1.8 0-3.4.7-4.7 1.8l1.3 1.6A5 5 0 0 1 8 6.4ZM8 2.3c2.3 0 4.4.8 6.1 2.3L15.5 3A10.5 10.5 0 0 0 8 .2 10.5 10.5 0 0 0 .5 3l1.4 1.6A8.6 8.6 0 0 1 8 2.3Z"/></svg>
-            <span class="device__bat"><i></i></span>
-          </span>
-        </div>
-        <span class="device__home" aria-hidden="true"></span>
-        <div class="device__screen"><div class="ui">
-          <div class="ui__bar">
-            <span class="ui__burger"><i></i></span>
-            <span class="ui__brand">AI Travel Agent</span>
-            <span class="ui__avatar"></span>
-          </div>
-          <div class="ui__body">
-            <div>
-              <div class="ui__title" data-i18n-html="phPrTitle">Париж <span class="ac">для двоих</span><span class="ac">для двоих</span></div>
-              <div class="ui__sub" data-i18n="phPrSub">Три дня расписаны по часам — вам ничего не нужно решать.</div>
-            </div>
-            <figure class="ui__shot">
-              <img src="/img/paris-sm.webp" alt="" loading="lazy" width="400" height="225">
-              <span class="fav"><svg aria-hidden="true"><use href="#i-heart-o"/></svg></span>
-              <figcaption><b data-i18n="phPrCap">Париж · 3 дня</b><span data-i18n="phPrCaps">Музеи, булочные и вечера у Сены</span></figcaption>
-            </figure>
-            <ul class="ui__steps">
-              <li><span class="ui__ic ui__ic--orange"><svg aria-hidden="true"><use href="#i-coffee"/></svg></span>
-                <span class="t"><b data-i18n="phPr1">День 1 · Приезд</b><span data-i18n="phPr1s">Отель в Марэ, вечер у Сены</span></span>
-                <span class="m"><em data-i18n="dFri">Пт</em></span></li>
-              <li><span class="ui__ic ui__ic--purple"><svg aria-hidden="true"><use href="#i-museum"/></svg></span>
-                <span class="t"><b data-i18n="phPr2">День 2 · Искусство</b><span data-i18n="phPr2s">Орсе к открытию, дворы после обеда</span></span>
-                <span class="m"><em data-i18n="dSat">Сб</em></span></li>
-              <li><span class="ui__ic ui__ic--green"><svg aria-hidden="true"><use href="#i-walk"/></svg></span>
-                <span class="t"><b data-i18n="phPr3">День 3 · Монмартр</b><span data-i18n="phPr3s">Булочная, Монмартр, отъезд</span></span>
-                <span class="m"><em data-i18n="dSun">Вс</em></span></li>
-            </ul>
-            <div class="ui__banner">
-              <span class="ui__ic ui__ic--purple"><svg aria-hidden="true"><use href="#i-hotel"/></svg></span>
-              <span class="t"><b data-i18n="phPrHotel">Отель у Марэ</b><span data-i18n="phPrHotels">Тихая улица, 8 минут до метро</span></span>
-            </div>
-          </div>
-          <div class="ui__tabs">
-            <span class="on"><svg aria-hidden="true"><use href="#i-home"/></svg><i data-i18n="tbHome">Главная</i></span>
-            <span><svg aria-hidden="true"><use href="#i-trips"/></svg><i data-i18n="tbTrips">Поездки</i></span>
-            <span><svg aria-hidden="true"><use href="#i-search"/></svg><i data-i18n="tbFind">Поиск</i></span>
-            <span><svg aria-hidden="true"><use href="#i-guides"/></svg><i data-i18n="tbGuides">Гиды</i></span>
-            <span><svg aria-hidden="true"><use href="#i-user"/></svg><i data-i18n="tbYou">Профиль</i></span>
-          </div>
-        </div></div>
+      <div class="device device--sm device--shot scene__device">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" width="640" height="1418" loading="lazy" decoding="async" alt="Готовая поездка в Escape: Рим на выходные вдвоём" data-i18n-alt="shotPlan"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:26.798%;border-radius:6.050%/9.474%"><img class="live__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.37%;width:107.563%;left:-3.697%;top:-21.579%"></span></span></div>
       </div>
     </div>
 
     <div class="split__copy rv rv-d1">
-      <span class="eyebrow" data-i18n="parEyebrow">Париж</span>
-      <h2 data-i18n="parTitle">Париж для двоих.</h2>
+      <span class="eyebrow" data-i18n="parEyebrow">Выходные для двоих</span>
+      <h2 data-i18n="parTitle">Рим для двоих.</h2>
       <p class="lead" data-i18n="parLead">Не список мест, а готовые три дня. Escape! соберёт их сам — так, как вы и хотели поехать.</p>
 
       <div class="days">
-        <article class="day"><span class="day__ic" aria-hidden="true"><svg><use href="#i-coffee"/></svg></span><span class="d" data-i18n="dDay1">День 1</span><b data-i18n="pd1">Приезд и вечер у реки</b><p data-i18n="pd1s">15:00 — заселение в Марэ. 18:30 — прогулка по набережной Сены. 20:30 — ужин в двух кварталах от отеля.</p></article>
-        <article class="day"><span class="day__ic" aria-hidden="true"><svg><use href="#i-museum"/></svg></span><span class="d" data-i18n="dDay2">День 2</span><b data-i18n="pd2">Искусство без очередей</b><p data-i18n="pd2s">09:30 — музей Орсе по билету на точное время. 13:00 — обед в Сен-Жермене. 16:00 — тихие дворы и книжные лавки.</p></article>
-        <article class="day"><span class="day__ic" aria-hidden="true"><svg><use href="#i-walk"/></svg></span><span class="d" data-i18n="dDay3">День 3</span><b data-i18n="pd3">Монмартр и дорога домой</b><p data-i18n="pd3s">08:30 — завтрак в булочной у отеля. 10:00 — Монмартр сверху вниз пешком. 14:20 — выезд в аэропорт с запасом 40 минут.</p></article>
+        <article class="day"><span class="day__ic" aria-hidden="true"><svg><use href="#i-coffee"/></svg></span><span class="d" data-i18n="dDay1">День 1</span><b data-i18n="pd1">Прилёт и Колизей</b><p data-i18n="pd1s">05:30 — выезд в аэропорт. 09:35 — поезд до Термини. 12:30 — Колизей, 15:30 — Римский форум. 18:30 — ужин в Трастевере.</p></article>
+        <article class="day"><span class="day__ic" aria-hidden="true"><svg><use href="#i-museum"/></svg></span><span class="d" data-i18n="dDay2">День 2</span><b data-i18n="pd2">Ватикан без очередей</b><p data-i18n="pd2s">09:00 — музеи Ватикана по билету на точное время. 13:00 — обед у площади Навона. 17:00 — Пантеон и фонтан Треви на закате.</p></article>
+        <article class="day"><span class="day__ic" aria-hidden="true"><svg><use href="#i-walk"/></svg></span><span class="d" data-i18n="dDay3">День 3</span><b data-i18n="pd3">Утро в Риме и дорога домой</b><p data-i18n="pd3s">08:30 — капучино и корнетто у отеля. 10:00 — Испанская лестница и вилла Боргезе. 14:00 — поезд в аэропорт с запасом времени.</p></article>
       </div>
 
       <div class="tags">
-        <span><svg aria-hidden="true"><use href="#i-hotel"/></svg><span data-i18n="pt1">Отель у Марэ</span></span>
+        <span><svg aria-hidden="true"><use href="#i-hotel"/></svg><span data-i18n="pt1">Отель у Термини</span></span>
         <span><svg aria-hidden="true"><use href="#i-coffee"/></svg><span data-i18n="pt2">Завтрак</span></span>
-        <span><svg aria-hidden="true"><use href="#i-museum"/></svg><span data-i18n="pt3">Музей</span></span>
+        <span><svg aria-hidden="true"><use href="#i-museum"/></svg><span data-i18n="pt3">Музеи</span></span>
         <span><svg aria-hidden="true"><use href="#i-star"/></svg><span data-i18n="pt4">Ужин</span></span>
         <span><svg aria-hidden="true"><use href="#i-walk"/></svg><span data-i18n="pt5">Вечерняя прогулка</span></span>
-        <span><svg aria-hidden="true"><use href="#i-train"/></svg><span data-i18n="pt6">Метро</span></span>
+        <span><svg aria-hidden="true"><use href="#i-train"/></svg><span data-i18n="pt6">Поезд</span></span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== 12 AMSTERDAM ===== -->
-<section class="section">
+<section class="section" data-sky="golden">
   <div class="wrap split split--rev">
     <div class="split__copy rv">
       <span class="eyebrow" data-i18n="amsEyebrow">Амстердам</span>
@@ -993,40 +867,9 @@
 </section>
 
 <!-- ===== 13 ANYWHERE IN THE WORLD ===== -->
-<section class="section section--dark" id="world">
-  <svg class="santa" viewBox="0 -16 320 126" role="img" aria-label="Силуэт саней с оленями в ночном небе" data-i18n-aria-label="altSanta">
-   <defs>
-    <g id="deer" stroke-linejoin="round" stroke-linecap="round">
-     <path d="M10 40c0-7 8-12 20-12s22 4 24 10c1 4-1 8-6 10-6 2-14 3-21 2C16 49 10 45 10 40Z" stroke-width="3"/>
-     <path d="M44 36c2-6 6-12 11-17l4-4 7 5-4 6c-3 5-6 9-11 12Z" stroke-width="3"/>
-     <path d="M57 13c2-3 6-4 9-2l8 5c2 1 2 4 0 5l-7 3c-3 1-7 0-9-3Z" stroke-width="2.6"/>
-     <path d="M58 12 53 8l1 6Z" stroke-width="2"/>
-     <g fill="none" stroke-width="2.6"><path d="M62 9 59 0M59 0l-6-2M59 0l-1-5M67 9l2-9m0 0 6-3m-6 3 2-5"/></g>
-     <g fill="none" stroke-width="4"><path d="M45 48l4 13-4 6M37 50l-3 13 5 5M17 48l-6 12 1 7M24 50l3 12-5 6"/></g>
-     <path d="M11 35c-4-1-7-4-8-7 4 0 7 2 9 5Z" stroke-width="2"/>
-    </g>
-   </defs>
-   <g fill="#0C0A18" stroke="#0C0A18">
-    <g fill="none" stroke-width="2.2" stroke-linecap="round">
-     <path d="M114 30C146 26 188 28 232 30"/><path d="M114 34C142 38 170 42 196 44"/>
-    </g>
-    <g transform="translate(152 30) scale(.86)" opacity=".8"><use href="#deer"/></g>
-    <g transform="translate(186 16)"><use href="#deer"/></g>
-    <path d="M30 42h56c8 0 13-5 15-13l4-14c1-4-3-7-7-6L40 22c-7 2-11 7-11 14Z" stroke-width="3"/>
-    <path d="M105 15c5-3 10-2 12 2 2 5-1 9-6 10" fill="none" stroke-width="4" stroke-linecap="round"/>
-    <g fill="none" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
-     <path d="M24 58c0-7 6-12 14-12h66"/><path d="M24 58c-6 1-9-4-6-9"/><path d="M44 46v10M88 46v10"/>
-    </g>
-    <path d="M36 26c1-6 5-9 10-9s9 3 10 9l-1 6H37Z" stroke-width="2.6"/>
-    <path d="M72 18c0-10 6-16 13-16s13 6 13 16l-1 12H73Z" stroke-width="2.6"/>
-    <path d="M97 14l17-8" fill="none" stroke-width="3.6" stroke-linecap="round"/>
-    <circle cx="85" cy="-3" r="6.6" stroke-width="1"/>
-    <path d="M79 -5c-2-8 2-13 8-12 6 1 8 6 7 11l-1 3Z" stroke-width="2"/>
-   </g>
-   <circle cx="76" cy="-13" r="3.2" fill="#FFD9A8"/>
-   <path d="M31 41h55c8 0 13-5 15-13" fill="none" stroke="#FFB870" stroke-width="1.6" opacity=".55" stroke-linecap="round"/>
-   <path d="M200 46c6-6 18-8 30-6" fill="none" stroke="#FFB870" stroke-width="1.4" opacity=".4" stroke-linecap="round"/>
-  </svg>
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<section class="section" id="world" data-sky="golden2">
   <div class="wrap">
     <div class="head head--mid rv">
       <span class="eyebrow" data-i18n="wldEyebrow">Весь мир</span>
@@ -1179,7 +1022,7 @@
 </section>
 
 <!-- ===== 14b PROACTIVITY ===== -->
-<section class="section section--surface" id="proactive">
+<section class="section section--surface" id="proactive" data-sky="amber">
   <div class="wrap">
     <figure class="band rv">
       <img src="/img/escape-view.webp" width="950" height="436" loading="lazy" decoding="async" alt="Санторини на закате: белые дома, синий купол и море" data-i18n-alt="altEscapeView">
@@ -1212,7 +1055,7 @@
 </section>
 
 <!-- ===== 15b LET'S ESCAPE TOGETHER ===== -->
-<section class="section section--surface section--photo" id="together">
+<section class="section section--surface section--photo" id="together" data-sky="sunset@0 sunset2@1">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/hero-santorini-sm.webp" srcset="/img/hero-santorini-sm.webp 1200w, /img/hero-santorini-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1266,7 +1109,41 @@
 </section>
 
 <!-- ===== 15c TRIP ROOMS ===== -->
-<section class="section section--dark section--photo">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<!-- ===== SANTA — the assistant in the season ===== -->
+<section class="section section--dark santa" id="santa" data-sky="mauve@0 dusk@pad">
+  <div class="wrap santa__grid">
+    <div class="santa__stage rv">
+      <span class="santa__halo" aria-hidden="true"></span>
+      <div class="santa__fig" aria-hidden="true">
+        <img class="santa__body" src="/img/xmas/santa-body.webp" width="620" height="620" alt="" loading="lazy" decoding="async">
+        <img class="santa__hand" src="/img/xmas/santa-hand.webp" width="620" height="620" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="santa__chat">
+        <span class="santa__ex" data-i18n="snExample">Пример разговора</span>
+        <div class="bub bub--santa"><img src="/img/xmas/santa.webp" width="520" height="515" alt="" loading="lazy" decoding="async"><p data-i18n="snHello">Привет, Дмитрий! Куда хотите отправиться в праздники?</p></div>
+        <div class="bub bub--me"><p data-i18n="snAsk">В горы на Новый год, вдвоём, на машине</p></div>
+        <div class="bub bub--santa"><img src="/img/xmas/santa.webp" width="520" height="515" alt="" loading="lazy" decoding="async"><p data-i18n="snReply">Чудесно! Сколько ночей хотите провести там? Дорогу туда и обратно я добавлю сам.</p></div>
+        <span class="santa__voice"><span class="santa__bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span data-i18n="snVoice">Санта говорит вслух</span></span>
+      </div>
+    </div>
+    <div class="santa__copy rv rv-d1">
+      <span class="eyebrow eyebrow--festive"><svg width="14" height="14" aria-hidden="true"><use href="#i-gift"/></svg><span data-i18n="snEyebrow">Санта в Escape</span></span>
+      <h2 data-i18n-html="snTitle">В праздники вам отвечает<br><em>сам Санта.</em></h2>
+      <p class="lead" data-i18n="snLead">До 14 января ассистент Escape надевает красный колпак. Он машет вам на вкладке ассистента, здоровается по имени, отвечает в чате и проговаривает ответы вслух — а потом собирает всю поездку, от дороги до ужина.</p>
+      <ul class="santa__points">
+        <li><i><svg aria-hidden="true"><use href="#i-hand"/></svg></i><span data-i18n="snP1">Машет вам рукой на вкладке ассистента</span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-user"/></svg></i><span data-i18n="snP2">Здоровается по имени — как старый друг</span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-voice"/></svg></i><span data-i18n="snP3">Отвечает в чате и говорит вслух — голос выключается одним касанием</span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-route"/></svg></i><span data-i18n="snP4">Задаёт пару вопросов и собирает всю поездку</span></li>
+      </ul>
+      <p class="src" data-i18n="snNote">Санта приходит в приложение 20 ноября и остаётся до 14 января.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark section--photo" data-sky="evening">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/escape-terrace-sm.webp" srcset="/img/escape-terrace-sm.webp 1400w, /img/escape-terrace-lg.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
   </div>
@@ -1296,7 +1173,7 @@
 </section>
 
 <!-- ===== 15d TRAVEL IDENTITY: PASSPORT + WORLD PROGRESS ===== -->
-<section class="section section--dark section--photo" id="identity">
+<section class="section section--dark section--photo" id="identity" data-sky="night">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/coast-dusk-sm.webp" srcset="/img/coast-dusk-sm.webp 1200w, /img/coast-dusk-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1356,7 +1233,7 @@
 </section>
 
 <!-- ===== 15e CHALLENGES + AROUND THE WORLD ===== -->
-<section class="section section--dark section--photo" id="challenges">
+<section class="section section--dark section--photo" id="challenges" data-sky="night2">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/positano-sm.webp" srcset="/img/positano-sm.webp 1200w, /img/positano-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1473,7 +1350,7 @@
 </section>
 
 <!-- ===== 15h LOCAL ESCAPE ===== -->
-<section class="section section--dark section--photo">
+<section class="section section--dark section--photo" data-sky="night3">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/amsterdam-sm.webp" srcset="/img/amsterdam-sm.webp 1200w, /img/amsterdam-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1510,7 +1387,7 @@
 </section>
 
 <!-- ===== 15i YEAR IN ESCAPES ===== -->
-<section class="section section--dark section--tight">
+<section class="section section--dark section--tight" data-sky="deep">
   <div class="wrap">
     <div class="yr rv">
       <div class="yr__hd">
@@ -1535,7 +1412,7 @@
 </section>
 
 <!-- ===== 17 WHY ESCAPE ===== -->
-<section class="section section--dark section--photo">
+<section class="section section--dark section--photo" data-sky="deep">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/friends-sail-sm.webp" srcset="/img/friends-sail-sm.webp 1200w, /img/friends-sail-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1556,18 +1433,21 @@
 </section>
 
 <!-- ===== 19 FINAL CTA + CONTACT ===== -->
-<section class="cta" id="join">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<section class="cta" id="join" data-sky="deep2">
   <div class="cta__media">
     <img src="/img/cta-oia-sm.webp" srcset="/img/cta-oia-sm.webp 1200w, /img/cta-oia-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="Белые дома Ои на склоне над морем" data-i18n-alt="altCta">
   </div>
   <div class="wrap">
     <div class="rv">
+      <p class="cta__season"><svg width="16" height="16" aria-hidden="true"><use href="#i-snow"/></svg><span data-i18n="ctaSeason">С наступающим Рождеством и Новым годом!</span></p>
       <h2 data-i18n-html="ctaTitle">Следующее путешествие<br>начинается с одного желания.</h2>
       <div class="cta__brand"><span class="brandmark brandmark--light"><span class="word">Escape</span><svg class="pin" aria-hidden="true"><use href="#brand-pin"/></svg></span></div>
-      <p data-i18n="ctaLead">сам позаботится об остальном. Оставьте почту — напишем, как только откроем ранний доступ.</p>
+      <p data-i18n="ctaLead">сам позаботится об остальном. Приложение бесплатное и уже в App Store, версия для Android — совсем скоро.</p>
       <div class="cta__act">
-        <button class="btn btn--red" type="button" data-waitlist><span data-i18n="ctaJoin">Присоединиться к запуску</span><svg class="arw" width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        <a class="btn btn--ghost" href="mailto:escape.travel.ai@gmail.com"><span data-i18n="conWrite">Написать письмо</span></a>
+        <a class="btn btn--red" href="https://apps.apple.com/app/id6803238502" target="_blank" rel="noopener" data-store="ios"><svg width="17" height="17" aria-hidden="true"><use href="#i-apple"/></svg><span data-i18n="ctaJoin">Скачать бесплатно в App Store</span><svg class="arw" width="17" height="17" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <button class="btn btn--ghost" type="button" data-waitlist-android><svg width="17" height="17" aria-hidden="true"><use href="#i-android"/></svg><span data-i18n="dlAndroid">Android — сообщить о выходе</span></button>
       </div>
     </div>
 
@@ -1595,7 +1475,7 @@
 </main>
 
 <!-- ===== footer ===== -->
-<footer class="footer">
+<footer class="footer" data-sky="abyss@0 end@1">
   <div class="wrap">
     <div class="footer__top">
       <div class="footer__brand">
@@ -1616,7 +1496,7 @@
           <b data-i18n="ftExplore">Путешествия</b>
           <a href="#world" data-i18n="navWorld">Весь мир</a>
           <a href="#community" data-i18n="navCommunity">Сообщество</a>
-          <a href="#join" data-i18n="ftWaitlist">Ранний доступ</a>
+          <a href="https://apps.apple.com/app/id6803238502" target="_blank" rel="noopener" data-i18n="ftWaitlist">Скачать приложение</a>
         </div>
         <div>
           <b data-i18n="ftSupport">Поддержка</b>
@@ -1647,7 +1527,7 @@
     <button class="modal__close" type="button" data-close aria-label="Закрыть" data-i18n-aria-label="a11yClose"><svg width="17" height="17" aria-hidden="true"><use href="#i-close"/></svg></button>
 
     <div id="wlForm">
-      <h3 id="wlTitle" data-i18n="wlTitle">Присоединиться к запуску</h3>
+      <h3 id="wlTitle" data-i18n="wlTitle">Сообщить о выходе для Android</h3>
       <p id="wlLead">Оставьте контакты — мы соберём из них письмо, которое вам останется отправить. Никакой рассылки помимо запуска.</p>
       <p class="wl__stale" id="wlStale" hidden data-i18n="wlStale">Ваша прошлая заявка осталась в этом браузере и до нас не дошла. Отправьте её письмом — это займёт секунду.</p>
 
@@ -1765,8 +1645,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="/assets/i18n.js?v=c8a3a4aecd"></script>
-<script src="/assets/app.js?v=0a7f744ce6" defer></script>
-<script src="/assets/festive.js?v=d0809d4247" defer></script>
+<script src="/assets/i18n.js?v=2c45f4e5c3"></script>
+<script src="/assets/app.js?v=308a400dd3" defer></script>
+<script src="/assets/season.js?v=d3df4b05c1" defer></script>
 </body>
 </html>

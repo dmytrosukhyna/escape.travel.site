@@ -1,0 +1,463 @@
+/* ==========================================================================
+   ESCAPE! — the Christmas season (20 November – 14 January), and one phone.
+
+   Loaded after styles.css and written as a layer over it, so the season can
+   leave by deleting one <link> and one <script>.
+
+   The page is one sky. It used to be a stack of bands — cream, navy, a
+   photograph, cream again — and however soft each ramp was, a reader saw a
+   new page start every screen. The owner asked for the opposite (18 November:
+   "начинается в утренней теме и постепенно переходит в ночь… утро, где-то
+   посередине закат, и ночь в конце… никаких резких швов"). So no section
+   paints a ground of its own any more: .sky, behind everything, runs from
+   dawn through the bright day and a golden sunset to a starry night, and the
+   sections only decide whether their words are dark on light or light on
+   dark — which is fixed by where they stand in that sky, not by taste.
+   ========================================================================== */
+
+:root{
+  --xmas-red:#E0262B;
+  --xmas-red-deep:#B90918;
+  --gold:#F5C66A;
+  --night:#0B1030;
+}
+
+/* --- 1. The sky ----------------------------------------------------------- */
+html{background:#F7DCE2}
+body{background:transparent;position:relative}
+.sky{
+  position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
+  /* A fallback in percent for a reader without script; season.js redraws it
+     with every stop on the section it belongs to. */
+  background:linear-gradient(180deg,
+    #F7DCE2 0%,#FBE7D8 3%,#EEF3FA 7%,#E4EFFC 20%,#EAF2FC 34%,#F4EEE6 42%,
+    #FBE4C6 50%,#F8CFA9 56%,#F2B4A0 60%,#7E5E96 64%,#3A3373 67%,#222656 72%,
+    #141A3E 82%,#0C1131 92%,#070A1F 100%);
+}
+.sky__sun{
+  position:absolute;left:50%;top:var(--sun-y,58%);width:min(1400px,140vw);aspect-ratio:1;
+  transform:translate(-30%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,214,150,.62) 0%,rgba(255,190,140,.32) 26%,rgba(255,170,140,0) 60%);
+}
+.sky__moon{
+  position:absolute;right:9%;top:var(--moon-y,70%);width:clamp(70px,8vw,120px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 36%,#FFFBEF 0%,#FCEFCB 46%,#EED9A6 70%,#E2C88E 100%);
+  box-shadow:0 0 40px 10px rgba(255,236,190,.28),0 0 140px 50px rgba(255,236,190,.12);
+}
+/* Santa's sleigh crosses the night once in a while, over the moon's side of
+   the sky and behind every word, so it never takes a reader's eye from text. */
+.sky__sleigh{
+  position:absolute;left:0;top:var(--sleigh-y,82%);width:clamp(220px,26vw,360px);height:auto;
+  opacity:0;animation:sleigh 30s linear infinite;animation-delay:3s;
+  filter:drop-shadow(0 0 14px rgba(255,220,150,.45));
+}
+@keyframes sleigh{
+  0%{transform:translate(-40vw,40px) rotate(-6deg);opacity:0}
+  3%{opacity:1}
+  42%{transform:translate(115vw,-110px) rotate(-6deg);opacity:1}
+  45%,100%{transform:translate(120vw,-120px) rotate(-6deg);opacity:0}
+}
+
+/* The stars hold their place on the screen while the page moves under them,
+   and come out as the reader scrolls into the evening: season.js sets their
+   opacity from how much of the window is already night. */
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;will-change:opacity}
+.stars i{position:absolute;inset:0;background-repeat:repeat}
+.stars i:first-child{
+  background-image:
+    radial-gradient(1.2px 1.2px at 23px 41px,#fff 50%,transparent 51%),
+    radial-gradient(1px 1px at 120px 13px,rgba(255,255,255,.8) 50%,transparent 51%),
+    radial-gradient(1.6px 1.6px at 190px 120px,#FFF6DA 50%,transparent 51%),
+    radial-gradient(1px 1px at 77px 160px,rgba(255,255,255,.7) 50%,transparent 51%),
+    radial-gradient(1.3px 1.3px at 260px 70px,#fff 50%,transparent 51%),
+    radial-gradient(1px 1px at 300px 210px,rgba(255,255,255,.75) 50%,transparent 51%),
+    radial-gradient(1.1px 1.1px at 150px 260px,#fff 50%,transparent 51%);
+  background-size:320px 300px;
+}
+.stars i:last-child{
+  background-image:
+    radial-gradient(1.8px 1.8px at 60px 90px,#FFF8E6 50%,transparent 51%),
+    radial-gradient(1.4px 1.4px at 330px 40px,#fff 50%,transparent 51%),
+    radial-gradient(2px 2px at 240px 300px,#FFF1C8 50%,transparent 51%),
+    radial-gradient(1.2px 1.2px at 420px 200px,#fff 50%,transparent 51%);
+  background-size:480px 380px;animation:twinkle 4.6s ease-in-out infinite alternate;
+}
+@keyframes twinkle{from{opacity:.25}to{opacity:1}}
+
+/* --- 2. Every section stands in the sky ----------------------------------- */
+.section,.section--surface,.section--sky,.section--dark,.cta,.footer{background:transparent}
+.section::before,.section::after,
+.section:not(.section--dark):not(.section--photo)::before,
+.section:not(.section--dark):not(.section--photo)::after,
+.section--dark:not(.section--photo)::before,
+.section--photo:not(.section--dark)::before,
+.section--photo:not(.section--dark)::after{content:none}
+.section{overflow:visible}
+.section--photo,.section--dark:not(.section--photo),.section:not(.section--dark):not(.section--photo){overflow:clip}
+
+/* A photograph behind a section is a mood, not a band: it melts into the sky
+   at both ends (a mask, not a colour, so it meets whatever the sky is there)
+   and is quiet enough that the words over it need no veil. */
+.section__bg{
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 24%,#000 76%,transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0,#000 24%,#000 76%,transparent 100%);
+}
+.section__bg::after{content:none}
+.section--photo:not(.section--dark) .section__bg img{opacity:.2;filter:saturate(1.1)}
+.section--photo.section--dark .section__bg img{opacity:.3;filter:saturate(1.05)}
+.section--photo.section--dark .section__bg{background:transparent}
+
+/* In the day the darker scenes are windows into the evening rather than
+   bands across the page: a rounded pane with the photograph inside it. */
+.section--panel{padding-block:calc(var(--sp-section) * 1.05)}
+.section--panel .section__bg{
+  inset:calc(var(--sp-section) * .35) max(10px,calc((100% - var(--maxw)) / 2 + 6px));
+  border-radius:clamp(26px,3vw,44px);overflow:hidden;
+  background:linear-gradient(160deg,#1A2452,#0C1434 60%,#151033);
+  box-shadow:0 30px 80px -30px rgba(26,30,70,.55);
+  -webkit-mask-image:none;mask-image:none;
+}
+.section--panel .section__bg img{opacity:.42}
+.section--panel .section__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,40,.5),rgba(9,13,40,.72))}
+.section--panel > .wrap{padding-inline:max(var(--gutter),34px)}
+@media (max-width:760px){
+  .section--panel .section__bg{inset:calc(var(--sp-section) * .35) 8px}
+  .section--panel > .wrap{padding-inline:calc(var(--gutter) + 6px)}
+}
+
+/* The night's words: the section--dark colours, now on a sky instead of a slab. */
+.section--dark .lead{color:#BCC6E2}
+.section--dark .src{color:#9CA8CB}
+.section--dark .eyebrow{color:#AEB9DA}
+
+/* Late in the afternoon the sky is warm and bright; the quieter grey of the
+   copy is lifted a shade so it keeps its contrast on peach and gold. */
+[data-sky="golden"] .lead,[data-sky="golden2"] .lead,[data-sky="amber"] .lead,[data-sky="sunset"] .lead,
+[data-sky="golden"] .muted,[data-sky="amber"] .muted,[data-sky="sunset"] .muted{color:#3E4568}
+[data-sky="amber"] .eyebrow,[data-sky="sunset"] .eyebrow,[data-sky="golden2"] .eyebrow{color:#4A4560}
+
+/* The hero of the year: once the page's first screen, now its morning. */
+.hero{padding-top:clamp(40px,6vw,90px)}
+.hero__veil{display:none}
+.hero__media{
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 70%,transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 70%,transparent 100%);
+}
+.hero__media img{
+  opacity:.9;
+  -webkit-mask-image:linear-gradient(100deg,transparent 26%,#000 62%);
+          mask-image:linear-gradient(100deg,transparent 26%,#000 62%);
+}
+.hero .hero__title{font-size:var(--t-display);line-height:1.02;text-wrap:balance}
+.hero .hero__title .l2{display:block;font-weight:600;color:var(--ink-2);font-size:.86em;letter-spacing:-.03em}
+@media (max-width:1024px){
+  .hero__media{
+    -webkit-mask-image:linear-gradient(180deg,transparent 34%,#000 62%,#000 84%,transparent 100%);
+            mask-image:linear-gradient(180deg,transparent 34%,#000 62%,#000 84%,transparent 100%);
+  }
+  .hero__media img{-webkit-mask-image:none;mask-image:none}
+}
+
+/* The globe keeps its night, as a window in the golden hour. */
+.world{margin-inline:0;width:auto;border-radius:clamp(26px,3vw,44px);background:#0A1131;box-shadow:0 30px 80px -30px rgba(40,26,60,.5)}
+.world__bg::after{background:radial-gradient(90% 80% at 50% 42%,rgba(7,14,36,.15),rgba(7,14,36,.85) 78%)}
+
+.cta{overflow:visible}
+.cta__media{
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%);
+}
+.cta__media img{opacity:.32}
+.cta__media::after{content:none}
+.cta__season{display:inline-flex;align-items:center;gap:9px;margin:0 auto 18px;padding:8px 16px;border-radius:999px;
+  font-family:var(--font-display);font-weight:700;font-size:var(--t-small);color:#FFE6B0;letter-spacing:.01em;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,230,176,.3)}
+.cta__card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+.footer{color:#A3AED0;padding-top:clamp(40px,5vw,70px)}
+.footer__bot{border-top-color:rgba(255,255,255,.1)}
+
+/* Cards that were white on cream are white on the sky too; at night they
+   become frosted glass, so nothing light floats on the dark like a sticker. */
+.section--dark .why article,.section--dark .chal__c,.section--dark .chal__live,.section--dark .card{
+  background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#E8ECF8;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:none
+}
+.section--dark .why h3,.section--dark .chal__c b,.section--dark .chal__c h3{color:#fff}
+.section--dark .why p,.section--dark .chal__c p,.section--dark .chal__c small{color:#BCC6E2}
+
+/* --- 3. The header: lights along its top, and a night glass after dusk ---- */
+.header__garland{
+  position:absolute;left:0;right:0;top:-6px;height:46px;z-index:2;pointer-events:none;
+  background:url(/img/xmas/garland.webp) 0 0/auto 46px repeat-x;
+}
+.header__garland::after{
+  content:"";position:absolute;inset:0;background:inherit;
+  filter:brightness(1.5) saturate(1.3) blur(1.5px);mix-blend-mode:screen;
+  animation:glow 2.8s ease-in-out infinite alternate;
+}
+@keyframes glow{from{opacity:.1}to{opacity:.85}}
+.header .wrap{position:relative;z-index:3;padding-top:10px}
+.header.is-night::after{background:rgba(12,16,44,.62);border-bottom-color:rgba(255,255,255,.08)}
+.header.is-night .nav a{color:#C5CDE6}
+.header.is-night .nav a:hover,.header.is-night .nav a.is-active{color:#fff}
+.header.is-night .header-brand small{color:#9AA6CB}
+.header.is-night .langs{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.header.is-night .langs .langs__toggle{background:rgba(255,255,255,.1);color:#fff}
+.header.is-night .burger span,.header.is-night .burger span::before,.header.is-night .burger span::after{background:#fff}
+.header.is-night .burger[aria-expanded="true"] span{background:transparent}
+.header{transition:none}
+
+/* --- 4. Garlands between scenes ------------------------------------------ */
+.garland-line{
+  position:relative;height:clamp(64px,7vw,92px);margin-block:-10px;pointer-events:none;
+  background:url(/img/xmas/garland.webp) center 0/auto clamp(60px,6.4vw,86px) repeat-x;
+}
+.garland-line::after{
+  content:"";position:absolute;inset:0;background:inherit;
+  filter:brightness(1.5) saturate(1.3) blur(2px);mix-blend-mode:screen;
+  animation:glow 3.4s ease-in-out infinite alternate;animation-delay:-1.2s;
+}
+.garland-line img{position:absolute;left:50%;top:6px;width:clamp(58px,6vw,82px);height:auto;transform:translateX(-50%);z-index:1;filter:drop-shadow(0 6px 10px rgba(30,20,40,.25))}
+
+/* --- 5. The first screen: New Year trips --------------------------------- */
+.xmas{position:relative;isolation:isolate;overflow:clip;padding-top:calc(var(--header-h) + clamp(30px,5vw,64px));padding-bottom:clamp(30px,4vw,60px)}
+.xmas__branch{
+  position:absolute;right:0;top:calc(var(--header-h) - 14px);z-index:0;width:clamp(150px,17vw,270px);height:auto;pointer-events:none;
+  filter:drop-shadow(0 14px 22px rgba(60,30,40,.22));
+}
+.xmas__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:clamp(24px,4vw,64px);align-items:center}
+.eyebrow--festive{color:var(--xmas-red-deep);gap:9px}
+.eyebrow--festive::before{display:none}
+.eyebrow--festive svg{width:16px;height:16px;flex:none}
+.section--dark .eyebrow--festive{color:#FFC9A6}
+.xmas__title{font-size:clamp(2.3rem,1.2rem + 2.5vw,3.55rem);line-height:1.04;margin-block:16px 18px;text-wrap:balance;color:var(--ink)}
+.xmas__title em,.santa h2 em{
+  font-style:normal;
+  background:linear-gradient(100deg,#F3262E 0%,#C8102E 55%,#E0262B 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.xmas__lead{max-width:52ch}
+.xmas__facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px;max-width:620px}
+.xmas__facts li{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:18px;
+  background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px -12px rgba(90,50,60,.22)}
+.xmas__facts i{width:32px;height:32px;border-radius:10px;flex:none;display:grid;place-items:center;background:#FDE7E6;color:var(--xmas-red-deep)}
+.xmas__facts i svg{width:17px;height:17px}
+.xmas__facts b{display:block;font-size:var(--t-small);font-weight:800;letter-spacing:-.015em;line-height:1.25;color:var(--ink)}
+.xmas__facts small{display:block;font-size:11.5px;color:var(--ink-2);line-height:1.35;margin-top:2px}
+.xmas .hero__stores{margin-top:22px}
+.xmas .hero__stores .chip--live{background:linear-gradient(100deg,#F3262E,#B90918);box-shadow:0 12px 28px -10px rgba(185,9,24,.55)}
+
+.xmas__stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px;padding-block:20px}
+.xmas__stage .device{--w:clamp(236px,22vw,316px)}
+.xmas__front{z-index:2;margin-left:24%;animation:phoneFloat 7s ease-in-out infinite;transform-origin:50% 60%}
+.xmas__back{position:absolute;z-index:1;--w:clamp(200px,18vw,262px)!important;left:calc(50% - var(--w) * .82);top:13%;transform:rotate(-8deg);filter:saturate(1.05)}
+.float--season{position:absolute;z-index:3;right:-2%;bottom:12%}
+.float__ic{width:34px;height:34px;border-radius:11px;flex:none;display:grid;place-items:center;background:linear-gradient(140deg,#F3262E,#B90918);color:#fff}
+
+.xmas__moods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:clamp(30px,4vw,56px)}
+.mood{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 40px -22px rgba(40,30,60,.5);isolation:isolate}
+.mood img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.mood:hover img{transform:scale(1.05)}
+.mood::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(10,12,30,0) 40%,rgba(10,12,30,.72))}
+.mood span{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;color:#fff}
+.mood b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1rem,.9rem + .4vw,1.22rem);letter-spacing:-.02em;line-height:1.15;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.mood small{display:block;font-size:12px;opacity:.92;margin-top:3px;line-height:1.35;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+/* Snow, as particles. Three depths, each a tile of flakes that slides down by
+   exactly one tile and starts again — a compositor transform, no repaint. */
+.snow{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.snow i{position:absolute;left:0;right:0;top:-400px;height:calc(100% + 400px);
+  background-image:
+    radial-gradient(2.4px 2.4px at 40px 60px,#fff 55%,transparent 60%),
+    radial-gradient(1.6px 1.6px at 160px 20px,#fff 55%,transparent 60%),
+    radial-gradient(3px 3px at 260px 150px,rgba(255,255,255,.95) 55%,transparent 60%),
+    radial-gradient(2px 2px at 90px 250px,#fff 55%,transparent 60%),
+    radial-gradient(2.6px 2.6px at 340px 320px,#fff 55%,transparent 60%),
+    radial-gradient(1.8px 1.8px at 210px 360px,#fff 55%,transparent 60%);
+  background-size:400px 400px;
+  filter:drop-shadow(0 0 2px rgba(150,170,210,.8));
+  animation:snow 16s linear infinite;
+}
+.snow i:nth-child(2){background-size:300px 300px;opacity:.75;animation-duration:22s;top:-300px;height:calc(100% + 300px);animation-name:snow2}
+.snow i:nth-child(3){background-size:520px 520px;opacity:.9;animation-duration:11s;top:-520px;height:calc(100% + 520px);animation-name:snow3;transform:scale(1.4)}
+@keyframes snow{to{transform:translate3d(30px,400px,0)}}
+@keyframes snow2{to{transform:translate3d(-20px,300px,0)}}
+@keyframes snow3{to{transform:translate3d(40px,520px,0)}}
+
+/* --- 6. Santa -------------------------------------------------------------- */
+.santa{padding-top:calc(var(--sp-section) * 2)}
+.santa__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4.4vw,76px);align-items:center}
+.santa__stage{position:relative;min-height:520px;display:flex;align-items:flex-end}
+.santa__halo{position:absolute;left:4%;top:4%;width:72%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,214,150,.42),rgba(255,140,120,.12) 46%,transparent 68%);animation:halo 5s ease-in-out infinite alternate}
+@keyframes halo{from{transform:scale(.94);opacity:.8}to{transform:scale(1.05);opacity:1}}
+.santa__fig{position:relative;width:min(340px,60%);aspect-ratio:1;flex:none;margin-left:-2%;animation:santaSway 6s ease-in-out infinite;transform-origin:50% 100%}
+.santa__fig img{position:absolute;inset:0;width:100%;height:100%}
+/* The app cuts Santa's raised arm from his body and swings it round the
+   elbow; the same two pictures wave here. */
+.santa__hand{transform-origin:26% 46%;animation:wave 2.4s ease-in-out infinite}
+@keyframes wave{0%,52%,100%{transform:rotate(0)}10%{transform:rotate(-12deg)}22%{transform:rotate(8deg)}34%{transform:rotate(-10deg)}44%{transform:rotate(4deg)}}
+@keyframes santaSway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.4deg) translateY(-4px)}}
+.santa__chat{position:absolute;right:0;top:6%;width:min(330px,62%);display:flex;flex-direction:column;gap:9px}
+.santa__ex{align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#C9D0EA;opacity:.85}
+.bub{display:flex;gap:8px;align-items:flex-end}
+.bub p{padding:11px 14px;border-radius:18px;font-size:var(--t-small);line-height:1.45}
+.bub img{width:34px;height:34px;border-radius:50%;flex:none;object-fit:cover;object-position:50% 20%;background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.8)}
+.bub--santa p{background:rgba(255,255,255,.94);color:var(--ink);border-bottom-left-radius:6px;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
+.bub--me{justify-content:flex-end}
+.bub--me p{background:linear-gradient(120deg,#F3262E,#B90918);color:#fff;border-bottom-right-radius:6px;max-width:84%}
+.santa__voice{display:inline-flex;align-items:center;gap:10px;margin-left:42px;font-size:12px;font-weight:700;color:#FFE2B8}
+.santa__bars{display:inline-flex;align-items:center;gap:3px;height:18px}
+.santa__bars i{width:3px;border-radius:2px;background:linear-gradient(#FFD27A,#FF7A59);height:40%;animation:bar 1s ease-in-out infinite}
+.santa__bars i:nth-child(2){animation-delay:-.2s}.santa__bars i:nth-child(3){animation-delay:-.45s}.santa__bars i:nth-child(4){animation-delay:-.1s}
+.santa__bars i:nth-child(5){animation-delay:-.6s}.santa__bars i:nth-child(6){animation-delay:-.3s}.santa__bars i:nth-child(7){animation-delay:-.75s}
+@keyframes bar{0%,100%{height:25%}50%{height:100%}}
+.santa__copy h2{font-size:var(--t-h2);margin-block:14px 16px;text-wrap:balance}
+.santa h2 em{background:linear-gradient(100deg,#FF6A5E,#FFC07A);-webkit-background-clip:text;background-clip:text}
+.santa__points{display:grid;gap:10px;margin-block:22px 18px}
+.santa__points li{display:flex;gap:12px;align-items:center;padding:11px 14px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#E8ECF8;font-weight:600;font-size:var(--t-small)}
+.santa__points i{width:34px;height:34px;border-radius:11px;flex:none;display:grid;place-items:center;background:rgba(243,38,46,.2);color:#FF9C8F}
+.santa__points i svg{width:18px;height:18px}
+
+/* --- 7. One phone: an iPhone of this generation, drawn ------------------- */
+/* Titanium rim, a hair of black glass, the screen at 9 : 19.5 with the
+   corner the real one has, the Dynamic Island, and the buttons on both sides.
+   Every phone on the page is this one at a different --w. The old frame was
+   a grey gradient with a notch and a screen as tall as whatever picture sat
+   in it ("уродливый телефон, сделанный плохо"). */
+.device{
+  --rim:calc(var(--w) * .0135);
+  --bez:calc(var(--w) * .024);
+  --edge:calc(var(--rim) + var(--bez));
+  --r-scr:calc(var(--w) * .142);
+  aspect-ratio:auto;height:auto;
+  padding:var(--edge);
+  border-radius:calc(var(--r-scr) + var(--edge));
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 6%,rgba(255,255,255,0) 94%,rgba(0,0,0,.18)),
+    linear-gradient(90deg,#7E8187 0%,#E9EAEE 1.4%,#B3B6BC 3%,#CDCFD4 30%,#C5C7CC 70%,#B3B6BC 97%,#E9EAEE 98.6%,#7E8187 100%);
+  box-shadow:
+    inset 0 0 0 .5px rgba(255,255,255,.7),
+    inset 0 0 0 1.5px rgba(80,82,90,.35),
+    0 2px 2px rgba(10,12,30,.12),
+    0 calc(var(--w) * .16) calc(var(--w) * .26) calc(var(--w) * -.1) rgba(20,22,48,.5),
+    0 calc(var(--w) * .05) calc(var(--w) * .08) calc(var(--w) * -.03) rgba(20,22,48,.3);
+}
+.device::before{
+  content:"";position:absolute;inset:var(--rim);z-index:0;
+  border-radius:calc(var(--r-scr) + var(--bez));
+  background:#040406;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);
+}
+.device::after{
+  inset:var(--edge);border:0;z-index:5;
+  border-radius:var(--r-scr);
+  background:linear-gradient(118deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 20%,rgba(255,255,255,0) 34%);
+}
+.device .device__screen,.device--shot .device__screen{
+  position:relative;z-index:1;display:block;height:auto;
+  aspect-ratio:1320/2868;padding:0;overflow:hidden;
+  border-radius:var(--r-scr);
+  clip-path:inset(0 round var(--r-scr));
+  background:#FAF8F5;
+}
+/* The store screens cut from their frames are a little taller than a whole
+   screen; drawn at the screen's full height they leave a hair of the app's
+   own ground at each side. A whole 1320 x 2868 screenshot fills it exactly
+   (season.js marks those .is-full). */
+.device__view{width:98.06%;margin-inline:auto;height:100%}
+.device__view.is-full{width:100%}
+.device__view .device__img{width:100%;height:auto}
+.device__view.is-full .device__img{height:100%;object-fit:cover;object-position:50% 0}
+/* the living layers were measured on the cut screens; on a whole screen they
+   would sit a few pixels off, so they rest until they are measured again */
+.device__view.is-full .live,.device__view.is-full .mic-pulse{display:none}
+.device__island{
+  position:absolute;z-index:6;left:50%;top:calc(var(--edge) + var(--w) * .022);
+  width:calc(var(--w) * .282);height:calc(var(--w) * .082);border-radius:999px;transform:translateX(-50%);
+  background:#000;box-shadow:inset 0 0 0 .5px rgba(255,255,255,.05);
+}
+.device__island::after{
+  content:"";position:absolute;right:13%;top:50%;width:calc(var(--w) * .03);aspect-ratio:1;border-radius:50%;transform:translateY(-50%);
+  background:radial-gradient(circle at 35% 35%,#3B4870 0,#141a2c 45%,#07080c 70%);
+}
+/* The buttons, in units of the phone's width (its height is 2.085 of it):
+   on the left the Action button and the two volume keys, on the right the
+   side button and, lower, Camera Control. */
+.device__hw{
+  position:absolute;z-index:0;pointer-events:none;
+  left:calc(var(--w) * -.009);top:calc(var(--w) * .52);
+  width:calc(var(--w) * .013);height:calc(var(--w) * .13);border-radius:2px 0 0 2px;
+  background:linear-gradient(90deg,#6E7177,#DADCE0 45%,#A2A5AB);
+  box-shadow:0 calc(var(--w) * .17) 0 0 #A9ACB2;
+}
+.device__hw::before,.device__hw::after{content:"";position:absolute;width:100%;border-radius:inherit;background:inherit}
+.device__hw::before{left:0;top:calc(var(--w) * -.166);height:calc(var(--w) * .065)}
+.device__hw::after{
+  left:calc(var(--w) * 1.005);top:calc(var(--w) * .03);height:calc(var(--w) * .74);border-radius:0 2px 2px 0;
+  background:linear-gradient(90deg,#A2A5AB,#DADCE0 55%,#6E7177);
+  -webkit-mask-image:linear-gradient(180deg,#000 0 27%,transparent 27% 86.5%,#000 86.5%);
+          mask-image:linear-gradient(180deg,#000 0 27%,transparent 27% 86.5%,#000 86.5%);
+}
+.device{isolation:isolate}
+.device__view .live{z-index:1}
+
+/* The cut screens never had a status bar; the island covers its middle and
+   nothing else is missing, so no time or battery is painted in. */
+
+/* phone sizes stay the old names */
+.device--sm{--w:238px}
+.device--md{--w:274px}
+.device--lg{--w:312px}
+
+/* --- 8. Phones and tablets ----------------------------------------------- */
+@media (max-width:1024px){
+  .xmas__grid,.santa__grid{grid-template-columns:1fr}
+  .xmas__stage{min-height:0;padding-block:10px 40px}
+  /* on a narrow screen the phone comes straight after the promise, before the details */
+  .xmas__grid{row-gap:0}
+  .xmas__copy{display:contents}
+  .xmas__copy > .eyebrow{order:1;justify-self:start}
+  .xmas__title{order:2}
+  .xmas__lead{order:3}
+  .xmas__stage{order:4;margin-top:22px}
+  .xmas__facts{order:5;margin-top:0}
+  .xmas .hero__stores{order:6}
+  .xmas__moods{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .santa__stage{min-height:460px;max-width:620px;width:100%;margin-inline:auto}
+}
+@media (max-width:760px){
+  .xmas{padding-top:calc(var(--header-h) + 20px)}
+  .xmas__branch{width:120px;opacity:.95}
+  .xmas__title{font-size:clamp(2.15rem,9.6vw,2.9rem)}
+  .xmas__facts{grid-template-columns:1fr;max-width:none}
+  .xmas__stage .device{--w:min(250px,64vw)}
+  .xmas__back{--w:min(190px,48vw)!important;left:2%;top:10%}
+  .xmas__front{margin-left:28%}
+  .float--season{right:0;bottom:4%}
+  .xmas__moods{gap:10px}
+  .mood{border-radius:18px;aspect-ratio:1/1}
+  .mood span{left:12px;right:10px;bottom:11px}
+  .mood small{display:none}
+  .santa__stage{min-height:0;flex-direction:column;align-items:stretch}
+  .santa__fig{width:62%;margin:0 auto}
+  .santa__halo{left:12%;width:76%}
+  .santa__chat{position:relative;width:100%;top:auto;margin-top:8px}
+  .header__garland{height:38px;background-size:auto 38px}
+}
+
+/* --- 9. Stillness when it is asked for ----------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  .snow i,.stars i,.header__garland::after,.garland-line::after,.santa__halo,.santa__fig,.santa__hand,.santa__bars i,.xmas__front{animation:none}
+  .sky__sleigh{animation:none;opacity:.9;transform:translate(10vw,0) rotate(-6deg)}
+  .snow i:nth-child(3){transform:scale(1.4)}
+}
+
+/* --- 10. Night corrections: cards that stay light keep their own ink ----- */
+.section--dark .ui{color:var(--ink)}
+.section--dark .ui h3,.section--dark .ui h4{color:var(--ink)}
+.section--dark .chal__hd{background:rgba(255,255,255,.08);border-bottom-color:rgba(255,255,255,.12)}
+.section--dark .chal__ttl{color:#fff}
+.section--dark .chal__live{color:#E8ECF8}

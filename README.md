@@ -55,6 +55,30 @@ red used only as an accent, a clamp-based type scale, an 8px spacing rhythm and
 one device component with three sizes (hero 100%, feature 85–95%, secondary
 70–80%).
 
+## The Christmas season (20 November – 14 January)
+
+`assets/season.css` and `assets/season.js` are a layer over the site, loaded
+after `styles.css` and `app.js`; the season leaves by removing their two tags
+(and the `#xmas` / `#santa` sections, the garland lines and `.sky`).
+
+- **One sky.** `.sky` sits behind every section and runs dawn → day → golden
+  sunset → dusk → starry night. Each colour is pinned to a section by its
+  `data-sky` attribute (`name`, `name@0.7` for a fraction of its height,
+  `name@pad` for the end of its top padding); `season.js` turns those into
+  one gradient in pixels and fades the stars in as the reader reaches the
+  night. No section paints a ground of its own, so there is no seam to see.
+- **Tone follows the sky.** Every section from `#santa` down is
+  `.section--dark` (light words); above it, the darker scenes are rounded
+  panes (`.section--panel`) instead of bands.
+- **One phone.** `.device` is an iPhone of this generation drawn in CSS:
+  titanium rim, black glass, a 9 : 19.5 screen, Dynamic Island and the side
+  buttons. A whole 1320 × 2868 screenshot fills it exactly; the older cut
+  store screens are drawn at full height.
+- **Pictures.** `img/xmas/` comes from the app's own Christmas assets
+  (`python3 tools/xmas-assets.py /path/to/Escape.travel.app`); new screens
+  of the app go through `python3 tools/app-shots.py <dir>` (raw PNGs in
+  `<dir>/<lang>/<name>.png` → `img/app/<lang>/<name>.webp`).
+
 ## Waitlist intake
 
 `api/waitlist.js` is a serverless function Vercel deploys from this repository,
