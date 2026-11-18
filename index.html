@@ -39,11 +39,12 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preload" as="image" href="/img/hero-santorini-lg.webp" imagesrcset="/img/hero-santorini-sm.webp 1200w, /img/hero-santorini-lg.webp 2200w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="/img/xmas/branch.webp">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/greatvibes-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/onest-latin-700.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css?v=f9acb6e106">
-<link rel="stylesheet" href="/assets/styles.css?v=573fb6308c">
+<link rel="stylesheet" href="/assets/styles.css?v=2e2ccc63d4">
+<link rel="stylesheet" href="/assets/season.css?v=f974ddb79d">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Escape! AI Travel Agent","applicationCategory":"TravelApplication","operatingSystem":"iOS, Android","url":"https://www.escapetravel.site/","description":"Personal AI travel agent that plans, organises and accompanies a whole journey — routes, tickets, hotels, cars, EV charging, transfers, weather and recommendations in one agent.","inLanguage":["ru","uk","en"],"author":{"@type":"Person","name":"Dmytro Sukhyna"},"publisher":{"@type":"Organization","name":"Escape!","url":"https://www.escapetravel.site/","email":"escape.travel.ai@gmail.com"}}
@@ -51,6 +52,14 @@
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="a11ySkip">Перейти к содержанию</a>
+
+<!-- ===== the sky: dawn at the top, night at the foot (drawn by assets/season.js) ===== -->
+<div class="sky" id="sky" aria-hidden="true">
+  <i class="sky__sun"></i>
+  <i class="sky__moon"></i>
+  <img class="sky__sleigh" src="/img/xmas/sleigh.webp" width="700" height="281" alt="" loading="lazy" decoding="async">
+</div>
+<div class="stars" id="stars" aria-hidden="true"><i></i><i></i></div>
 
 <!-- ===== icon sprite ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -106,23 +115,30 @@
   <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.6" width="6" height="11" rx="3"/><path d="M5.5 11.2a6.5 6.5 0 0 0 13 0"/><path d="M12 17.7V21"/></symbol>
   <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.3 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8ZM14.1 5.7c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 0 2.1-.5 2.8-1.3Z"/></symbol>
   <symbol id="i-android" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5H6.4v8.1c0 .6.5 1.1 1.1 1.1h.9v2.6a1.4 1.4 0 0 0 2.8 0v-2.6h1.6v2.6a1.4 1.4 0 0 0 2.8 0v-2.6h.9c.6 0 1.1-.5 1.1-1.1ZM4.4 9.3a1.4 1.4 0 0 0-1.4 1.4v4.9a1.4 1.4 0 0 0 2.8 0v-4.9a1.4 1.4 0 0 0-1.4-1.4Zm15.2 0a1.4 1.4 0 0 0-1.4 1.4v4.9a1.4 1.4 0 0 0 2.8 0v-4.9a1.4 1.4 0 0 0-1.4-1.4ZM15 3.6l1-1.7a.3.3 0 0 0-.5-.3l-1 1.8a6.6 6.6 0 0 0-5 0l-1-1.8a.3.3 0 0 0-.5.3l1 1.7a5.4 5.4 0 0 0-2.6 4.6h11.2A5.4 5.4 0 0 0 15 3.6ZM9.3 6.2a.6.6 0 1 1 0-1.1.6.6 0 0 1 0 1.1Zm5.4 0a.6.6 0 1 1 0-1.1.6.6 0 0 1 0 1.1Z"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M3.8 16.8l16.4-9.6"/><path d="m9.4 3.9 2.6 2.4 2.6-2.4M9.4 20.1l2.6-2.4 2.6 2.4M3.1 10.5l3.5.9-1 3.4M20.9 13.5l-3.5-.9 1-3.4M5.6 9.2l1 3.4-3.5.9M18.4 14.8l-1-3.4 3.5-.9"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3.2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h2M14 14h2M8 17h2"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1.2"/><path d="M5 12.5v6.3c0 .9.7 1.7 1.7 1.7h10.6c.9 0 1.7-.8 1.7-1.7v-6.3M12 8.5v12"/><path d="M12 8.5C10.8 5 7.4 4.3 7 6.4c-.3 1.6 2.2 2.1 5 2.1Zm0 0c1.2-3.5 4.6-4.2 5-2.1.3 1.6-2.2 2.1-5 2.1Z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.6c0 4.3-3.8 7.6-8.5 7.6-1.2 0-2.3-.2-3.3-.6L4 20l1.2-3.7c-1.1-1.3-1.7-2.9-1.7-4.7C3.5 7.3 7.3 4 12 4s8.5 3.3 8.5 7.6Z"/><path d="M8.5 11.7h.01M12 11.7h.01M15.5 11.7h.01" stroke-width="2.4"/></symbol>
+  <symbol id="i-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5M8 6.5v11M12 3.5v17M16 6.5v11M20 9.5v5"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 12.4V5.6a1.5 1.5 0 0 1 3 0v5.2M11.2 10.4V4.3a1.5 1.5 0 0 1 3 0v6.2M14.2 10.6V5.6a1.5 1.5 0 0 1 3 0v7.6c0 4.3-2.6 7.3-6.4 7.3-2.6 0-4.1-1.3-5.6-3.6l-2-3.2a1.5 1.5 0 0 1 2.5-1.6l2.5 2.3"/><path d="M19.5 3.5c.9.8 1.4 1.8 1.5 3M3.6 7.5c.1-1.2.6-2.2 1.5-3"/></symbol>
 </defs></svg>
 
 <!-- ===== header ===== -->
 <header class="header" id="header">
+  <span class="header__garland" aria-hidden="true"></span>
   <div class="wrap">
-    <a class="header-brand" href="#top" aria-label="Escape! — AI Travel Agent">
+    <a class="header-brand" href="#xmas" aria-label="Escape! — AI Travel Agent">
       <span class="brandmark"><span class="word">Escape</span><svg class="pin" aria-hidden="true"><use href="#brand-pin"/></svg></span>
       <small>AI Travel Agent</small>
     </a>
 
     <nav class="nav" id="nav" aria-label="Основная навигация" data-i18n-aria-label="a11yNav">
-      <a href="#problem" data-i18n="navWhy">Почему ESCAPE</a>
+      <a href="#xmas" data-i18n="navXmas">Новый год</a>
       <a href="#agent" data-i18n="navAgent">AI Agent</a>
       <a href="#how" data-i18n="navHow">Как это работает</a>
       <a href="#community" data-i18n="navCommunity">Сообщество</a>
+      <a href="#santa" data-i18n="navSanta">Санта</a>
       <a href="#world" data-i18n="navWorld">Весь мир</a>
-      <a href="#together" data-i18n="navTogether">Вместе</a>
       <a href="#identity" data-i18n="navIdentity">Travel-профиль</a>
       <a href="#contact" data-i18n="navContact">Контакты</a>
     </nav>
@@ -144,10 +160,12 @@
 </header>
 
 <nav class="drawer" id="drawer" aria-label="Мобильная навигация" data-i18n-aria-label="a11yMobileNav" hidden>
+  <a href="#xmas" data-i18n="navXmas">Новый год</a>
   <a href="#problem" data-i18n="navWhy">Почему ESCAPE</a>
   <a href="#agent" data-i18n="navAgent">AI Agent</a>
   <a href="#how" data-i18n="navHow">Как это работает</a>
   <a href="#community" data-i18n="navCommunity">Сообщество</a>
+  <a href="#santa" data-i18n="navSanta">Санта</a>
   <a href="#world" data-i18n="navWorld">Весь мир</a>
   <a href="#together" data-i18n="navTogether">Вместе</a>
   <a href="#identity" data-i18n="navIdentity">Travel-профиль</a>
@@ -156,12 +174,58 @@
 </nav>
 
 <main id="main">
+<!-- ===== 00 NEW YEAR TRIPS — the season's own first screen ===== -->
+<section class="xmas" id="xmas" data-sky="dawn@0 dawn2@.7">
+  <div class="snow" aria-hidden="true"><i></i><i></i><i></i></div>
+  <img class="xmas__branch" src="/img/xmas/branch.webp" width="520" height="662" alt="" aria-hidden="true" decoding="async">
+  <div class="wrap xmas__grid">
+    <div class="xmas__copy">
+      <span class="eyebrow eyebrow--festive"><svg width="14" height="14" aria-hidden="true"><use href="#i-snow"/></svg><span data-i18n="xmEyebrow">Новогодние путешествия</span></span>
+      <h1 class="xmas__title" data-i18n-html="xmTitle">Встретьте Новый год<br><em>там, где идёт снег.</em></h1>
+      <p class="lead xmas__lead" data-i18n="xmLead">В приложении открылся новогодний раздел: горнолыжные курорты по странам, уютные городки, рождественские ярмарки и спа. Escape сразу подставит праздничные ночи — с 30 декабря по 2 января — и покажет, где ещё есть места.</p>
+      <ul class="xmas__facts">
+        <li><i><svg aria-hidden="true"><use href="#i-cal"/></svg></i><span><b data-i18n="xmF1">30 декабря – 2 января</b><small data-i18n="xmF1s">праздничные ночи уже выбраны</small></span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-pin"/></svg></i><span><b data-i18n="xmF2">100 · 300 · 500 км</b><small data-i18n="xmF2s">или весь мир — ближе сначала</small></span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-ticket"/></svg></i><span><b data-i18n="xmF3">Места и бронирование</b><small data-i18n="xmF3s">ссылка в каждом отеле</small></span></li>
+      </ul>
+      <div class="hero__stores">
+        <a class="chip chip--live" href="https://apps.apple.com/app/id6803238502" target="_blank" rel="noopener" data-store="ios"><svg width="15" height="15" aria-hidden="true"><use href="#i-apple"/></svg><span data-i18n="ctaJoin">Скачать бесплатно в App Store</span><svg class="arw" width="15" height="15" aria-hidden="true" style="margin-left:auto"><use href="#i-arrow"/></svg></a>
+        <button class="chip" type="button" data-waitlist-android><svg width="15" height="15" aria-hidden="true"><use href="#i-android"/></svg>Android<b class="soon" data-i18n="soon">скоро</b></button>
+      </div>
+    </div>
+    <div class="xmas__stage">
+      <div class="device device--lg device--shot xmas__back">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" src="/img/xmas/launch.webp" width="720" height="1560" decoding="async" loading="lazy" alt="Так Escape встречает вас в праздники: Санторини в снегу и сани Санты" data-i18n-alt="shotLaunch"></span></div>
+      </div>
+      <div class="device device--lg device--shot xmas__front">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="christmas" src="/img/app/ru/christmas.webp" width="720" height="1561" decoding="async" fetchpriority="high" alt="Новогодний раздел на главном экране Escape" data-i18n-alt="shotXmas"></span></div>
+      </div>
+      <div class="float float--season">
+        <span class="float__ic"><svg width="16" height="16" aria-hidden="true"><use href="#i-snow"/></svg></span>
+        <span><b data-i18n="xmSeason">С 20 ноября по 14 января</b><small data-i18n="xmSeasonS">приложение в праздничном наряде</small></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="xmas__moods">
+      <li class="mood rv"><img src="/img/xmas/ski.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmSki">Горнолыжные курорты</b><small data-i18n="xmSkiS">по странам: Альпы, Карпаты, Пиренеи</small></span></li>
+      <li class="mood rv"><img src="/img/xmas/cosy.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmCosy">Уютные городки</b><small data-i18n="xmCosyS">снег, камин и тишина</small></span></li>
+      <li class="mood rv"><img src="/img/xmas/market.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmMarket">Рождественские ярмарки</b><small data-i18n="xmMarketS">огни, глинтвейн и пряники</small></span></li>
+      <li class="mood rv"><img src="/img/xmas/spa.webp" width="760" height="507" loading="lazy" decoding="async" alt="" ><span><b data-i18n="xmSpa">Спа и шале</b><small data-i18n="xmSpaS">тепло после мороза</small></span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
 <!-- ===== 01 HERO ===== -->
-<section class="hero" id="top">
+<section class="hero" id="top" data-sky="morning">
   <div class="hero__media">
     <img src="/img/escape-hero2-lg.webp"
          srcset="/img/escape-hero2-sm.webp 1400w, /img/escape-hero2-lg.webp 1672w"
-         sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async"
+         sizes="100vw" width="1672" height="941" loading="lazy" decoding="async"
          alt="Оя на Санторини: синие купола, белые дома и Эгейское море"
          data-i18n-alt="altHero">
   </div>
@@ -169,11 +233,11 @@
 
   <div class="wrap">
     <div class="hero__copy">
-      <h1>
+      <h2 class="hero__title">
         <span data-i18n="heroL1">Вы выбираете, куда отправиться.</span>
         <span class="hero__brandline"><span class="brandmark"><span class="word">Escape</span><svg class="pin" aria-hidden="true"><use href="#brand-pin"/></svg></span></span>
         <span class="l2" data-i18n="heroL2">берёт на себя всё остальное.</span>
-      </h1>
+      </h2>
       <p class="hero__sub" data-i18n-html="heroSub">А если не знаете куда —<em>Escape! найдёт поездку. И даже тех, с кем поехать.</em></p>
       <p class="hero__text" data-i18n="heroText">Билеты, отель, маршрут, кафе, время в дороге. Одна просьба — и вся поездка собрана. Дальше агент едет с вами и меняет план, когда меняется день.</p>
 
@@ -196,8 +260,8 @@
 
     <div class="hero__stage">
       <div class="device device--lg device--shot">
-        <div class="device__notch"></div>
-        <div class="device__screen"><span class="device__view" data-pane="know"><img class="device__img" data-shot="10-meteora" src="/img/app/ru/10-meteora.webp" width="640" height="1418" decoding="async" fetchpriority="high" alt="Страница места в Escape: Метеоры" data-i18n-alt="shotMeteora"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:53.597%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="10-meteora" src="/img/app/ru/10-meteora.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 47.17%;width:100.000%;left:0.000%;top:0.000%"></span></span><span class="device__view" data-pane="surprise" hidden><img class="device__img" data-shot="01-home" src="/img/app/ru/01-home.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Главный экран Escape: идеи на выходные рядом" data-i18n-alt="shotHome"><span class="live" aria-hidden="true" style="left:3.281%;top:5.853%;width:92.969%;height:63.540%;border-radius:7.395%/4.883%"><img class="live__img" data-shot="01-home" src="/img/app/ru/01-home.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.44% 61.77%;width:107.563%;left:-3.529%;top:-9.212%"></span></span></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view" data-pane="know"><img class="device__img" data-shot="10-meteora" src="/img/app/ru/10-meteora.webp" width="640" height="1418" decoding="async" loading="lazy" alt="Страница места в Escape: Метеоры" data-i18n-alt="shotMeteora"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:53.597%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="10-meteora" src="/img/app/ru/10-meteora.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 47.17%;width:100.000%;left:0.000%;top:0.000%"></span></span><span class="device__view" data-pane="surprise" hidden><img class="device__img" data-shot="01-home" src="/img/app/ru/01-home.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Главный экран Escape: идеи на выходные рядом" data-i18n-alt="shotHome"><span class="live" aria-hidden="true" style="left:3.281%;top:5.853%;width:92.969%;height:63.540%;border-radius:7.395%/4.883%"><img class="live__img" data-shot="01-home" src="/img/app/ru/01-home.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.44% 61.77%;width:107.563%;left:-3.529%;top:-9.212%"></span></span></div>
       </div>
 
       <div class="float float--live">
@@ -213,7 +277,7 @@
 </section>
 
 <!-- ===== 02 PROBLEM ===== -->
-<section class="section" id="problem">
+<section class="section" id="problem" data-sky="pearl">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow" data-i18n="probEyebrow">Проблема</span>
@@ -264,63 +328,63 @@
   <div class="shots" role="list" tabindex="0" aria-label="Экраны приложения Escape" data-i18n-aria-label="galAria">
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="01-home" src="/img/app/ru/01-home.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Куда сбежать на выходные?" data-i18n-alt="gal1alt"><span class="live" aria-hidden="true" style="left:3.281%;top:5.853%;width:92.969%;height:63.540%;border-radius:7.395%/4.883%"><img class="live__img" data-shot="01-home" src="/img/app/ru/01-home.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.44% 61.77%;width:107.563%;left:-3.529%;top:-9.212%"></span></span></div>
       </div>
       <figcaption><b data-i18n="gal1a">Куда сбежать</b><span data-i18n="gal1b">на выходные?</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="02-weekend" src="/img/app/ru/02-weekend.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Идеи рядом с вами — на машине, паромом, самолётом" data-i18n-alt="gal2alt"></span></div>
       </div>
       <figcaption><b data-i18n="gal2a">Идеи рядом с вами —</b><span data-i18n="gal2b">на машине, паромом, самолётом</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="11-santorini" src="/img/app/ru/11-santorini.webp" width="640" height="1418" loading="lazy" decoding="async" alt="Каждое место как кино" data-i18n-alt="gal3alt"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:53.597%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="11-santorini" src="/img/app/ru/11-santorini.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 47.17%;width:100.000%;left:0.000%;top:0.000%"></span></span></div>
       </div>
       <figcaption><b data-i18n="gal3a">Каждое место</b><span data-i18n="gal3b">как кино</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="04-finds" src="/img/app/ru/04-finds.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Находки Escape: где едят местные" data-i18n-alt="gal4alt"></span></div>
       </div>
       <figcaption><b data-i18n="gal4a">Находки Escape:</b><span data-i18n="gal4b">где едят местные</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="05-assistant" src="/img/app/ru/05-assistant.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Скажите, куда — остальное сделаем мы" data-i18n-alt="gal5alt"><span class="mic-pulse" aria-hidden="true" style="left:49.375%;top:27.715%;width:17.812%"><i></i><i></i></span></span></div>
       </div>
       <figcaption><b data-i18n="gal5a">Скажите, куда —</b><span data-i18n="gal5b">остальное сделаем мы</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Весь маршрут от двери до двери" data-i18n-alt="gal6alt"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:26.798%;border-radius:6.050%/9.474%"><img class="live__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.37%;width:107.563%;left:-3.697%;top:-21.579%"></span></span></div>
       </div>
       <figcaption><b data-i18n="gal6a">Весь маршрут</b><span data-i18n="gal6b">от двери до двери</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" width="640" height="1424" loading="lazy" decoding="async" alt="В дороге подскажет, когда выходить" data-i18n-alt="gal7alt"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:27.080%;border-radius:6.050%/9.375%"><img class="live__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.61%;width:107.563%;left:-3.697%;top:-21.354%"></span></span></div>
       </div>
       <figcaption><b data-i18n="gal7a">В дороге подскажет,</b><span data-i18n="gal7b">когда выходить</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="08-community" src="/img/app/ru/08-community.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Находите попутчиков" data-i18n-alt="gal8alt"></span></div>
       </div>
       <figcaption><b data-i18n="gal8a">Находите</b><span data-i18n="gal8b">попутчиков</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="09-invite" src="/img/app/ru/09-invite.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Приглашайте друзей — красиво" data-i18n-alt="gal9alt"><span class="live" aria-hidden="true" style="left:0.000%;top:0.000%;width:100.000%;height:52.045%;border-radius:0.000%/0.000%"><img class="live__img" data-shot="09-invite" src="/img/app/ru/09-invite.webp" alt="" decoding="async" loading="lazy" style="transform-origin:12.00% 45.80%;width:100.000%;left:0.000%;top:0.000%"></span></span></div>
       </div>
       <figcaption><b data-i18n="gal9a">Приглашайте друзей —</b><span data-i18n="gal9b">красиво</span></figcaption>
@@ -329,7 +393,7 @@
 </section>
 
 <!-- ===== 04 ONE REQUEST ===== -->
-<section class="section" id="agent">
+<section class="section" id="agent" data-sky="day">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow" data-i18n="knowEyebrow">Сценарий первый</span>
@@ -453,7 +517,7 @@
         <img src="/img/terrace-sm.webp" srcset="/img/terrace-sm.webp 1200w, /img/terrace-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Терраса кафе с видом на море" data-i18n-alt="altTerrace">
       </figure>
       <div class="device device--md device--shot scene__device">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="05-assistant" src="/img/app/ru/05-assistant.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Ассистент Escape: скажите, куда хочется" data-i18n-alt="shotAssistant"><span class="mic-pulse" aria-hidden="true" style="left:49.375%;top:27.715%;width:17.812%"><i></i><i></i></span></span></div>
       </div>
     </div>
@@ -478,7 +542,9 @@
 </section>
 
 <!-- ===== 07 LIVE TRAVEL AGENT ===== -->
-<section class="section section--dark section--photo" id="live">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<section class="section section--dark section--photo section--panel" id="live" data-sky="day2">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/escape-dusk-sm.webp" srcset="/img/escape-dusk-sm.webp 1400w, /img/escape-dusk-lg.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
   </div>
@@ -504,7 +570,7 @@
         <img src="/img/live-airport-sm.webp" srcset="/img/live-airport-sm.webp 1200w, /img/live-airport-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Панорамное окно аэропорта с самолётами у гейтов" data-i18n-alt="altAirport">
       </figure>
       <div class="device device--md device--shot scene__device">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" width="640" height="1424" loading="lazy" decoding="async" alt="Escape в дороге: когда выезжать и план дня" data-i18n-alt="shotCompanion"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:27.080%;border-radius:6.050%/9.375%"><img class="live__img" data-shot="07-companion" src="/img/app/ru/07-companion.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.61%;width:107.563%;left:-3.697%;top:-21.354%"></span></span></div>
       </div>
     </div>
@@ -575,7 +641,7 @@
 </section>
 
 <!-- ===== 08b COMMUNITY ===== -->
-<section class="section section--dark section--photo" id="community">
+<section class="section section--dark section--photo section--panel" id="community" data-sky="noon">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/escape-friends-sm.webp" srcset="/img/escape-friends-sm.webp 1400w, /img/escape-friends-lg.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
   </div>
@@ -638,7 +704,7 @@
 </section>
 
 <!-- ===== 09 LAYOVER ===== -->
-<section class="section section--surface">
+<section class="section section--surface" data-sky="afternoon">
   <div class="wrap layover">
     <div class="rv">
       <span class="eyebrow" data-i18n="layEyebrow">Пересадка</span>
@@ -734,14 +800,14 @@
 </section>
 
 <!-- ===== 11 PARIS ===== -->
-<section class="section section--sky">
+<section class="section section--sky" data-sky="warm">
   <div class="wrap split">
     <div class="split__media rv">
       <figure class="scene scene--stack">
         <img src="/img/for-two-sm.webp" srcset="/img/for-two-sm.webp 1200w, /img/for-two-lg.webp 2200w" sizes="(max-width:1024px) 92vw, 46vw" width="1200" height="675" loading="lazy" decoding="async" alt="Столик на двоих у воды на закате" data-i18n-alt="altForTwo">
       </figure>
       <div class="device device--sm device--shot scene__device">
-        <div class="device__notch"></div>
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" width="640" height="1418" loading="lazy" decoding="async" alt="Готовая поездка в Escape: Рим на выходные вдвоём" data-i18n-alt="shotPlan"><span class="live" aria-hidden="true" style="left:3.438%;top:5.783%;width:92.969%;height:26.798%;border-radius:6.050%/9.474%"><img class="live__img" data-shot="06-plan" src="/img/app/ru/06-plan.webp" alt="" decoding="async" loading="lazy" style="transform-origin:14.59% 29.37%;width:107.563%;left:-3.697%;top:-21.579%"></span></span></div>
       </div>
     </div>
@@ -770,7 +836,7 @@
 </section>
 
 <!-- ===== 12 AMSTERDAM ===== -->
-<section class="section">
+<section class="section" data-sky="golden">
   <div class="wrap split split--rev">
     <div class="split__copy rv">
       <span class="eyebrow" data-i18n="amsEyebrow">Амстердам</span>
@@ -801,7 +867,9 @@
 </section>
 
 <!-- ===== 13 ANYWHERE IN THE WORLD ===== -->
-<section class="section section--dark" id="world">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<section class="section" id="world" data-sky="golden2">
   <div class="wrap">
     <div class="head head--mid rv">
       <span class="eyebrow" data-i18n="wldEyebrow">Весь мир</span>
@@ -954,7 +1022,7 @@
 </section>
 
 <!-- ===== 14b PROACTIVITY ===== -->
-<section class="section section--surface" id="proactive">
+<section class="section section--surface" id="proactive" data-sky="amber">
   <div class="wrap">
     <figure class="band rv">
       <img src="/img/escape-view.webp" width="950" height="436" loading="lazy" decoding="async" alt="Санторини на закате: белые дома, синий купол и море" data-i18n-alt="altEscapeView">
@@ -987,7 +1055,7 @@
 </section>
 
 <!-- ===== 15b LET'S ESCAPE TOGETHER ===== -->
-<section class="section section--surface section--photo" id="together">
+<section class="section section--surface section--photo" id="together" data-sky="sunset@0 sunset2@1">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/hero-santorini-sm.webp" srcset="/img/hero-santorini-sm.webp 1200w, /img/hero-santorini-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1041,7 +1109,41 @@
 </section>
 
 <!-- ===== 15c TRIP ROOMS ===== -->
-<section class="section section--dark section--photo">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<!-- ===== SANTA — the assistant in the season ===== -->
+<section class="section section--dark santa" id="santa" data-sky="mauve@0 dusk@pad">
+  <div class="wrap santa__grid">
+    <div class="santa__stage rv">
+      <span class="santa__halo" aria-hidden="true"></span>
+      <div class="santa__fig" aria-hidden="true">
+        <img class="santa__body" src="/img/xmas/santa-body.webp" width="620" height="620" alt="" loading="lazy" decoding="async">
+        <img class="santa__hand" src="/img/xmas/santa-hand.webp" width="620" height="620" alt="" loading="lazy" decoding="async">
+      </div>
+      <div class="santa__chat">
+        <span class="santa__ex" data-i18n="snExample">Пример разговора</span>
+        <div class="bub bub--santa"><img src="/img/xmas/santa.webp" width="520" height="515" alt="" loading="lazy" decoding="async"><p data-i18n="snHello">Привет, Дмитрий! Куда хотите отправиться в праздники?</p></div>
+        <div class="bub bub--me"><p data-i18n="snAsk">В горы на Новый год, вдвоём, на машине</p></div>
+        <div class="bub bub--santa"><img src="/img/xmas/santa.webp" width="520" height="515" alt="" loading="lazy" decoding="async"><p data-i18n="snReply">Чудесно! Сколько ночей хотите провести там? Дорогу туда и обратно я добавлю сам.</p></div>
+        <span class="santa__voice"><span class="santa__bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span data-i18n="snVoice">Санта говорит вслух</span></span>
+      </div>
+    </div>
+    <div class="santa__copy rv rv-d1">
+      <span class="eyebrow eyebrow--festive"><svg width="14" height="14" aria-hidden="true"><use href="#i-gift"/></svg><span data-i18n="snEyebrow">Санта в Escape</span></span>
+      <h2 data-i18n-html="snTitle">В праздники вам отвечает<br><em>сам Санта.</em></h2>
+      <p class="lead" data-i18n="snLead">До 14 января ассистент Escape надевает красный колпак. Он машет вам на вкладке ассистента, здоровается по имени, отвечает в чате и проговаривает ответы вслух — а потом собирает всю поездку, от дороги до ужина.</p>
+      <ul class="santa__points">
+        <li><i><svg aria-hidden="true"><use href="#i-hand"/></svg></i><span data-i18n="snP1">Машет вам рукой на вкладке ассистента</span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-user"/></svg></i><span data-i18n="snP2">Здоровается по имени — как старый друг</span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-voice"/></svg></i><span data-i18n="snP3">Отвечает в чате и говорит вслух — голос выключается одним касанием</span></li>
+        <li><i><svg aria-hidden="true"><use href="#i-route"/></svg></i><span data-i18n="snP4">Задаёт пару вопросов и собирает всю поездку</span></li>
+      </ul>
+      <p class="src" data-i18n="snNote">Санта приходит в приложение 20 ноября и остаётся до 14 января.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark section--photo" data-sky="evening">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/escape-terrace-sm.webp" srcset="/img/escape-terrace-sm.webp 1400w, /img/escape-terrace-lg.webp 1672w" sizes="100vw" width="1672" height="941" loading="lazy" decoding="async" alt="">
   </div>
@@ -1071,7 +1173,7 @@
 </section>
 
 <!-- ===== 15d TRAVEL IDENTITY: PASSPORT + WORLD PROGRESS ===== -->
-<section class="section section--dark section--photo" id="identity">
+<section class="section section--dark section--photo" id="identity" data-sky="night">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/coast-dusk-sm.webp" srcset="/img/coast-dusk-sm.webp 1200w, /img/coast-dusk-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1131,7 +1233,7 @@
 </section>
 
 <!-- ===== 15e CHALLENGES + AROUND THE WORLD ===== -->
-<section class="section section--photo" id="challenges">
+<section class="section section--dark section--photo" id="challenges" data-sky="night2">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/positano-sm.webp" srcset="/img/positano-sm.webp 1200w, /img/positano-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1248,7 +1350,7 @@
 </section>
 
 <!-- ===== 15h LOCAL ESCAPE ===== -->
-<section class="section section--photo">
+<section class="section section--dark section--photo" data-sky="night3">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/amsterdam-sm.webp" srcset="/img/amsterdam-sm.webp 1200w, /img/amsterdam-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1285,7 +1387,7 @@
 </section>
 
 <!-- ===== 15i YEAR IN ESCAPES ===== -->
-<section class="section section--dark section--tight">
+<section class="section section--dark section--tight" data-sky="deep">
   <div class="wrap">
     <div class="yr rv">
       <div class="yr__hd">
@@ -1310,7 +1412,7 @@
 </section>
 
 <!-- ===== 17 WHY ESCAPE ===== -->
-<section class="section section--photo">
+<section class="section section--dark section--photo" data-sky="deep">
   <div class="section__bg" aria-hidden="true">
     <img src="/img/friends-sail-sm.webp" srcset="/img/friends-sail-sm.webp 1200w, /img/friends-sail-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="">
   </div>
@@ -1331,12 +1433,15 @@
 </section>
 
 <!-- ===== 19 FINAL CTA + CONTACT ===== -->
-<section class="cta" id="join">
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<section class="cta" id="join" data-sky="deep2">
   <div class="cta__media">
     <img src="/img/cta-oia-sm.webp" srcset="/img/cta-oia-sm.webp 1200w, /img/cta-oia-lg.webp 2200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="Белые дома Ои на склоне над морем" data-i18n-alt="altCta">
   </div>
   <div class="wrap">
     <div class="rv">
+      <p class="cta__season"><svg width="16" height="16" aria-hidden="true"><use href="#i-snow"/></svg><span data-i18n="ctaSeason">С наступающим Рождеством и Новым годом!</span></p>
       <h2 data-i18n-html="ctaTitle">Следующее путешествие<br>начинается с одного желания.</h2>
       <div class="cta__brand"><span class="brandmark brandmark--light"><span class="word">Escape</span><svg class="pin" aria-hidden="true"><use href="#brand-pin"/></svg></span></div>
       <p data-i18n="ctaLead">сам позаботится об остальном. Приложение бесплатное и уже в App Store, версия для Android — совсем скоро.</p>
@@ -1370,7 +1475,7 @@
 </main>
 
 <!-- ===== footer ===== -->
-<footer class="footer">
+<footer class="footer" data-sky="abyss@0 end@1">
   <div class="wrap">
     <div class="footer__top">
       <div class="footer__brand">
@@ -1540,7 +1645,8 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="/assets/i18n.js?v=abf7823c0a"></script>
-<script src="/assets/app.js?v=181b22a47c" defer></script>
+<script src="/assets/i18n.js?v=2c45f4e5c3"></script>
+<script src="/assets/app.js?v=308a400dd3" defer></script>
+<script src="/assets/season.js?v=d3df4b05c1" defer></script>
 </body>
 </html>
