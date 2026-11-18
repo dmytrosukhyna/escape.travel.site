@@ -1,7 +1,37 @@
 # Submission notes, ratings and compliance
 
-Everything App Store Connect asks for beyond the listing copy, plus the things
-that will decide whether the first submission passes.
+**The app is already on the App Store.** `Escape: AI Travel Agent`, Dmytro
+Sukhyna, id `6803238502` — first released 1 November 2026, currently at 1.0.5
+(15 November), free, rated 17+, listed under Travel and Navigation, with nine
+screenshots and six device languages.
+
+So this is not a first submission. It is the New Year update, and most of what
+follows is already settled: the age rating was answered, export compliance was
+declared, the privacy labels exist. What is below is what to check before 1.0.6
+goes up, and what the live listing is currently missing.
+
+## 0. What the live listing is missing today
+
+Read back from the store on 18 November 2026:
+
+| Storefront | Listing language now |
+|---|---|
+| Russian | Russian ✓ |
+| Spanish | Spanish ✓ |
+| US / English | English ✓ |
+| Greek | **English** — Greek copy never uploaded |
+| Croatian | **English** — Croatian copy never uploaded |
+| Ukrainian | **English** — Ukrainian copy never uploaded |
+
+The app itself ships in all six. Three storefronts are selling it in a language
+the reader may not have. `LISTING.md` has the Greek, Croatian and Ukrainian
+copy ready to paste.
+
+The nine screenshots on the store are the raw captures — no frame, no caption,
+nothing seasonal. The set in this folder replaces them.
+
+The release notes live on the store are about "Escape finds" boutique hotels,
+which is 1.0.5. `LISTING.md` has the New Year text for 1.0.6.
 
 The screenshots themselves are captures of the real app, so Guideline 2.3.3 —
 screenshots must show the app as it is — is already satisfied in substance.
@@ -13,16 +43,18 @@ a typo; a few of them are grounds for removal later.
 
 ---
 
-## 1. Age rating
+## 1. Age rating — already answered
 
-Answer the questionnaire honestly, and expect **12+ at best**, not 4+.
+The live listing is **17+**, which is the honest answer for an app with
+traveller profiles and matching, and it does not need revisiting for this
+update unless the feature set changes.
 
-The reason is the community side. An app where people write profiles and are
-matched with strangers to travel together carries user-generated content and
-user-to-user contact. Apple's questionnaire asks about both directly, and the
-answer moves the rating.
+Worth knowing: 17+ costs reach. If the community side is moderated — filtering,
+reporting, blocking, a real 24-hour response — the questionnaire can honestly
+support a lower rating, and that is a conversion question worth a separate look
+rather than a change to make in a hurry.
 
-**CONFIRM** before answering:
+**CONFIRM** if you ever revisit it:
 
 - Is the community feature in the first build at all? If it is not, say so and
   the rating drops accordingly — but then the listing must not show it either,
@@ -163,18 +195,27 @@ recommends, that has to be disclosed — in the app, in the terms, and under the
 FTC and EU rules on undisclosed commercial relationships. Worth drafting the
 clause now so it is ready rather than retrofitted.
 
-## 10. Before you press submit
+## 10. Before 1.0.6 goes up
+
+Already done, from 1.0.5 — no action:
+
+- Age rating answered (17+)
+- Export compliance declared
+- Privacy labels filed
+- App icon accepted
+
+For this update:
 
 - [ ] App screens re-exported at device resolution — the captures in
       `img/app/` are 640px wide and go soft at store size (see `README.md`)
 - [ ] `christmas.webp` captured in each language, not just Russian
-- [ ] App icon at 1024 × 1024, no alpha, no rounded corners applied by you
-- [ ] Demo account filled in and working
-- [ ] The backend up and staying up through review
-- [ ] Age rating questionnaire answered from the real feature set
-- [ ] Report / block / 24-hour response live, if the community ships
-- [ ] IAP configured for anything digital, or confirmed that nothing digital is sold
-- [ ] `ITSAppUsesNonExemptEncryption` set
-- [ ] Privacy labels matched to the real collection, not to this table
-- [ ] Account deletion reachable in the app
-- [ ] Support URL reachable and monitored
+- [ ] New screenshots uploaded for 6.9″ and 6.5″, all six languages
+- [ ] Greek, Croatian and Ukrainian listings filled in from `LISTING.md` —
+      they are English on the store today
+- [ ] Release notes replaced with the New Year text
+- [ ] Promotional text set (it changes without a new build, so it can carry the
+      season and be swapped back in January)
+- [ ] Demo account still valid and the backend up through review
+- [ ] Anything new in 1.0.6 that collects data reflected in the privacy labels
+- [ ] If the New Year section books anything digital, IAP — travel itself stays
+      exempt

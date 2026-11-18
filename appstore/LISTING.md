@@ -9,6 +9,11 @@ six — not every language Apple's devices support is offered as a listing
 locale, and one that is not goes under English with the copy below kept for the
 app itself.
 
+The app is live as `Escape: AI Travel Agent` (id 6803238502), so this is copy
+for the 1.0.6 update rather than a first listing. Three storefronts — Greek,
+Croatian and Ukrainian — are serving the English listing today; the copy for
+them is below.
+
 Nothing here claims a user count, a rating, an award, a press mention or a
 partnership, because none of those exist yet. If any of that changes, it can be
 added — but it has to be true on the day the listing goes live, and provable.
@@ -23,6 +28,7 @@ added — but it has to be true on the day the listing goes live, and provable.
 | SKU | ESCAPE-TRAVEL-AGENT-001 |
 | Primary category | Travel |
 | Secondary category | Lifestyle |
+| Apple ID | 6803238502 |
 | Copyright | © 2026 Dmytro Sukhyna |
 | Marketing URL | https://www.escapetravel.site |
 | Support URL | https://www.escapetravel.site/#contact |
@@ -89,13 +95,14 @@ added — but it has to be true on the day the listing goes live, and provable.
 > Часть возможностей описывает продукт в разработке. Что уже работает и что
 > появится позже — на escapetravel.site.
 
-**What's New** (4000) — для первой версии:
+**What's New** (4000) — для 1.0.6, новогоднего обновления:
 
-> Первая версия. Escape! собирает поездку целиком по одной фразе и остаётся с
-> вами в дороге.
+> Новый год в Escape.
 >
-> К запуску — новогодний раздел: перелёт, отель у площади, стол на 31 декабря и
-> точка, откуда видно салют.
+> • Новогодний раздел на главном экране: горнолыжные курорты, тёплые
+>   направления и города с ярмарками — собранные под даты каникул
+> • Праздничное оформление по всему приложению
+> • Санта в Escape — он подскажет, куда поехать на каникулы
 
 ---
 
@@ -212,13 +219,14 @@ travel,ai agent,trip planner,itinerary,flights,hotels,layover,new year,holiday,a
 > Some capabilities describe a product in development. What works today and what
 > comes later is set out at escapetravel.site.
 
-**What's New** (4000) — first release:
+**What's New** (4000) — for 1.0.6, the New Year update:
 
-> The first release. Escape! assembles a whole trip from one sentence and stays
-> with you on the road.
+> New Year in Escape.
 >
-> In time for the season: the New Year trip — the flight, a hotel by the square,
-> a table on 31 December and the spot the fireworks are visible from.
+> • A New Year section on the home screen: ski resorts, warm destinations and
+>   cities with Christmas markets, gathered around the holiday dates
+> • The app dressed for the season throughout
+> • Santa in Escape — he'll tell you where to go over the holidays
 
 ---
 
