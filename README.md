@@ -55,7 +55,7 @@ red used only as an accent, a clamp-based type scale, an 8px spacing rhythm and
 one device component with three sizes (hero 100%, feature 85–95%, secondary
 70–80%).
 
-## The Christmas season (20 November – 14 January)
+## The Christmas season (15 November – 14 January)
 
 `assets/season.css` and `assets/season.js` are a layer over the site, loaded
 after `styles.css` and `app.js`; the season leaves by removing their two tags

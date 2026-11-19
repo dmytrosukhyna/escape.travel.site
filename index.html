@@ -44,7 +44,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/onest-latin-700.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts.css?v=f9acb6e106">
 <link rel="stylesheet" href="/assets/styles.css?v=2e2ccc63d4">
-<link rel="stylesheet" href="/assets/season.css?v=77f3a60f40">
+<link rel="stylesheet" href="/assets/season.css?v=0dbe3a7295">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Escape! AI Travel Agent","applicationCategory":"TravelApplication","operatingSystem":"iOS, Android","url":"https://www.escapetravel.site/","description":"Personal AI travel agent that plans, organises and accompanies a whole journey — routes, tickets, hotels, cars, EV charging, transfers, weather and recommendations in one agent.","inLanguage":["ru","uk","en"],"author":{"@type":"Person","name":"Dmytro Sukhyna"},"publisher":{"@type":"Organization","name":"Escape!","url":"https://www.escapetravel.site/","email":"escape.travel.ai@gmail.com"}}
@@ -134,6 +134,7 @@
 
     <nav class="nav" id="nav" aria-label="Основная навигация" data-i18n-aria-label="a11yNav">
       <a href="#xmas" data-i18n="navXmas">Новый год</a>
+      <a href="#tours" data-i18n="navTours">Туры</a>
       <a href="#agent" data-i18n="navAgent">AI Agent</a>
       <a href="#how" data-i18n="navHow">Как это работает</a>
       <a href="#community" data-i18n="navCommunity">Сообщество</a>
@@ -163,6 +164,7 @@
 
 <nav class="drawer" id="drawer" aria-label="Мобильная навигация" data-i18n-aria-label="a11yMobileNav" hidden>
   <a href="#xmas" data-i18n="navXmas">Новый год</a>
+      <a href="#tours" data-i18n="navTours">Туры</a>
   <a href="#problem" data-i18n="navWhy">Почему ESCAPE</a>
   <a href="#agent" data-i18n="navAgent">AI Agent</a>
   <a href="#how" data-i18n="navHow">Как это работает</a>
@@ -209,7 +211,7 @@
       </div>
       <div class="float float--season">
         <span class="float__ic"><svg width="16" height="16" aria-hidden="true"><use href="#i-snow"/></svg></span>
-        <span><b data-i18n="xmSeason">С 20 ноября по 14 января</b><small data-i18n="xmSeasonS">приложение в праздничном наряде</small></span>
+        <span><b data-i18n="xmSeason">С 15 ноября по 14 января</b><small data-i18n="xmSeasonS">приложение в праздничном наряде</small></span>
       </div>
     </div>
   </div>
@@ -236,6 +238,9 @@
         <li class="rv"><a href="#xmas"><i><svg aria-hidden="true"><use href="#i-snow"/></svg></i><b data-i18n="wn1t">Новогодние путешествия</b><span data-i18n="wn1p">Курорты по странам, уютные городки, ярмарки и спа — на праздничные ночи и со ссылкой на бронирование.</span></a></li>
         <li class="rv rv-d1"><a href="#santa"><i><svg aria-hidden="true"><use href="#i-gift"/></svg></i><b data-i18n="wn2t">Санта-ассистент</b><span data-i18n="wn2p">Машет вам рукой, здоровается по имени, отвечает в чате и говорит вслух.</span></a></li>
         <li class="rv rv-d2"><a href="#night"><i><svg aria-hidden="true"><use href="#i-star"/></svg></i><b data-i18n="wn3t">Праздничный вид днём и ночью</b><span data-i18n="wn3p">Снег, гирлянды и зимние картинки. Светлая и тёмная тема — или как в вашем телефоне.</span></a></li>
+        <li class="rv"><a href="#tours"><i><svg aria-hidden="true"><use href="#i-route"/></svg></i><b data-i18n="wn7t">Туры по городам</b><span data-i18n="wn7p">18 готовых туров на 1, 3 или 7 дней — каждый день по часам, в навигаторе одной кнопкой.</span></a></li>
+        <li class="rv rv-d1"><a href="#tours"><i><svg aria-hidden="true"><use href="#i-user"/></svg></i><b data-i18n="wn8t">Тур с личным гидом</b><span data-i18n="wn8p">Расскажите, когда и сколько вас, — соберём маршрут, а гид встретит и будет рядом.</span></a></li>
+        <li class="rv rv-d2"><a href="#tours"><i><svg aria-hidden="true"><use href="#i-ticket"/></svg></i><b data-i18n="wn9t">Концерты и фестивали</b><span data-i18n="wn9p">Афиша мира с напоминанием за 3 недели — и события на даты вашей поездки прямо в плане.</span></a></li>
         <li class="rv"><a href="#community"><i><svg aria-hidden="true"><use href="#i-users"/></svg></i><b data-i18n="wn4t">Trip Rooms</b><span data-i18n="wn4p">Опубликуйте поездку, позовите попутчиков и договоритесь обо всём в общем чате.</span></a></li>
         <li class="rv rv-d1"><a href="#together"><i><svg aria-hidden="true"><use href="#i-mail"/></svg></i><b data-i18n="wn5t">Приглашения и открытки</b><span data-i18n="wn5p">Позовите друзей на встречу или в поездку — открытка придёт с праздничным поздравлением.</span></a></li>
         <li class="rv rv-d2"><a href="#how"><i><svg aria-hidden="true"><use href="#i-check"/></svg></i><b data-i18n="wn6t">Чек-лист бронирования</b><span data-i18n="wn6p">Всё, что нужно забронировать, по порядку — и галочка у того, что уже готово.</span></a></li>
@@ -247,6 +252,35 @@
         <div class="device__screen"><span class="device__view"><img class="device__img" src="/img/xmas/launch.webp" width="720" height="1560" decoding="async" loading="lazy" alt="Так Escape встречает вас в праздники: Санторини в снегу и сани Санты" data-i18n-alt="shotLaunch"></span></div>
       </div>
       <p class="whatsnew__cap" data-i18n="wnLaunch">Так приложение встречает вас в праздники</p>
+    </div>
+  </div>
+</section>
+
+<div class="garland-line" aria-hidden="true"><img src="/img/xmas/holly.webp" width="240" height="238" alt="" loading="lazy" decoding="async"></div>
+
+<!-- ===== TOURS (1.1.0) ===== -->
+<section class="section tours" id="tours" data-sky="dawn2@0.5">
+  <div class="wrap tours__grid">
+    <div class="tours__stage rv">
+      <div class="device device--md device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="10-tour" src="/img/app/ru/10-tour.webp" width="720" height="1564" decoding="async" loading="lazy" alt="Тур по Риму в Escape: три дня, каждый по часам" data-i18n-alt="shotTour"></span></div>
+      </div>
+      <p class="whatsnew__cap" data-i18n="trCap">Рим за 3 дня: каждый день по часам</p>
+    </div>
+    <div class="tours__copy">
+      <div class="head rv">
+        <span class="eyebrow eyebrow--festive"><svg width="14" height="14" aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="trEyebrow">Туры по городам вместе с Escape</span></span>
+        <h2 data-i18n-html="trTitle">Готовый тур —<br><em>расписан по часам.</em></h2>
+        <p class="lead" data-i18n="trLead">18 туров по городам, островам и для двоих. Выберите 1, 3 или 7 дней — и каждый день расписан: когда встать, что посмотреть, где пообедать и поужинать, где ночевать и что делать в дождь.</p>
+      </div>
+      <div class="tours__ways">
+        <div class="tours__way rv"><i><svg aria-hidden="true"><use href="#i-gift"/></svg></i><small data-i18n="trAt">Вариант A</small><b data-i18n="trA">Тур от Escape в подарок</b><span data-i18n="trAp">Готовый маршрут бесплатно: билеты, рестораны рядом и жильё по ссылкам, весь день — в навигаторе.</span></div>
+        <div class="tours__way tours__way--guide rv rv-d1"><i><svg aria-hidden="true"><use href="#i-user"/></svg></i><small data-i18n="trBt">Вариант B</small><b data-i18n="trB">Персональный тур с гидом</b><span data-i18n="trBp">Расскажите, когда и сколько вас, — соберём примерный маршрут. Гид встретит, поможет заселиться и будет рядом каждый день.</span></div>
+      </div>
+      <p class="tours__cities rv" data-i18n="trCities">Афины · Рим · Париж · Лиссабон · Прага · Вена · Барселона · Будапешт · Львов · Прованс · Луара · острова Греции, Хорватии, Сицилии, Балеар, Бали · Амальфи и Венеция для двоих</p>
+      <div class="tours__fest rv"><i><svg aria-hidden="true"><use href="#i-ticket"/></svg></i><div><b data-i18n="trFestT">Концерты и фестивали</b><span data-i18n="trFestP">Tomorrowland, Октоберфест, карнавал в Венеции и ещё десятки событий — с напоминанием за 3 недели, жильём на эти даты и билетами.</span></div></div>
+      <a class="btn btn--red tours__cta rv" href="https://apps.apple.com/app/id6803238502" target="_blank" rel="noopener" data-store="ios"><svg width="16" height="16" aria-hidden="true"><use href="#i-apple"/></svg><span data-i18n="ctaJoin">Скачать бесплатно в App Store</span><svg class="arw" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -373,6 +407,13 @@
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="02-christmas" src="/img/app/ru/02-christmas.webp" width="720" height="1564" loading="lazy" decoding="async" alt="Новогодние путешествия: курорты по странам и праздничные ночи" data-i18n-alt="galYalt"></span></div>
       </div>
       <figcaption><b data-i18n="galYa">Курорты по странам</b><span data-i18n="galYb">и праздничные ночи</span></figcaption>
+    </figure>
+    <figure class="shot" role="listitem">
+      <div class="device device--sm device--shot">
+        <span class="device__hw" aria-hidden="true"></span><span class="device__island" aria-hidden="true"></span>
+        <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="10-tour" src="/img/app/ru/10-tour.webp" width="720" height="1564" loading="lazy" decoding="async" alt="Тур по Риму в Escape: три дня, каждый по часам" data-i18n-alt="shotTour"></span></div>
+      </div>
+      <figcaption><b data-i18n="galTa">Туры по часам —</b><span data-i18n="galTb">с билетами и навигатором</span></figcaption>
     </figure>
     <figure class="shot" role="listitem">
       <div class="device device--sm device--shot">
@@ -1182,7 +1223,7 @@
         <div class="device__screen"><span class="device__view"><img class="device__img" data-shot="05-assistant-dark" src="/img/app/ru/05-assistant-dark.webp" width="720" height="1564" loading="lazy" decoding="async" alt="Санта в тёмной теме" data-i18n-alt="shotSantaDark"></span></div>
       </div>
     </div>
-      <p class="src" data-i18n="snNote">Санта приходит в приложение 20 ноября и остаётся до 14 января.</p>
+      <p class="src" data-i18n="snNote">Санта приходит в приложение 15 ноября и остаётся до 14 января.</p>
     </div>
   </div>
 </section>
@@ -1742,7 +1783,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="/assets/i18n.js?v=7f698419d9"></script>
+<script src="/assets/i18n.js?v=f54c2a3fba"></script>
 <script src="/assets/app.js?v=308a400dd3" defer></script>
 <script src="/assets/season.js?v=bc9aa994d8" defer></script>
 </body>

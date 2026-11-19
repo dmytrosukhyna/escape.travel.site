@@ -580,3 +580,40 @@ body{background:transparent;position:relative}
   .nightshow__row{grid-template-columns:1fr}
   .pair .device{--w:min(196px,46vw)}
 }
+
+/* --- 15. City tours (1.1.0) -------------------------------------------------- */
+/* 20 November: the app's new shelf on the site — a ready tour hour by hour
+   (option A, a gift) or a personal guide (option B), and the festivals beside
+   them. Same glass cards as "Что нового", the tour screen on its own phone. */
+.tours{padding-block:clamp(40px,5vw,80px)}
+.tours__grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.4fr);gap:clamp(28px,4vw,64px);align-items:center}
+.tours .head h2{font-size:var(--t-h2)}
+.tours .head h2 em{font-style:normal;color:var(--xmas-red-deep)}
+.tours__stage{display:flex;flex-direction:column;align-items:center;gap:16px}
+.tours__stage .device{--w:clamp(220px,20vw,272px)}
+.tours__ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:clamp(20px,3vw,30px)}
+.tours__way,.tours__fest{display:flex;flex-direction:column;gap:6px;padding:18px 18px 20px;border-radius:22px;
+  background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 12px 30px -18px rgba(80,40,60,.35)}
+.tours__way i,.tours__fest i{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;background:#FDE7E6;color:var(--xmas-red-deep);margin-bottom:4px}
+.tours__way--guide i{background:#ECE7FB;color:#5B45C9}
+.tours__way i svg,.tours__fest i svg{width:20px;height:20px}
+.tours__way small{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3,#8a8aa0)}
+.tours__way b,.tours__fest b{font-family:var(--font-display);font-weight:700;font-size:var(--t-h4);letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
+.tours__way span,.tours__fest span{font-size:var(--t-small);color:var(--ink-2);line-height:1.5}
+.tours__cities{margin-top:16px;font-size:var(--t-small);line-height:1.7;color:var(--ink-2)}
+.tours__fest{flex-direction:row;align-items:flex-start;gap:14px;margin-top:14px}
+.tours__fest div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tours__cta{margin-top:22px;display:inline-flex}
+@media (max-width:1024px){
+  .tours__grid{grid-template-columns:1fr}
+  .tours__stage{order:2}
+}
+@media (max-width:560px){
+  .tours__ways{grid-template-columns:1fr}
+  .tours__cta{display:flex;width:100%;justify-content:center}
+}
+/* Nine cards: three rows of three; two to a row leaves one, so it takes the row. */
+@media (max-width:1024px) and (min-width:561px){
+  .wn li:last-child:nth-child(odd){grid-column:1 / -1}
+}
